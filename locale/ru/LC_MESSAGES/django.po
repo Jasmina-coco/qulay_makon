@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+
+msgid "Xush kelibsiz"
+msgstr "Добро пожаловать"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Mahsulotlar"
+msgstr "Товары"
+
+msgid "Buyurtmalar"
+msgstr "Заказы"
+
+msgid "Kategoriyalar"
+msgstr "Категории"
+
+msgid "Foydalanuvchilar"
+msgstr "Пользователи"
+
+msgid "Sotuvchilar"
+msgstr "Продавцы"
+
+msgid "Chiqish"
+msgstr "Выход"
+
+msgid "Jami Mahsulotlar"
+msgstr "Всего товаров"
+
+msgid "Faol Mahsulotlar"
+msgstr "Активные товары"
+
+msgid "Kutilayotgan"
+msgstr "В ожидании"
+
+msgid "Nomi"
+msgstr "Название"
+
+msgid "Narxi"
+msgstr "Цена"
+
+msgid "Holati"
+msgstr "Статус"
+
+msgid "Sana"
+msgstr "Дата"
+
+msgid "Amallar"
+msgstr "Действия"
+
+msgid "Qo'shish"
+msgstr "Добавить"
+
+msgid "Tahrirlash"
+msgstr "Редактировать"
+
+msgid "O'chirish"
+msgstr "Удалить"
+
+msgid "Saqlash"
+msgstr "Сохранить"
+
+msgid "Bekor qilish"
+msgstr "Отменить"
+
+msgid "Qidirish"
+msgstr "Поиск"
+
+msgid "Mahsulot Import"
+msgstr "Импорт товаров"
+
+msgid "Mahsulotlarni Import Qilish"
+msgstr "Импортировать товары"
+
+msgid "Qo'llanma"
+msgstr "Инструкция"
+
+msgid "CSV yoki Excel (.xlsx) faylni yuklang. Ustunlar:"
+msgstr "Загрузите файл CSV или Excel (.xlsx). Столбцы:"
+
+msgid "Fayl tanlang"
+msgstr "Выберите файл"
+
+msgid "Import qilish"
+msgstr "Импортировать"
+
+msgid "Excel Export"
+msgstr "Экспорт Excel"
+
+msgid "CSV Export"
+msgstr "Экспорт CSV"
+
+msgid "Import"
+msgstr "Импорт"
+
+msgid "Rasmlar"
+msgstr "Изображения"
+
+msgid "Asosiy"
+msgstr "Главное"
+
+msgid "Rasmlar yo'q"
+msgstr "Нет изображений"
+
+msgid "Rasmlarni tanlang yoki shu yerga tashlang"
+msgstr "Выберите или перетащите изображения сюда"
+
+msgid "Rasmlarni tanlang"
+msgstr "Выберите изображения"
+
+msgid "Mahsulotni Tahrirlash"
+msgstr "Редактировать товар"
+
+msgid "Yangi Mahsulot"
+msgstr "Новый товар"
+
+msgid "Tavsif"
+msgstr "Описание"
+
+msgid "Chegirma narxi"
+msgstr "Цена со скидкой"
+
+msgid "Ombordagi soni"
+msgstr "Количество на складе"
+
+msgid "Tanlang"
+msgstr "Выберите"
+
+msgid "Tavsiya etilgan mahsulot"
+msgstr "Рекомендуемый товар"
+
+msgid "Orqaga"
+msgstr "Назад"
+
+msgid "Namuna yuklab olish"
+msgstr "Скачать образец"
+
+msgid "Qoralama"
+msgstr "Черновик"
+
+msgid "Faol"
+msgstr "Активный"
+
+msgid "Rad etilgan"
+msgstr "Отклонён"
+
+msgid "Sotuvchi"
+msgstr "Продавец"
+
+msgid "Iltimos, formadagi xatolarni tuzating."
+msgstr "Пожалуйста, исправьте ошибки в форме."
+
+msgid "category ustunida kategoriya NOMI yozilishi kerak."
+msgstr "В поле category должно быть указано НАЗВАНИЕ категории."
+
+msgid "Avval namuna faylni eksport qilib ko'ring:"
+msgstr "Сначала экспортируйте пример файла:"

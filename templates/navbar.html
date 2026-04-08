@@ -1,0 +1,11 @@
+{% load i18n %}
+<header class="navbar">
+    <button id="sidebarToggle" class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+    <form method="get" action="" class="search">
+        <input type="text" name="q" placeholder="Qidirish...">
+    </form>
+    <div class="nav-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+        <a href="{% url 'accounts:logout' %}" class="icon-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+</header>

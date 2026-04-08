@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Mahsulotlar" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Mahsulotlar" %}</h1>
+</div>
+<form class="filters" method="get" data-ajax-filter="true" data-target="#productListContainer">
+    <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
+    <select name="status">
+        <option value="">{% trans "Statuslar" %}</option>
+        <option value="active">active</option>
+        <option value="pending">pending</option>
+        <option value="rejected">rejected</option>
+        <option value="draft">draft</option>
+    </select>
+    <select name="category">
+        <option value="">{% trans "Kategoriyalar" %}</option>
+        {% for cat in categories %}
+        <option value="{{ cat.id }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-primary" type="submit">{% trans "Qidirish" %}</button>
+</form>
+<div id="productListContainer">
+<div class="data-table-wrapper">
+    <div class="table-header">
+        <h3>{% trans "Mahsulotlar ro'yxati" %}</h3>
+        <div class="table-actions">
+            <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
+                <i class="fas fa-file-excel"></i> {% trans "Excel Export" %}
+            </a>
+            <a href="{% url 'product_export' %}?format=csv" class="btn btn-sm btn-outline">
+                <i class="fas fa-file-csv"></i> {% trans "CSV Export" %}
+            </a>
+            <a href="{% url 'product_import' %}" class="btn btn-sm btn-primary">
+                <i class="fas fa-upload"></i> {% trans "Import" %}
+            </a>
+            <a href="{% url 'product_create' %}" class="btn btn-sm btn-primary">
+                <i class="fas fa-plus"></i> {% trans "Qo'shish" %}
+            </a>
+        </div>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>{% trans "Nomi" %}</th><th>{% trans "Sotuvchilar" %}</th><th>{% trans "Narxi" %}</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <tbody>
+            {% for product in page_obj %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.seller.username }}</td>
+                <td>{{ product.price }}</td>
+                <td><span class="status-badge status-{{ product.status }}">{{ product.status }}</span></td>
+                <td>
+                    <a class="btn btn-outline btn-sm" href="{% url 'product_detail' product.id %}">{% trans "Ko'rish" %}</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'product_edit' product.id %}">{% trans "Tahrirlash" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'partials/pagination.html' with page_obj=page_obj %}
+</div>
+{% endblock %}

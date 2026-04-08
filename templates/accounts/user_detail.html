@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Foydalanuvchi" %}{% endblock %}
+{% block content %}
+<div class="form-card">
+    <h1>{{ user_obj.username }}</h1>
+    <p>Email: {{ user_obj.email }}</p>
+    <p>Phone: {{ user_obj.phone }}</p>
+    <p>Role: <span class="status-badge status-active">{{ user_obj.role }}</span></p>
+    <p>{% trans "Tasdiqlangan" %}: {% if user_obj.is_verified %}{% trans "Ha" %}{% else %}{% trans "Yo'q" %}{% endif %}</p>
+    <p>{% trans "Faol" %}: {% if user_obj.is_active %}{% trans "Ha" %}{% else %}{% trans "Yo'q" %}{% endif %}</p>
+</div>
+{% endblock %}

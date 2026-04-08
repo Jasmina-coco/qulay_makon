@@ -1,0 +1,133 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% trans "Marketplace Admin" %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            {% if request.user.avatar %}
+            <img src="{{ request.user.avatar.url }}" alt="avatar" class="sidebar-avatar">
+            {% else %}
+            <img src="https://ui-avatars.com/api/?name={{ request.user.username|urlencode }}&background=244e4e&color=fff" alt="avatar" class="sidebar-avatar">
+            {% endif %}
+            <h3 class="sidebar-username">{{ request.user.username }}</h3>
+            <p class="sidebar-email">{{ request.user.email|default:"email yo'q" }}</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'dashboard' %}" class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                <i class="fas fa-th-large"></i><span>{% trans "Dashboard" %}</span>
+            </a>
+            <a href="{% url 'product_list' %}" class="nav-link {% if 'product' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-box"></i><span>{% trans "Mahsulotlar" %}</span>
+            </a>
+            <a href="{% url 'order_list' %}" class="nav-link {% if 'order' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-shopping-bag"></i><span>{% trans "Buyurtmalar" %}</span>
+            </a>
+            <a href="{% url 'category_list' %}" class="nav-link {% if 'category' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-tags"></i><span>{% trans "Kategoriyalar" %}</span>
+            </a>
+            <a href="{% url 'user_list' %}" class="nav-link {% if 'user' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-users"></i><span>{% trans "Foydalanuvchilar" %}</span>
+            </a>
+            <a href="{% url 'seller_list' %}" class="nav-link {% if 'seller' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-store"></i><span>{% trans "Sotuvchilar" %}</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="{% url 'logout' %}" class="nav-link logout-link">
+                <i class="fas fa-sign-out-alt"></i><span>{% trans "Chiqish" %}</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>{% trans "Xush kelibsiz" %}, <span>{{ request.user.username }}</span>!</h2>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input
+                    type="text"
+                    id="globalSearchInput"
+                    autocomplete="off"
+                    data-search-url="{% url 'api_global_search' %}"
+                    placeholder="{% trans 'Qidirish' %}..."
+                >
+                <div class="global-search-results" id="globalSearchResults"></div>
+            </div>
+            <div class="topbar-right">
+                <div class="lang-dropdown">
+                    <button class="lang-btn" onclick="toggleLangMenu()" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">
+                            {% if LANGUAGE_CODE == 'uz' %}UZ
+                            {% elif LANGUAGE_CODE == 'ru' %}RU
+                            {% else %}EN{% endif %}
+                        </span>
+                        <i class="fas fa-chevron-down" style="font-size:10px;"></i>
+                    </button>
+                    <div class="lang-menu" id="langMenu">
+                        <form action="{% url 'set_language' %}" method="post" id="langForm">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <input type="hidden" name="language" id="langInput" value="">
+                            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" onclick="document.getElementById('langInput').value='uz'">
+                                <span class="lang-flag">🇺🇿</span> {% trans "O'zbek" %}
+                            </button>
+                            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" onclick="document.getElementById('langInput').value='ru'">
+                                <span class="lang-flag">🇷🇺</span> {% trans "Русский" %}
+                            </button>
+                            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}" onclick="document.getElementById('langInput').value='en'">
+                                <span class="lang-flag">🇬🇧</span> {% trans "English" %}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="topbar-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+        </header>
+
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="content-area">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <div class="modal" id="deleteModal" style="display:none">
+        <div class="modal-content">
+            <h3>{% trans "O'chirishni tasdiqlaysizmi?" %}</h3>
+            <p><span id="deleteItemName"></span> {% trans "o'chiriladi" %}</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('deleteModal')">{% trans "Bekor qilish" %}</button>
+                <button class="btn btn-danger" id="deleteConfirmBtn">{% trans "O'chirish" %}</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

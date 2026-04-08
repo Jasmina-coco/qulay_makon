@@ -1,0 +1,104 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Super Admin{% endblock %} | Marketplace</title>
+    <link rel="stylesheet" href="{% static 'css/superadmin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="superadmin-body">
+    <aside class="sa-sidebar" id="saSidebar">
+        <div class="sa-sidebar-header">
+            <div class="sa-sidebar-brand">
+                <div class="brand-icon"><i class="fas fa-crown"></i></div>
+                <div>
+                    <h1>Market<span>place</span></h1>
+                    <small>Super Admin</small>
+                </div>
+            </div>
+        </div>
+        <nav class="sa-nav">
+            <div class="sa-nav-label">Asosiy</div>
+            <a href="{% url 'superadmin_dashboard' %}" class="sa-nav-link {% if request.resolver_match.url_name == 'superadmin_dashboard' %}active{% endif %}">
+                <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+            </a>
+            <a href="{% url 'superadmin_finance' %}" class="sa-nav-link {% if 'finance' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-wallet"></i> <span>Moliya</span>
+            </a>
+
+            <div class="sa-nav-label">Boshqaruv</div>
+            <a href="{% url 'superadmin_admin_list' %}" class="sa-nav-link {% if 'admin_list' in request.resolver_match.url_name or 'admin_create' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-user-shield"></i> <span>Adminlar</span>
+                <span class="nav-badge">{{ total_admins|default:"" }}</span>
+            </a>
+            <a href="{% url 'superadmin_role_list' %}" class="sa-nav-link {% if 'role' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-key"></i> <span>Rollar</span>
+            </a>
+
+            <div class="sa-nav-label">Tizim</div>
+            <a href="{% url 'superadmin_settings' %}" class="sa-nav-link {% if 'settings' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-cog"></i> <span>Sozlamalar</span>
+            </a>
+            <a href="{% url 'superadmin_audit_log' %}" class="sa-nav-link {% if 'audit' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-history"></i> <span>Audit Log</span>
+            </a>
+            <a href="{% url 'superadmin_backup' %}" class="sa-nav-link">
+                <i class="fas fa-database"></i> <span>Backup</span>
+            </a>
+
+            <div class="sa-nav-label">Tez o'tish</div>
+            <a href="/admin-panel/" class="sa-nav-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> <span>Admin Panel</span>
+            </a>
+        </nav>
+        <div class="sa-sidebar-footer">
+            <div class="sa-user-card">
+                <div class="sa-user-avatar">{{ request.user.username|first|upper }}</div>
+                <div class="sa-user-info">
+                    <h4>{{ request.user.username }}</h4>
+                    <small>Super Admin</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="sa-main">
+        <header class="sa-topbar">
+            <div>
+                <button class="sa-btn-icon" onclick="document.getElementById('saSidebar').classList.toggle('open')">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <h2>{% block page_title %}Dashboard{% endblock %}</h2>
+            <div class="sa-topbar-actions">
+                <a href="{% url 'superadmin_backup' %}" class="sa-btn sa-btn-outline sa-btn-sm">
+                    <i class="fas fa-download"></i> Backup
+                </a>
+                <a href="{% url 'superadmin_logout' %}" class="sa-btn sa-btn-outline sa-btn-sm">
+                    <i class="fas fa-sign-out-alt"></i> Chiqish
+                </a>
+            </div>
+        </header>
+
+        {% if messages %}
+        <div style="padding: 16px 32px 0;">
+            {% for message in messages %}
+            <div class="sa-alert {% if message.tags == 'error' %}sa-alert-error{% else %}sa-alert-success{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="sa-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/superadmin.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

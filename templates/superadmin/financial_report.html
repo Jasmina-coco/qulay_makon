@@ -1,0 +1,48 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Moliya{% endblock %}
+{% block page_title %}Moliyaviy hisobot{% endblock %}
+{% block content %}
+<div class="sa-stats-grid">
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-sack-dollar"></i></div></div>
+        <h3>{{ total_revenue|floatformat:0 }}</h3>
+        <p>Jami daromad</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-calendar"></i></div></div>
+        <h3>{{ month_revenue|floatformat:0 }}</h3>
+        <p>Bu oy daromad</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-percent"></i></div></div>
+        <h3>{{ total_commission|floatformat:0 }}</h3>
+        <p>Jami komissiya</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-hand-holding-dollar"></i></div></div>
+        <h3>{{ month_commission|floatformat:0 }}</h3>
+        <p>Bu oy komissiya</p>
+    </div>
+</div>
+
+<div class="sa-card">
+    <div class="sa-card-header">
+        <h4>Sotuvchilar bo'yicha hisobot</h4>
+        <a href="{% url 'superadmin_finance_export' %}" class="sa-btn sa-btn-primary sa-btn-sm"><i class="fas fa-file-excel"></i> Excel export</a>
+    </div>
+    <table class="sa-table">
+        <thead><tr><th>Sotuvchi</th><th>Jami sotuv</th><th>Komissiya</th><th>Sof daromad</th><th>Buyurtmalar</th></tr></thead>
+        <tbody>
+            {% for s in sellers_data %}
+            <tr>
+                <td>{{ s.username }}</td>
+                <td>{{ s.total|floatformat:0 }}</td>
+                <td>{{ s.commission|floatformat:0 }}</td>
+                <td>{{ s.net|floatformat:0 }}</td>
+                <td>{{ s.orders }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

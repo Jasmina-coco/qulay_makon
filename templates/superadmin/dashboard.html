@@ -1,0 +1,83 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}<span>Super</span> Dashboard{% endblock %}
+{% block content %}
+<div class="sa-stats-grid">
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-money-bill-wave"></i></div><span class="sa-stat-trend up">+{{ commission_percent }}%</span></div>
+        <h3>{{ total_revenue|floatformat:0 }}</h3>
+        <p>Jami daromad</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-coins"></i></div><span class="sa-stat-trend up">komissiya</span></div>
+        <h3>{{ commission_earned|floatformat:0 }}</h3>
+        <p>Komissiya daromadi</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-users"></i></div></div>
+        <h3>{{ total_users }}</h3>
+        <p>Jami foydalanuvchilar</p>
+    </div>
+    <div class="sa-stat-card">
+        <div class="sa-stat-header"><div class="sa-stat-icon"><i class="fas fa-shopping-cart"></i></div></div>
+        <h3>{{ total_orders }}</h3>
+        <p>Jami buyurtmalar</p>
+    </div>
+</div>
+
+<div class="sa-grid-2">
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>Oylik daromad va komissiya</h4></div>
+        <div style="height:300px"><canvas id="saRevenueChart"></canvas></div>
+    </div>
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>Kunlik buyurtmalar</h4></div>
+        <div style="height:300px"><canvas id="saDailyOrdersChart"></canvas></div>
+    </div>
+</div>
+
+<div class="sa-grid-2">
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>Top sotuvchilar daromadi</h4></div>
+        <div style="height:320px"><canvas id="saSellersRevenueChart"></canvas></div>
+    </div>
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>Yangi foydalanuvchilar</h4></div>
+        <div style="height:320px"><canvas id="saUsersChart"></canvas></div>
+    </div>
+</div>
+
+<div class="sa-grid-2">
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>So'nggi audit loglar</h4></div>
+        {% for log in recent_logs %}
+        <div class="sa-log-item">
+            <div class="sa-log-icon {{ log.action }}"><i class="fas fa-circle"></i></div>
+            <div class="sa-log-info">
+                <strong>{{ log.user }} — {{ log.get_action_display }}</strong>
+                <span>{{ log.model_name }} #{{ log.object_id }}</span>
+            </div>
+            <div class="sa-log-time">{{ log.created_at|date:"d.m H:i" }}</div>
+        </div>
+        {% empty %}
+        <p>Loglar topilmadi</p>
+        {% endfor %}
+    </div>
+    <div class="sa-card">
+        <div class="sa-card-header"><h4>So'nggi buyurtmalar</h4></div>
+        <table class="sa-table">
+            <thead><tr><th>ID</th><th>Mijoz</th><th>Summa</th><th>Status</th></tr></thead>
+            <tbody>
+                {% for order in recent_orders %}
+                <tr>
+                    <td>#{{ order.id }}</td>
+                    <td>{{ order.user.username }}</td>
+                    <td>{{ order.total_amount }}</td>
+                    <td><span class="sa-badge sa-badge-info">{{ order.status }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

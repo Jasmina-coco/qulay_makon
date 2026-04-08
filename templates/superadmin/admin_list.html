@@ -1,0 +1,34 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Adminlar{% endblock %}
+{% block page_title %}Adminlar{% endblock %}
+{% block content %}
+<div class="sa-card">
+    <div class="sa-card-header">
+        <h4>Adminlar ro'yxati</h4>
+        <a href="{% url 'superadmin_admin_create' %}" class="sa-btn sa-btn-primary"><i class="fas fa-plus"></i> Yangi admin</a>
+    </div>
+    <table class="sa-table">
+        <thead><tr><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Amallar</th></tr></thead>
+        <tbody>
+            {% for admin in admins %}
+            <tr>
+                <td>{{ admin.username }}</td>
+                <td>{{ admin.email }}</td>
+                <td>{{ admin.role }}</td>
+                <td>
+                    {% if admin.is_active %}
+                    <span class="sa-badge sa-badge-success">Faol</span>
+                    {% else %}
+                    <span class="sa-badge sa-badge-danger">Blok</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <button class="sa-btn sa-btn-sm sa-btn-outline" onclick="saToggleStatus('{% url 'superadmin_admin_toggle' admin.id %}')">Toggle</button>
+                    <button class="sa-btn sa-btn-sm sa-btn-danger" onclick="saConfirmAndDelete('{% url 'superadmin_admin_delete' admin.id %}', 'Admin o\\'chirilsinmi?')">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

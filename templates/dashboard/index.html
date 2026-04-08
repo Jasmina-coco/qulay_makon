@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Dashboard" %}{% endblock %}
+{% block content %}
+<div class="overview-grid">
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-box"></i></div>
+        <div class="card-info">
+            <h3>{{ total_products }}</h3>
+            <p>{% trans "Jami Mahsulotlar" %}</p>
+        </div>
+    </div>
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
+        <div class="card-info">
+            <h3>{{ total_orders }}</h3>
+            <p>{% trans "Buyurtmalar" %}</p>
+        </div>
+    </div>
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-warehouse"></i></div>
+        <div class="card-info">
+            <h3>{{ active_products }}</h3>
+            <p>{% trans "Faol Mahsulotlar" %}</p>
+        </div>
+    </div>
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="card-info">
+            <h3>{{ pending_orders }}</h3>
+            <p>{% trans "Kutilayotgan" %}</p>
+        </div>
+    </div>
+</div>
+
+<div class="middle-grid">
+    <div class="dashboard-card">
+        <div class="card-header"><h4>{% trans "Foydalanuvchilar" %}</h4></div>
+        <div class="users-stat">
+            <div class="user-icon"><i class="fas fa-users"></i></div>
+            <h2>{{ total_users }}</h2>
+            <p>{% trans "Jami Foydalanuvchilar" %}</p>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="card-header"><h4>{% trans "Buyurtma Holatlari" %}</h4></div>
+        <div class="chart-container" style="position:relative;height:220px;">
+            <canvas id="orderStatusChart"></canvas>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="card-header"><h4>{% trans "Top 10 Mahsulotlar" %}</h4></div>
+        <div class="chart-container" style="position:relative;height:220px;">
+            <canvas id="topProductsChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-section">
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h4>{% trans "Daromad va Xarajatlar" %}</h4>
+            <span class="text-muted">{% trans "Oxirgi 6 oy" %}</span>
+        </div>
+        <div class="chart-container" style="position:relative;height:280px;">
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="card-header"><h4>{% trans "So'nggi Buyurtmalar" %}</h4></div>
+        <div class="recent-orders-list">
+            {% for order in recent_orders %}
+            <div class="recent-order-item">
+                <div class="order-info">
+                    <span class="order-id">#{{ order.id }}</span>
+                    <span class="order-user">{{ order.user.username }}</span>
+                </div>
+                <div class="order-meta">
+                    <span class="order-amount">{{ order.total_amount|floatformat:0 }} UZS</span>
+                    <span class="status-badge status-{{ order.status }}">{{ order.status }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <p>{% trans "So'nggi buyurtmalar topilmadi." %}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const doughnutColors = ['#2a6f6f', '#3d8b8b', '#5aadad', '#8fd4d4', '#c0eaea'];
+
+const lineChartConfig = {
+    borderColor: '#2a6f6f',
+    backgroundColor: 'rgba(42, 111, 111, 0.08)',
+    pointBackgroundColor: '#2a6f6f',
+    pointBorderColor: '#fff',
+    pointBorderWidth: 2,
+    pointRadius: 5,
+    tension: 0.4,
+    fill: true
+};
+
+const barChartConfig = {
+    indexAxis: 'y',
+    backgroundColor: '#2a6f6f',
+    borderRadius: 6,
+    barThickness: 18
+};
+let revenueChart = null;
+let orderStatusChart = null;
+let topProductsChart = null;
+
+async function loadDashboardCharts() {
+    const [revenueRes, statusRes, topProductsRes] = await Promise.all([
+        fetch('/admin-panel/api/monthly-revenue/'),
+        fetch('/admin-panel/api/order-status-chart/'),
+        fetch('/admin-panel/api/top-products/'),
+    ]);
+    const revenueData = await revenueRes.json();
+    const statusData = await statusRes.json();
+    const topProductsData = await topProductsRes.json();
+
+    if (revenueChart) revenueChart.destroy();
+    if (orderStatusChart) orderStatusChart.destroy();
+    if (topProductsChart) topProductsChart.destroy();
+
+    revenueChart = new Chart(document.getElementById('revenueChart'), {
+        type: 'line',
+        data: {
+            labels: revenueData.map(d => d.month),
+            datasets: [{
+                label: '{% trans "Daromad" %}',
+                data: revenueData.map(d => d.revenue),
+                ...lineChartConfig
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, animation: { duration: 500 } }
+    });
+
+    orderStatusChart = new Chart(document.getElementById('orderStatusChart'), {
+        type: 'doughnut',
+        data: {
+            labels: statusData.map(d => d.status),
+            datasets: [{
+                data: statusData.map(d => d.count),
+                backgroundColor: doughnutColors
+            }]
+        },
+        options: { animation: { duration: 500 } }
+    });
+
+    topProductsChart = new Chart(document.getElementById('topProductsChart'), {
+        type: 'bar',
+        data: {
+            labels: topProductsData.map(d => d.name),
+            datasets: [{
+                label: '{% trans "Ko\\'rishlar" %}',
+                data: topProductsData.map(d => d.views_count),
+                ...barChartConfig
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, animation: { duration: 500 } }
+    });
+}
+
+loadDashboardCharts();
+setInterval(loadDashboardCharts, 30000);
+</script>
+{% endblock %}

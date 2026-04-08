@@ -1,0 +1,22 @@
+{% load i18n %}
+<aside class="sidebar" id="sidebar">
+    <h2 class="logo">Marketplace</h2>
+    <a class="menu-link {% if request.resolver_match.app_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard:index' %}">
+        <i class="fa-solid fa-chart-line"></i> Dashboard
+    </a>
+    <a class="menu-link {% if request.path == '/admin-panel/users/' %}active{% endif %}" href="{% url 'accounts:user_list' %}">
+        <i class="fa-solid fa-users"></i> Foydalanuvchilar
+    </a>
+    <a class="menu-link {% if request.path == '/admin-panel/sellers/' %}active{% endif %}" href="{% url 'accounts:seller_list' %}">
+        <i class="fa-solid fa-store"></i> Sotuvchilar
+    </a>
+    <a class="menu-link {% if '/admin-panel/products/' in request.path %}active{% endif %}" href="{% url 'products:product_list' %}">
+        <i class="fa-solid fa-box"></i> Mahsulotlar
+    </a>
+    <a class="menu-link {% if '/admin-panel/categories/' in request.path %}active{% endif %}" href="{% url 'products:category_list' %}">
+        <i class="fa-solid fa-layer-group"></i> Kategoriyalar
+    </a>
+    <a class="menu-link {% if '/admin-panel/orders/' in request.path %}active{% endif %}" href="{% url 'orders:order_list' %}">
+        <i class="fa-solid fa-cart-shopping"></i> Buyurtmalar
+    </a>
+</aside>

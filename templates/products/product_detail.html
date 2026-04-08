@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Mahsulot" %}{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>{% trans "Sotuvchi" %}: {{ product.seller.username }}</p>
+    <p>{% trans "Kategoriyalar" %}: {{ product.category }}</p>
+    <p>{% trans "Narxi" %}: {{ product.price }}</p>
+    <p>{% trans "Holati" %}: <span class="status-badge status-{{ product.status }}">{{ product.status }}</span></p>
+    <div class="actions">
+        <a class="btn btn-primary btn-sm" href="{% url 'product_edit' product.id %}">{% trans "Tahrirlash" %}</a>
+        <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'product_delete' product.id %}', '{{ product.name }}')">{% trans "O'chirish" %}</button>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <div class="card-header">
+        <h4><i class="fas fa-images"></i> {% trans "Rasmlar" %}</h4>
+    </div>
+
+    <div class="product-images-grid">
+        {% for img in product.images.all %}
+        <div class="product-image-item {% if img.is_main %}is-main{% endif %}" id="image-{{ img.id }}">
+            <img src="{{ img.image.url }}" alt="{{ product.name }}">
+            <div class="image-overlay">
+                {% if not img.is_main %}
+                <button class="btn-icon btn-sm" onclick="setMainImage({{ product.id }}, {{ img.id }})" title="Asosiy qilish">
+                    <i class="fas fa-star"></i>
+                </button>
+                {% else %}
+                <span class="main-badge"><i class="fas fa-star"></i> {% trans "Asosiy" %}</span>
+                {% endif %}
+                <button class="btn-icon btn-sm btn-danger" onclick="deleteImage({{ product.id }}, {{ img.id }})" title="O'chirish">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">{% trans "Rasmlar yo'q" %}</p>
+        {% endfor %}
+    </div>
+
+    <form method="post" action="{% url 'product_image_upload' product.id %}" enctype="multipart/form-data" class="image-upload-form">
+        {% csrf_token %}
+        <div class="upload-area" id="uploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>{% trans "Rasmlarni tanlang yoki shu yerga tashlang" %}</p>
+            <input type="file" name="images" multiple accept="image/*" id="imageInput" onchange="this.form.submit()">
+        </div>
+    </form>
+</div>
+{% endblock %}

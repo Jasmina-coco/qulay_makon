@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Foydalanuvchilar" %}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>{% trans "Foydalanuvchilar" %}</h1></div>
+<form class="filters" method="get" data-ajax-filter="true" data-target="#userListContainer">
+    <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
+    <select name="role">
+        <option value="">{% trans "Barcha role" %}</option>
+        <option value="admin" {% if role == 'admin' %}selected{% endif %}>Admin</option>
+        <option value="seller" {% if role == 'seller' %}selected{% endif %}>{% trans "Sotuvchi" %}</option>
+        <option value="buyer" {% if role == 'buyer' %}selected{% endif %}>{% trans "Xaridor" %}</option>
+    </select>
+    <button class="btn btn-primary" type="submit">{% trans "Qidirish" %}</button>
+</form>
+<div id="userListContainer">
+<div class="data-table-wrapper">
+    <div class="table-header">
+        <h3>{% trans "Foydalanuvchilar ro'yxati" %}</h3>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>{% trans "Username" %}</th><th>Email</th><th>Role</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <tbody>
+            {% for item in page_obj %}
+            <tr>
+                <td>{{ item.username }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.role }}</td>
+                <td><span class="status-badge {% if item.is_active %}status-active{% else %}status-cancelled{% endif %}">{% if item.is_active %}{% trans "Faol" %}{% else %}{% trans "Blok" %}{% endif %}</span></td>
+                <td>
+                    <a class="btn btn-outline btn-sm" href="{% url 'user_detail' item.id %}">{% trans "Ko'rish" %}</a>
+                    <button class="btn btn-warning btn-sm" onclick="toggleUserActive({{ item.id }})">Toggle</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'partials/pagination.html' with page_obj=page_obj %}
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Rol formasi{% endblock %}
+{% block page_title %}Rol sozlamalari{% endblock %}
+{% block content %}
+<div class="sa-form-card">
+    <form method="post">
+        {% csrf_token %}
+        <div class="sa-form-group">
+            <label>Rol nomi</label>
+            <input class="sa-form-control" name="name" value="{{ role.name|default:'' }}" required>
+        </div>
+        <div class="sa-form-group">
+            <label>Tavsif</label>
+            <textarea class="sa-form-control" name="description">{{ role.description|default:'' }}</textarea>
+        </div>
+        <div class="sa-form-group">
+            <label>Ruxsatlar</label>
+            <div class="sa-permissions-grid">
+                <div class="sa-perm-module">
+                    <h5>dashboard</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check">
+                            <input type="checkbox" name="perm_dashboard_view" {% if role and 'view' in role.permissions.dashboard %}checked{% endif %}> view
+                        </label>
+                        <label class="sa-perm-check">
+                            <input type="checkbox" name="perm_dashboard_create" {% if role and 'create' in role.permissions.dashboard %}checked{% endif %}> create
+                        </label>
+                        <label class="sa-perm-check">
+                            <input type="checkbox" name="perm_dashboard_edit" {% if role and 'edit' in role.permissions.dashboard %}checked{% endif %}> edit
+                        </label>
+                        <label class="sa-perm-check">
+                            <input type="checkbox" name="perm_dashboard_delete" {% if role and 'delete' in role.permissions.dashboard %}checked{% endif %}> delete
+                        </label>
+                    </div>
+                </div>
+                <div class="sa-perm-module">
+                    <h5>products</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_products_view" {% if role and 'view' in role.permissions.products %}checked{% endif %}> view</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_products_create" {% if role and 'create' in role.permissions.products %}checked{% endif %}> create</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_products_edit" {% if role and 'edit' in role.permissions.products %}checked{% endif %}> edit</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_products_delete" {% if role and 'delete' in role.permissions.products %}checked{% endif %}> delete</label>
+                    </div>
+                </div>
+                <div class="sa-perm-module">
+                    <h5>categories</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_categories_view" {% if role and 'view' in role.permissions.categories %}checked{% endif %}> view</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_categories_create" {% if role and 'create' in role.permissions.categories %}checked{% endif %}> create</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_categories_edit" {% if role and 'edit' in role.permissions.categories %}checked{% endif %}> edit</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_categories_delete" {% if role and 'delete' in role.permissions.categories %}checked{% endif %}> delete</label>
+                    </div>
+                </div>
+                <div class="sa-perm-module">
+                    <h5>orders</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_orders_view" {% if role and 'view' in role.permissions.orders %}checked{% endif %}> view</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_orders_create" {% if role and 'create' in role.permissions.orders %}checked{% endif %}> create</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_orders_edit" {% if role and 'edit' in role.permissions.orders %}checked{% endif %}> edit</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_orders_delete" {% if role and 'delete' in role.permissions.orders %}checked{% endif %}> delete</label>
+                    </div>
+                </div>
+                <div class="sa-perm-module">
+                    <h5>users</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_users_view" {% if role and 'view' in role.permissions.users %}checked{% endif %}> view</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_users_create" {% if role and 'create' in role.permissions.users %}checked{% endif %}> create</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_users_edit" {% if role and 'edit' in role.permissions.users %}checked{% endif %}> edit</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_users_delete" {% if role and 'delete' in role.permissions.users %}checked{% endif %}> delete</label>
+                    </div>
+                </div>
+                <div class="sa-perm-module">
+                    <h5>sellers</h5>
+                    <div class="sa-perm-checks">
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_sellers_view" {% if role and 'view' in role.permissions.sellers %}checked{% endif %}> view</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_sellers_create" {% if role and 'create' in role.permissions.sellers %}checked{% endif %}> create</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_sellers_edit" {% if role and 'edit' in role.permissions.sellers %}checked{% endif %}> edit</label>
+                        <label class="sa-perm-check"><input type="checkbox" name="perm_sellers_delete" {% if role and 'delete' in role.permissions.sellers %}checked{% endif %}> delete</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sa-form-actions">
+            <a href="{% url 'superadmin_role_list' %}" class="sa-btn sa-btn-outline">Bekor qilish</a>
+            <button class="sa-btn sa-btn-primary" type="submit"><i class="fas fa-save"></i> Saqlash</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

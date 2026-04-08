@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Mahsulot Import" %}{% endblock %}
+
+{% block content %}
+<div class="content-header page-head">
+    <h2>{% trans "Mahsulotlarni Import Qilish" %}</h2>
+    <a href="{% url 'product_list' %}" class="btn btn-outline">
+        <i class="fas fa-arrow-left"></i> {% trans "Orqaga" %}
+    </a>
+</div>
+
+<div class="form-card">
+    <div class="import-info">
+        <h4><i class="fas fa-info-circle"></i> {% trans "Qo'llanma" %}</h4>
+        <p>{% trans "CSV yoki Excel (.xlsx) faylni yuklang. Ustunlar:" %}</p>
+        <p><code>id, name, description, price, discount_price, stock, category, status, is_featured</code></p>
+        <p>{% trans "category ustunida kategoriya NOMI yozilishi kerak." %}</p>
+        <p>
+            {% trans "Avval namuna faylni eksport qilib ko'ring:" %}
+            <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
+                <i class="fas fa-download"></i> {% trans "Namuna yuklab olish" %}
+            </a>
+        </p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="import-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>{% trans "Fayl tanlang" %} (CSV yoki XLSX)</label>
+            <input type="file" name="file" accept=".csv,.xlsx,.xls" class="form-control" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-upload"></i> {% trans "Import qilish" %}
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

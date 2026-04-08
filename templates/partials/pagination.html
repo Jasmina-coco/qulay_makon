@@ -1,0 +1,14 @@
+{% load i18n %}
+{% if page_obj.paginator.num_pages > 1 %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">{% trans "Oldingi" %}</a>
+    {% endif %}
+    <span class="active">{{ page_obj.number }}</span>
+    <span>/</span>
+    <span>{{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">{% trans "Keyingi" %}</a>
+    {% endif %}
+</div>
+{% endif %}

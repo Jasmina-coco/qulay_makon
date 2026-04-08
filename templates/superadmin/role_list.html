@@ -1,0 +1,27 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Rollar{% endblock %}
+{% block page_title %}Rollar boshqaruvi{% endblock %}
+{% block content %}
+<div class="sa-card">
+    <div class="sa-card-header">
+        <h4>Admin rollari</h4>
+        <a href="{% url 'superadmin_role_create' %}" class="sa-btn sa-btn-primary"><i class="fas fa-plus"></i> Yangi rol</a>
+    </div>
+    <table class="sa-table">
+        <thead><tr><th>Nomi</th><th>Tavsif</th><th>Status</th><th>Amallar</th></tr></thead>
+        <tbody>
+            {% for role in roles %}
+            <tr>
+                <td>{{ role.name }}</td>
+                <td>{{ role.description|default:"-" }}</td>
+                <td>{% if role.is_active %}<span class="sa-badge sa-badge-success">Faol</span>{% else %}<span class="sa-badge sa-badge-danger">Noactive</span>{% endif %}</td>
+                <td>
+                    <a class="sa-btn sa-btn-sm sa-btn-outline" href="{% url 'superadmin_role_edit' role.id %}">Edit</a>
+                    <button class="sa-btn sa-btn-sm sa-btn-danger" onclick="saConfirmAndDelete('{% url 'superadmin_role_delete' role.id %}', 'Rol o\\'chirilsinmi?')">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

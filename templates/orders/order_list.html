@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Buyurtmalar" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Buyurtmalar" %}</h1>
+<form method="get" class="filters" data-ajax-filter="true" data-target="#orderListContainer">
+    <select name="status">
+        <option value="">{% trans "Barcha status" %}</option>
+        <option value="pending">pending</option>
+        <option value="processing">processing</option>
+        <option value="shipped">shipped</option>
+        <option value="delivered">delivered</option>
+        <option value="cancelled">cancelled</option>
+    </select>
+    <button class="btn btn-primary">{% trans "Qidirish" %}</button>
+</form>
+<div id="orderListContainer">
+<div class="data-table-wrapper">
+    <div class="table-header">
+        <h3>{% trans "Buyurtmalar ro'yxati" %}</h3>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>ID</th><th>{% trans "Mijoz" %}</th><th>{% trans "Summa" %}</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <tbody>
+            {% for order in page_obj %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.user.username }}</td>
+                <td>{{ order.total_amount }}</td>
+                <td>
+                    <select class="form-control status-select" data-order-id="{{ order.id }}">
+                        {% for val,label in order.STATUS_CHOICES %}
+                        <option value="{{ val }}" {% if order.status == val %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td><a class="btn btn-outline btn-sm" href="{% url 'order_detail' order.id %}">{% trans "Ko'rish" %}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'partials/pagination.html' with page_obj=page_obj %}
+</div>
+{% endblock %}

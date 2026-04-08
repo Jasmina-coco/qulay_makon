@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Kategoriyalar" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Kategoriyalar" %}</h1>
+    <a class="btn btn-primary" href="{% url 'category_create' %}">{% trans "Qo'shish" %}</a>
+</div>
+<div class="data-table-wrapper">
+    <div class="table-header">
+        <h3>{% trans "Kategoriyalar ro'yxati" %}</h3>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>{% trans "Nomi" %}</th><th>Slug</th><th>Parent</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <tbody>
+            {% for category in page_obj %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.slug }}</td>
+                <td>{{ category.parent }}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{% url 'category_edit' category.id %}">{% trans "Tahrirlash" %}</a>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'category_delete' category.id %}', '{{ category.name }}')">{% trans "O'chirish" %}</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'partials/pagination.html' with page_obj=page_obj %}
+{% endblock %}

@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: uz\n"
+
+msgid "Xush kelibsiz"
+msgstr "Xush kelibsiz"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Mahsulotlar"
+msgstr "Mahsulotlar"
+
+msgid "Buyurtmalar"
+msgstr "Buyurtmalar"
+
+msgid "Kategoriyalar"
+msgstr "Kategoriyalar"
+
+msgid "Foydalanuvchilar"
+msgstr "Foydalanuvchilar"
+
+msgid "Sotuvchilar"
+msgstr "Sotuvchilar"
+
+msgid "Chiqish"
+msgstr "Chiqish"
+
+msgid "Jami Mahsulotlar"
+msgstr "Jami Mahsulotlar"
+
+msgid "Faol Mahsulotlar"
+msgstr "Faol Mahsulotlar"
+
+msgid "Kutilayotgan"
+msgstr "Kutilayotgan"
+
+msgid "Nomi"
+msgstr "Nomi"
+
+msgid "Narxi"
+msgstr "Narxi"
+
+msgid "Holati"
+msgstr "Holati"
+
+msgid "Sana"
+msgstr "Sana"
+
+msgid "Amallar"
+msgstr "Amallar"
+
+msgid "Qo'shish"
+msgstr "Qo'shish"
+
+msgid "Tahrirlash"
+msgstr "Tahrirlash"
+
+msgid "O'chirish"
+msgstr "O'chirish"
+
+msgid "Saqlash"
+msgstr "Saqlash"
+
+msgid "Bekor qilish"
+msgstr "Bekor qilish"
+
+msgid "Qidirish"
+msgstr "Qidirish"
+
+msgid "Mahsulot Import"
+msgstr "Mahsulot Import"
+
+msgid "Mahsulotlarni Import Qilish"
+msgstr "Mahsulotlarni Import Qilish"
+
+msgid "Qo'llanma"
+msgstr "Qo'llanma"
+
+msgid "CSV yoki Excel (.xlsx) faylni yuklang. Ustunlar:"
+msgstr "CSV yoki Excel (.xlsx) faylni yuklang. Ustunlar:"
+
+msgid "Fayl tanlang"
+msgstr "Fayl tanlang"
+
+msgid "Import qilish"
+msgstr "Import qilish"
+
+msgid "Excel Export"
+msgstr "Excel Export"
+
+msgid "CSV Export"
+msgstr "CSV Export"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Rasmlar"
+msgstr "Rasmlar"
+
+msgid "Asosiy"
+msgstr "Asosiy"
+
+msgid "Rasmlar yo'q"
+msgstr "Rasmlar yo'q"
+
+msgid "Rasmlarni tanlang yoki shu yerga tashlang"
+msgstr "Rasmlarni tanlang yoki shu yerga tashlang"
+
+msgid "Rasmlarni tanlang"
+msgstr "Rasmlarni tanlang"
+
+msgid "Mahsulotni Tahrirlash"
+msgstr "Mahsulotni Tahrirlash"
+
+msgid "Yangi Mahsulot"
+msgstr "Yangi Mahsulot"
+
+msgid "Tavsif"
+msgstr "Tavsif"
+
+msgid "Chegirma narxi"
+msgstr "Chegirma narxi"
+
+msgid "Ombordagi soni"
+msgstr "Ombordagi soni"
+
+msgid "Tanlang"
+msgstr "Tanlang"
+
+msgid "Tavsiya etilgan mahsulot"
+msgstr "Tavsiya etilgan mahsulot"
+
+msgid "Orqaga"
+msgstr "Orqaga"
+
+msgid "Namuna yuklab olish"
+msgstr "Namuna yuklab olish"
+
+msgid "Qoralama"
+msgstr "Qoralama"
+
+msgid "Faol"
+msgstr "Faol"
+
+msgid "Rad etilgan"
+msgstr "Rad etilgan"
+
+msgid "Sotuvchi"
+msgstr "Sotuvchi"
+
+msgid "Iltimos, formadagi xatolarni tuzating."
+msgstr "Iltimos, formadagi xatolarni tuzating."
+
+msgid "category ustunida kategoriya NOMI yozilishi kerak."
+msgstr "category ustunida kategoriya NOMI yozilishi kerak."
+
+msgid "Avval namuna faylni eksport qilib ko'ring:"
+msgstr "Avval namuna faylni eksport qilib ko'ring:"

@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+msgid "Xush kelibsiz"
+msgstr "Welcome"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Mahsulotlar"
+msgstr "Products"
+
+msgid "Buyurtmalar"
+msgstr "Orders"
+
+msgid "Kategoriyalar"
+msgstr "Categories"
+
+msgid "Foydalanuvchilar"
+msgstr "Users"
+
+msgid "Sotuvchilar"
+msgstr "Sellers"
+
+msgid "Chiqish"
+msgstr "Logout"
+
+msgid "Jami Mahsulotlar"
+msgstr "Total Products"
+
+msgid "Faol Mahsulotlar"
+msgstr "Active Products"
+
+msgid "Kutilayotgan"
+msgstr "Pending"
+
+msgid "Nomi"
+msgstr "Name"
+
+msgid "Narxi"
+msgstr "Price"
+
+msgid "Holati"
+msgstr "Status"
+
+msgid "Sana"
+msgstr "Date"
+
+msgid "Amallar"
+msgstr "Actions"
+
+msgid "Qo'shish"
+msgstr "Add"
+
+msgid "Tahrirlash"
+msgstr "Edit"
+
+msgid "O'chirish"
+msgstr "Delete"
+
+msgid "Saqlash"
+msgstr "Save"
+
+msgid "Bekor qilish"
+msgstr "Cancel"
+
+msgid "Qidirish"
+msgstr "Search"
+
+msgid "Mahsulot Import"
+msgstr "Product Import"
+
+msgid "Mahsulotlarni Import Qilish"
+msgstr "Import Products"
+
+msgid "Qo'llanma"
+msgstr "Guide"
+
+msgid "CSV yoki Excel (.xlsx) faylni yuklang. Ustunlar:"
+msgstr "Upload a CSV or Excel (.xlsx) file. Columns:"
+
+msgid "Fayl tanlang"
+msgstr "Choose file"
+
+msgid "Import qilish"
+msgstr "Import"
+
+msgid "Excel Export"
+msgstr "Excel Export"
+
+msgid "CSV Export"
+msgstr "CSV Export"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Rasmlar"
+msgstr "Images"
+
+msgid "Asosiy"
+msgstr "Main"
+
+msgid "Rasmlar yo'q"
+msgstr "No images"
+
+msgid "Rasmlarni tanlang yoki shu yerga tashlang"
+msgstr "Select or drag images here"
+
+msgid "Rasmlarni tanlang"
+msgstr "Select images"
+
+msgid "Mahsulotni Tahrirlash"
+msgstr "Edit Product"
+
+msgid "Yangi Mahsulot"
+msgstr "New Product"
+
+msgid "Tavsif"
+msgstr "Description"
+
+msgid "Chegirma narxi"
+msgstr "Discount Price"
+
+msgid "Ombordagi soni"
+msgstr "Stock Quantity"
+
+msgid "Tanlang"
+msgstr "Select"
+
+msgid "Tavsiya etilgan mahsulot"
+msgstr "Featured product"
+
+msgid "Orqaga"
+msgstr "Back"
+
+msgid "Namuna yuklab olish"
+msgstr "Download sample"
+
+msgid "Qoralama"
+msgstr "Draft"
+
+msgid "Faol"
+msgstr "Active"
+
+msgid "Rad etilgan"
+msgstr "Rejected"
+
+msgid "Sotuvchi"
+msgstr "Seller"
+
+msgid "Iltimos, formadagi xatolarni tuzating."
+msgstr "Please fix the form errors."
+
+msgid "category ustunida kategoriya NOMI yozilishi kerak."
+msgstr "The category column must contain the category NAME."
+
+msgid "Avval namuna faylni eksport qilib ko'ring:"
+msgstr "First, export and review a sample file:"

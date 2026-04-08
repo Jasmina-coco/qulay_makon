@@ -1,0 +1,39 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Admin yaratish{% endblock %}
+{% block page_title %}Admin yaratish{% endblock %}
+{% block content %}
+<div class="sa-form-card">
+    <form method="post">
+        {% csrf_token %}
+        <div class="sa-form-grid">
+            <div class="sa-form-group">
+                <label>Username</label>
+                <input class="sa-form-control" name="username" required>
+            </div>
+            <div class="sa-form-group">
+                <label>Email</label>
+                <input class="sa-form-control" name="email" type="email">
+            </div>
+            <div class="sa-form-group">
+                <label>Password</label>
+                <input class="sa-form-control" name="password" type="password" required>
+            </div>
+            <div class="sa-form-group">
+                <label>Role</label>
+                <select class="sa-form-control" name="role">
+                    <option value="admin">admin</option>
+                    <option value="seller">seller</option>
+                    <option value="buyer">buyer</option>
+                </select>
+            </div>
+        </div>
+        <div class="sa-form-group">
+            <label><input type="checkbox" name="is_superuser"> Superuser huquqi</label>
+        </div>
+        <div class="sa-form-actions">
+            <a href="{% url 'superadmin_admin_list' %}" class="sa-btn sa-btn-outline">Bekor qilish</a>
+            <button class="sa-btn sa-btn-primary" type="submit"><i class="fas fa-save"></i> Saqlash</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

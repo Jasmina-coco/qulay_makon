@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Sotuvchilar" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Sotuvchilar" %}</h1>
+<div class="data-table-wrapper">
+    <div class="table-header">
+        <h3>{% trans "Sotuvchilar ro'yxati" %}</h3>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>{% trans "Do'kon" %}</th><th>{% trans "User" %}</th><th>Rating</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <tbody>
+        {% for seller in page_obj %}
+            <tr>
+                <td>{{ seller.shop_name }}</td>
+                <td>{{ seller.user.username }}</td>
+                <td>{{ seller.rating }}</td>
+                <td><span class="status-badge {% if seller.is_approved %}status-active{% else %}status-pending{% endif %}">{% if seller.is_approved %}{% trans "Tasdiqlangan" %}{% else %}{% trans "Kutilmoqda" %}{% endif %}</span></td>
+                <td>
+                    {% if not seller.is_approved %}
+                    <button class="btn btn-success btn-sm" onclick="approveSeller({{ seller.id }})">{% trans "Tasdiqlash" %}</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'partials/pagination.html' with page_obj=page_obj %}
+{% endblock %}

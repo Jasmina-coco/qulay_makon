@@ -1,0 +1,63 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Sozlamalar{% endblock %}
+{% block page_title %}Tizim sozlamalari{% endblock %}
+{% block content %}
+<div class="sa-form-card">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="sa-form-grid">
+            <div class="sa-form-group">
+                <label>Sayt nomi</label>
+                <input class="sa-form-control" name="site_name" value="{{ settings.site_name }}">
+            </div>
+            <div class="sa-form-group">
+                <label>Komissiya (%)</label>
+                <input class="sa-form-control" name="commission_percent" type="number" step="0.01" value="{{ settings.commission_percent }}">
+            </div>
+            <div class="sa-form-group">
+                <label>Currency</label>
+                <input class="sa-form-control" name="currency" value="{{ settings.currency }}">
+            </div>
+            <div class="sa-form-group">
+                <label>Currency Symbol</label>
+                <input class="sa-form-control" name="currency_symbol" value="{{ settings.currency_symbol }}">
+            </div>
+            <div class="sa-form-group">
+                <label>Contact Email</label>
+                <input class="sa-form-control" name="contact_email" type="email" value="{{ settings.contact_email }}">
+            </div>
+            <div class="sa-form-group">
+                <label>Contact Phone</label>
+                <input class="sa-form-control" name="contact_phone" value="{{ settings.contact_phone }}">
+            </div>
+        </div>
+        <div class="sa-form-group">
+            <label>Tavsif</label>
+            <textarea class="sa-form-control" name="site_description">{{ settings.site_description }}</textarea>
+        </div>
+        <div class="sa-form-group">
+            <label>Address</label>
+            <textarea class="sa-form-control" name="address">{{ settings.address }}</textarea>
+        </div>
+        <div class="sa-form-grid">
+            <div class="sa-form-group">
+                <label>Logo</label>
+                <input class="sa-form-control" type="file" name="site_logo" accept="image/*">
+            </div>
+            <div class="sa-form-group">
+                <label>Favicon</label>
+                <input class="sa-form-control" type="file" name="site_favicon" accept="image/*">
+            </div>
+        </div>
+        <div class="sa-form-group">
+            <label><input type="checkbox" name="maintenance_mode" {% if settings.maintenance_mode %}checked{% endif %}> Maintenance mode</label>
+        </div>
+        <div class="sa-form-group">
+            <label><input type="checkbox" name="registration_enabled" {% if settings.registration_enabled %}checked{% endif %}> Registration enabled</label>
+        </div>
+        <div class="sa-form-actions">
+            <button class="sa-btn sa-btn-primary" type="submit"><i class="fas fa-save"></i> Saqlash</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

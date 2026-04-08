@@ -1,0 +1,57 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Audit Log{% endblock %}
+{% block page_title %}Audit log{% endblock %}
+{% block content %}
+<div class="sa-card">
+    <div class="sa-card-header"><h4>Filtrlar</h4></div>
+    <form method="get" class="sa-form-grid">
+        <div class="sa-form-group">
+            <label>Admin</label>
+            <select class="sa-form-control" name="user">
+                <option value="">Barchasi</option>
+                {% for a in admins %}
+                <option value="{{ a.id }}" {% if request.GET.user == a.id|stringformat:'s' %}selected{% endif %}>{{ a.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="sa-form-group">
+            <label>Action</label>
+            <select class="sa-form-control" name="action">
+                <option value="">Barchasi</option>
+                {% for val, label in actions %}
+                <option value="{{ val }}" {% if request.GET.action == val %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="sa-form-group">
+            <label>Sana dan</label>
+            <input class="sa-form-control" type="date" name="date_from" value="{{ request.GET.date_from }}">
+        </div>
+        <div class="sa-form-group">
+            <label>Sana gacha</label>
+            <input class="sa-form-control" type="date" name="date_to" value="{{ request.GET.date_to }}">
+        </div>
+        <div class="sa-form-actions" style="grid-column: 1/-1;">
+            <button class="sa-btn sa-btn-primary" type="submit">Filtrlash</button>
+        </div>
+    </form>
+</div>
+
+<div class="sa-card" style="margin-top:20px;">
+    <table class="sa-table">
+        <thead><tr><th>Admin</th><th>Action</th><th>Model</th><th>Object</th><th>IP</th><th>Vaqt</th></tr></thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.user|default:'system' }}</td>
+                <td>{{ log.get_action_display }}</td>
+                <td>{{ log.model_name }}</td>
+                <td>{{ log.object_repr }}</td>
+                <td>{{ log.ip_address }}</td>
+                <td>{{ log.created_at|date:"d.m.Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

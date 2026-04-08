@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Buyurtma" %}{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>{% trans "Buyurtma" %} #{{ order.id }}</h1>
+    <p>{% trans "Mijoz" %}: {{ order.user.username }}</p>
+    <p>{% trans "Telefon" %}: {{ order.phone }}</p>
+    <p>{% trans "Manzil" %}: {{ order.address }}</p>
+    <p>{% trans "Holati" %}: <span class="status-badge status-{{ order.status }}">{{ order.status }}</span></p>
+</div>
+<div class="data-table-wrapper">
+    <h3>{% trans "Mahsulotlar" %}</h3>
+    <table class="data-table">
+        <thead><tr><th>{% trans "Mahsulot" %}</th><th>{% trans "Soni" %}</th><th>{% trans "Narxi" %}</th></tr></thead>
+        <tbody>
+            {% for item in order.items.all %}
+            <tr><td>{{ item.product }}</td><td>{{ item.quantity }}</td><td>{{ item.price }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'order_delete' order.id %}', '{% trans "Buyurtma" %} #{{ order.id }}')">{% trans "O'chirish" %}</button>
+</div>
+{% endblock %}
