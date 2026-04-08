@@ -38,6 +38,7 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
     ),
+    path("", include("frontend.urls")),
 ]
 
 urlpatterns += [

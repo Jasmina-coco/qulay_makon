@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Sahifalar{% endblock %}
+{% block content %}
+<div class="content-header">
+    <div>
+        <h2>{% trans "Sahifalar" %}</h2>
+        <p class="content-subtitle">Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)</p>
+    </div>
+    <a href="{% url 'page_create' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Yangi sahifa
+    </a>
+</div>
+
+<div class="data-table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Sarlavha</th>
+                <th>URL manzili</th>
+                <th class="th-sm">Holat</th>
+                <th class="th-md">Yangilangan</th>
+                <th class="th-actions">Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for page in pages %}
+            <tr>
+                <td>
+                    <div class="cell-with-icon">
+                        <div class="cell-icon cell-icon-blue"><i class="fas fa-file-alt"></i></div>
+                        <div>
+                            <strong>{{ page.title }}</strong>
+                            <br><small class="text-muted">{{ page.content|striptags|truncatewords:10 }}</small>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <code class="slug-badge">/page/{{ page.slug }}/</code>
+                    <a href="/page/{{ page.slug }}/" target="_blank" class="btn-action-mini" title="Saytda ko'rish">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </td>
+                <td>
+                    {% if page.is_active %}
+                    <span class="status-badge status-active">Faol</span>
+                    {% else %}
+                    <span class="status-badge status-draft">Nofaol</span>
+                    {% endif %}
+                </td>
+                <td><span class="text-muted">{{ page.updated_at|date:"d.m.Y H:i" }}</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a href="{% url 'page_edit' page.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'page_delete' page.id %}', '{{ page.title }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    <i class="fas fa-file-alt"></i>
+                    <p>Hali sahifa yaratilmagan</p>
+                    <a href="{% url 'page_create' %}" class="btn btn-sm btn-primary">Birinchi sahifani yarating</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

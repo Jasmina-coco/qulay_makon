@@ -2,25 +2,46 @@
 {% load i18n %}
 {% block title %}{% trans "Kategoriyalar" %}{% endblock %}
 {% block content %}
-<div class="page-head">
-    <h1>{% trans "Kategoriyalar" %}</h1>
-    <a class="btn btn-primary" href="{% url 'category_create' %}">{% trans "Qo'shish" %}</a>
+<div class="content-header">
+    <div>
+        <h2>{% trans "Kategoriyalar" %}</h2>
+        <p class="content-subtitle">Mahsulot kategoriyalarini boshqarish</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'category_create' %}">
+        <i class="fas fa-plus"></i> {% trans "Qo'shish" %}
+    </a>
 </div>
 <div class="data-table-wrapper">
-    <div class="table-header">
-        <h3>{% trans "Kategoriyalar ro'yxati" %}</h3>
-    </div>
     <table class="data-table">
-        <thead><tr><th>{% trans "Nomi" %}</th><th>Slug</th><th>Parent</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Nomi" %}</th><th>Slug</th><th>Parent</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for category in page_obj %}
             <tr>
-                <td>{{ category.name }}</td>
-                <td>{{ category.slug }}</td>
-                <td>{{ category.parent }}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="{% url 'category_edit' category.id %}">{% trans "Tahrirlash" %}</a>
-                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'category_delete' category.id %}', '{{ category.name }}')">{% trans "O'chirish" %}</button>
+                    <div class="cell-with-icon">
+                        <div class="cell-icon cell-icon-green"><i class="fas fa-tags"></i></div>
+                        <strong>{{ category.name }}</strong>
+                    </div>
+                </td>
+                <td><code class="slug-badge">{{ category.slug }}</code></td>
+                <td>{{ category.parent|default:"Asosiy" }}</td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-action btn-action-edit" href="{% url 'category_edit' category.id %}" title="{% trans 'Tahrirlash' %}">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'category_delete' category.id %}', '{{ category.name }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-state">
+                    <i class="fas fa-tags"></i>
+                    <p>{% trans "Kategoriyalar topilmadi" %}</p>
+                    <a href="{% url 'category_create' %}" class="btn btn-sm btn-primary">{% trans "Birinchi kategoriyani qo'shing" %}</a>
                 </td>
             </tr>
             {% endfor %}

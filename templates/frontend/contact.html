@@ -1,0 +1,19 @@
+{% extends 'frontend/base.html' %}
+{% block title %}Kontakt{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2>Kontakt</h2>
+        <form id="contactForm" class="contact-form" method="post" action="{% url 'contact_page' %}">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Ismingiz" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Telefon">
+            <input type="text" name="subject" placeholder="Mavzu">
+            <textarea name="message" placeholder="Xabar" required></textarea>
+            <button class="btn" type="submit">Yuborish</button>
+        </form>
+        <p id="contactResult"></p>
+    </div>
+</section>
+{% endblock %}

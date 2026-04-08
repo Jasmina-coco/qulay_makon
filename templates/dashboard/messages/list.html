@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Xabarlar{% endblock %}
+{% block content %}
+<div class="content-header">
+    <div>
+        <h2>{% trans "Xabarlar" %}</h2>
+        <p class="content-subtitle">Kontakt formasi orqali kelgan xabarlar</p>
+    </div>
+</div>
+<div class="data-table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Ism</th>
+                <th>Email</th>
+                <th>Mavzu</th>
+                <th class="th-md">Sana</th>
+                <th class="th-sm">Holat</th>
+                <th class="th-actions">Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in messages_list %}
+            <tr class="{% if not item.is_read %}row-unread{% endif %}">
+                <td class="{% if not item.is_read %}text-bold{% endif %}">
+                    {% if not item.is_read %}<span class="unread-dot"></span>{% endif %}
+                    {{ item.name }}
+                </td>
+                <td>{{ item.email }}</td>
+                <td class="{% if not item.is_read %}text-bold{% endif %}">{{ item.subject|default:"(Mavzusiz)" }}</td>
+                <td><span class="text-muted">{{ item.created_at|date:"d.m.Y H:i" }}</span></td>
+                <td>
+                    {% if item.is_read %}
+                    <span class="status-badge status-draft">O'qilgan</span>
+                    {% else %}
+                    <span class="status-badge status-active">Yangi</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a href="{% url 'message_detail' item.id %}" class="btn-action btn-action-view" title="Ko'rish">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        {% if not item.is_read %}
+                        <a href="{% url 'message_mark_read' item.id %}" class="btn-action btn-action-edit" title="O'qilgan belgilash">
+                            <i class="fas fa-check"></i>
+                        </a>
+                        {% endif %}
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'message_delete' item.id %}', '{{ item.subject|default:item.name }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="empty-state">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <p>Hali xabarlar yo'q</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

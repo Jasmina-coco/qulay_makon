@@ -1,0 +1,81 @@
+{% extends 'frontend/base.html' %}
+{% block title %}{{ site.site_name|default:"Marketplace" }}{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="slider" id="bannerSlider">
+            {% for banner in banners %}
+            <div class="slide {% if forloop.first %}active{% endif %}">
+                <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+                <div class="slide-content">
+                    <h2>{{ banner.title }}</h2>
+                    <p>{{ banner.subtitle }}</p>
+                    {% if banner.link %}<a href="{{ banner.link }}" class="btn">Batafsil</a>{% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="slide active"><div class="slide-content"><h2>Marketplace</h2><p>Banner yo'q</p></div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>Kategoriyalar</h3>
+        <div class="category-grid">
+            {% for cat in categories %}
+            <a class="category-card" href="{% url 'category_page' cat.slug %}">{{ cat.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>Tavsiya etilgan mahsulotlar</h3>
+        <div class="product-grid">
+            {% for product in featured_products %}
+            {% include 'frontend/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>Yangi mahsulotlar</h3>
+        <div class="product-grid">
+            {% for product in new_products %}
+            {% include 'frontend/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>Ommabop mahsulotlar</h3>
+        <div class="product-grid">
+            {% for product in popular_products %}
+            {% include 'frontend/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>Yangiliklar</h3>
+        <div class="news-grid">
+            {% for article in latest_news %}
+            <a href="{% url 'news_detail_page' article.slug %}" class="news-card">
+                {% if article.image %}<img src="{{ article.image.url }}" alt="{{ article.title }}">{% endif %}
+                <h4>{{ article.title }}</h4>
+                <p>{{ article.short_description|default:article.content|truncatechars:120 }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

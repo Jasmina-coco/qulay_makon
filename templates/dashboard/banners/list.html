@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Bannerlar{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <div>
+        <h2>{% trans "Bannerlar" %}</h2>
+        <p class="content-subtitle">Bosh sahifadagi slider rasmlari</p>
+    </div>
+    <a href="{% url 'banner_create' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Yangi banner
+    </a>
+</div>
+
+<div class="data-table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th class="th-xs">Rasm</th>
+                <th>Sarlavha</th>
+                <th>Link</th>
+                <th class="th-xs">Tartib</th>
+                <th class="th-xs">Holat</th>
+                <th class="th-actions">Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for banner in banners %}
+            <tr>
+                <td>
+                    {% if banner.image %}
+                    <img src="{{ banner.image.url }}" class="table-thumb-rect" alt="">
+                    {% else %}
+                    <div class="table-thumb-placeholder"><i class="fas fa-image"></i></div>
+                    {% endif %}
+                </td>
+                <td>
+                    <strong>{{ banner.title|default:"(Sarlavhasiz)" }}</strong>
+                    {% if banner.subtitle %}
+                    <br><small class="text-muted">{{ banner.subtitle|truncatewords:8 }}</small>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if banner.link %}
+                    <a href="{{ banner.link }}" target="_blank" class="table-link-small">
+                        <i class="fas fa-external-link-alt"></i> {{ banner.link|truncatechars:30 }}
+                    </a>
+                    {% else %}
+                    <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+                <td><span class="order-badge">{{ banner.order }}</span></td>
+                <td>
+                    {% if banner.is_active %}
+                    <span class="status-dot status-dot-green"></span> Faol
+                    {% else %}
+                    <span class="status-dot status-dot-red"></span> Nofaol
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a href="{% url 'banner_edit' banner.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'banner_delete' banner.id %}', '{{ banner.title|default:"Banner" }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="empty-state">
+                    <i class="fas fa-images"></i>
+                    <p>Hali banner qo'shilmagan</p>
+                    <a href="{% url 'banner_create' %}" class="btn btn-sm btn-primary">Birinchi bannerni qo'shing</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

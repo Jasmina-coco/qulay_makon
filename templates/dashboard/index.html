@@ -86,6 +86,77 @@
         </div>
     </div>
 </div>
+
+<div class="dashboard-card full-width">
+    <div class="card-header">
+        <h4><i class="fas fa-chart-area"></i> Tashrifchilar statistikasi</h4>
+        <div class="card-header-actions">
+            <button class="btn btn-sm btn-outline active" onclick="loadVisitors('daily')" id="btnDaily">Kunlik</button>
+            <button class="btn btn-sm btn-outline" onclick="loadVisitors('monthly')" id="btnMonthly">Oylik</button>
+        </div>
+    </div>
+    <div class="mini-stats">
+        <div class="mini-stat">
+            <span class="mini-stat-value" id="visitorsToday">0</span>
+            <span class="mini-stat-label">Bugun</span>
+        </div>
+        <div class="mini-stat">
+            <span class="mini-stat-value" id="visitorsWeek">0</span>
+            <span class="mini-stat-label">Bu hafta</span>
+        </div>
+        <div class="mini-stat">
+            <span class="mini-stat-value" id="visitorsMonth">0</span>
+            <span class="mini-stat-label">Bu oy</span>
+        </div>
+        <div class="mini-stat">
+            <span class="mini-stat-value" id="visitorsUnique">0</span>
+            <span class="mini-stat-label">Unikal (oy)</span>
+        </div>
+    </div>
+    <div class="chart-container" style="position:relative;height:260px;">
+        <canvas id="visitorsChart"></canvas>
+    </div>
+</div>
+
+<div class="middle-grid">
+    <div class="dashboard-card">
+        <div class="card-header"><h4><i class="fas fa-search"></i> Ko'p qidirilganlar</h4></div>
+        <div id="searchStatsList" class="stat-list"></div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header"><h4><i class="fas fa-funnel-dollar"></i> Konversiya</h4></div>
+        <div class="conversion-big" id="conversionRate">
+            <span class="conversion-number">0%</span>
+            <span class="conversion-label">Ko'rish → Buyurtma</span>
+        </div>
+        <div class="chart-container" style="position:relative;height:160px;">
+            <canvas id="conversionChart"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning);"></i> Ombor ogohlantirish</h4>
+        </div>
+        <div id="lowStockList" class="stat-list"></div>
+    </div>
+</div>
+
+<div class="bottom-section">
+    <div class="dashboard-card">
+        <div class="card-header"><h4><i class="fas fa-trophy" style="color:var(--warning);"></i> Sotuvchilar reytingi</h4></div>
+        <div id="sellersRanking" class="stat-list"></div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h4><i class="fas fa-bolt" style="color:var(--primary);"></i> Oxirgi harakatlar</h4>
+            <span class="live-dot"></span>
+        </div>
+        <div id="activityFeed" class="activity-feed"></div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -112,6 +183,8 @@ const barChartConfig = {
 let revenueChart = null;
 let orderStatusChart = null;
 let topProductsChart = null;
+let visitorsChart = null;
+let conversionChart = null;
 
 async function loadDashboardCharts() {
     const [revenueRes, statusRes, topProductsRes] = await Promise.all([
@@ -157,7 +230,7 @@ async function loadDashboardCharts() {
         data: {
             labels: topProductsData.map(d => d.name),
             datasets: [{
-                label: '{% trans "Ko\\'rishlar" %}',
+                label: '{% trans "Ko'rishlar" %}',
                 data: topProductsData.map(d => d.views_count),
                 ...barChartConfig
             }]
@@ -168,5 +241,198 @@ async function loadDashboardCharts() {
 
 loadDashboardCharts();
 setInterval(loadDashboardCharts, 30000);
+
+function loadVisitors(period) {
+    document.getElementById('btnDaily').classList.toggle('active', period === 'daily');
+    document.getElementById('btnMonthly').classList.toggle('active', period === 'monthly');
+
+    const url = period === 'daily'
+        ? '/admin-panel/api/visitors/daily/'
+        : '/admin-panel/api/visitors/monthly/';
+
+    fetch(url).then(r => r.json()).then(data => {
+        const labels = data.map(d => d.day || d.month);
+        const totals = data.map(d => d.total);
+        const uniques = data.map(d => d.unique);
+
+        if (visitorsChart) visitorsChart.destroy();
+
+        visitorsChart = new Chart(document.getElementById('visitorsChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Jami tashriflar',
+                        data: totals,
+                        borderColor: '#2a6f6f',
+                        backgroundColor: 'rgba(42,111,111,0.06)',
+                        fill: true, tension: 0.4, borderWidth: 2,
+                        pointRadius: 3, pointBackgroundColor: '#2a6f6f'
+                    },
+                    {
+                        label: 'Unikal tashrifchilar',
+                        data: uniques,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59,130,246,0.06)',
+                        fill: true, tension: 0.4, borderWidth: 2,
+                        pointRadius: 3, pointBackgroundColor: '#3b82f6',
+                        borderDash: [5, 3]
+                    }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'top', labels: { usePointStyle: true } } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { color: 'rgba(42,111,111,0.06)' }, beginAtZero: true }
+                }
+            }
+        });
+    });
+
+    fetch('/admin-panel/api/visitors/summary/').then(r => r.json()).then(s => {
+        document.getElementById('visitorsToday').textContent = s.today_total.toLocaleString();
+        document.getElementById('visitorsWeek').textContent = s.week_total.toLocaleString();
+        document.getElementById('visitorsMonth').textContent = s.month_total.toLocaleString();
+        document.getElementById('visitorsUnique').textContent = s.month_unique.toLocaleString();
+    });
+}
+
+function loadSearchStats() {
+    fetch('/admin-panel/api/search-stats/').then(r => r.json()).then(data => {
+        const el = document.getElementById('searchStatsList');
+        if (!data.length) { el.innerHTML = '<p class="text-muted" style="padding:16px;">Ma\'lumot yo\'q</p>'; return; }
+        el.innerHTML = data.map((d, i) => `
+            <div class="stat-list-item">
+                <span class="stat-rank">${i + 1}</span>
+                <div class="stat-info">
+                    <span class="stat-name">"${d.query}"</span>
+                    <span class="stat-detail">${Math.round(d.avg_results)} natija o'rtacha</span>
+                </div>
+                <span class="stat-value">${d.count} marta</span>
+            </div>
+        `).join('');
+    });
+}
+
+function loadSellersRanking() {
+    fetch('/admin-panel/api/sellers-ranking/').then(r => r.json()).then(data => {
+        const el = document.getElementById('sellersRanking');
+        if (!data.length) { el.innerHTML = '<p class="text-muted" style="padding:16px;">Ma\'lumot yo\'q</p>'; return; }
+        el.innerHTML = data.map((d, i) => `
+            <div class="stat-list-item">
+                <span class="stat-rank ${i < 3 ? 'stat-rank-gold' : ''}">${i + 1}</span>
+                <div class="stat-info">
+                    <span class="stat-name">${d.shop_name}</span>
+                    <span class="stat-detail">${d.orders} buyurtma · ★ ${d.rating.toFixed(1)}</span>
+                </div>
+                <span class="stat-value">${(d.revenue / 1000).toFixed(0)}K</span>
+            </div>
+        `).join('');
+    });
+}
+
+function loadLowStock() {
+    fetch('/admin-panel/api/low-stock/').then(r => r.json()).then(data => {
+        const el = document.getElementById('lowStockList');
+        if (!data.length) { el.innerHTML = '<p style="padding:16px;color:var(--success);"><i class="fas fa-check-circle"></i> Barcha mahsulotlar yetarli</p>'; return; }
+        el.innerHTML = data.map(d => {
+            const urgency = d.stock === 0 ? 'stock-out' : d.stock < 5 ? 'stock-critical' : 'stock-low';
+            return `
+            <div class="stat-list-item">
+                <span class="stock-indicator ${urgency}">${d.stock}</span>
+                <div class="stat-info">
+                    <a href="/admin-panel/products/${d.id}/edit/" class="stat-name">${d.name.substring(0, 25)}</a>
+                    <span class="stat-detail">${d.category__name || 'Kategoriyasiz'}</span>
+                </div>
+                <span class="stat-value">${Number(d.price).toLocaleString()}</span>
+            </div>`;
+        }).join('');
+    });
+}
+
+function loadConversion() {
+    fetch('/admin-panel/api/conversion/').then(r => r.json()).then(data => {
+        document.querySelector('#conversionRate .conversion-number').textContent = data.conversion_rate + '%';
+
+        if (conversionChart) conversionChart.destroy();
+        if (data.daily && data.daily.length) {
+            conversionChart = new Chart(document.getElementById('conversionChart'), {
+                type: 'bar',
+                data: {
+                    labels: data.daily.map(d => d.day),
+                    datasets: [{
+                        label: 'Konversiya %',
+                        data: data.daily.map(d => d.rate),
+                        backgroundColor: '#2a6f6f',
+                        borderRadius: 4, barThickness: 8
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { display: false } },
+                        y: { grid: { color: 'rgba(42,111,111,0.06)' }, ticks: { callback: v => v + '%' } }
+                    }
+                }
+            });
+        }
+    });
+}
+
+function loadActivity() {
+    fetch('/admin-panel/api/activity/').then(r => r.json()).then(data => {
+        const el = document.getElementById('activityFeed');
+        const colors = { blue: 'var(--info)', green: 'var(--success)', orange: 'var(--warning)', gray: 'var(--text-muted)' };
+
+        el.innerHTML = data.map(d => {
+            const time = new Date(d.time);
+            const ago = getTimeAgo(time);
+            return `
+            <div class="activity-item">
+                <div class="activity-icon" style="color:${colors[d.color] || '#888'};">
+                    <i class="fas ${d.icon}"></i>
+                </div>
+                <div class="activity-info">
+                    <span class="activity-text">${d.text}</span>
+                    <span class="activity-detail">${d.detail}</span>
+                </div>
+                <span class="activity-time">${ago}</span>
+            </div>`;
+        }).join('');
+    });
+}
+
+function getTimeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    if (seconds < 60) return 'Hozir';
+    if (seconds < 3600) return Math.floor(seconds / 60) + ' daq oldin';
+    if (seconds < 86400) return Math.floor(seconds / 3600) + ' soat oldin';
+    return Math.floor(seconds / 86400) + ' kun oldin';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadVisitors('daily');
+    loadSearchStats();
+    loadSellersRanking();
+    loadLowStock();
+    loadConversion();
+    loadActivity();
+
+    setInterval(() => {
+        loadVisitors(document.getElementById('btnMonthly').classList.contains('active') ? 'monthly' : 'daily');
+        loadActivity();
+    }, 30000);
+
+    setInterval(() => {
+        loadSearchStats();
+        loadSellersRanking();
+        loadLowStock();
+        loadConversion();
+    }, 120000);
+});
 </script>
 {% endblock %}

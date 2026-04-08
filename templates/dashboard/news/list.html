@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Yangiliklar{% endblock %}
+{% block content %}
+<div class="content-header">
+    <div>
+        <h2>{% trans "Yangiliklar" %}</h2>
+        <p class="content-subtitle">Saytda ko'rinadigan yangilik va maqolalar</p>
+    </div>
+    <a href="{% url 'news_create' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Yangi yangilik
+    </a>
+</div>
+<div class="data-table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th class="th-xs">Rasm</th>
+                <th>Sarlavha</th>
+                <th class="th-sm">Kategoriya</th>
+                <th class="th-md">Sana</th>
+                <th class="th-sm">Holat</th>
+                <th class="th-actions">Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in news_list %}
+            <tr>
+                <td>
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" class="table-thumb-rect" alt="{{ item.title }}">
+                    {% else %}
+                    <div class="table-thumb-placeholder"><i class="fas fa-newspaper"></i></div>
+                    {% endif %}
+                </td>
+                <td>
+                    <strong>{{ item.title }}</strong>
+                    <br><small class="text-muted">{{ item.short_description|default:item.content|striptags|truncatewords:8 }}</small>
+                </td>
+                <td><span class="slug-badge">{{ item.category|default:"Kategoriyasiz" }}</span></td>
+                <td><span class="text-muted">{{ item.created_at|date:"d.m.Y H:i" }}</span></td>
+                <td>
+                    {% if item.is_active %}
+                    <span class="status-badge status-active">Faol</span>
+                    {% else %}
+                    <span class="status-badge status-draft">Nofaol</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a href="{% url 'news_edit' item.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'news_delete' item.id %}', '{{ item.title }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="empty-state">
+                    <i class="fas fa-newspaper"></i>
+                    <p>Hali yangilik qo'shilmagan</p>
+                    <a href="{% url 'news_create' %}" class="btn btn-sm btn-primary">Birinchi yangilikni qo'shing</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

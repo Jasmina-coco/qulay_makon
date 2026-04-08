@@ -1,0 +1,33 @@
+{% extends 'frontend/base.html' %}
+{% block title %}Katalog{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container layout">
+        <aside class="filters">
+            <h4>Filtrlar</h4>
+            <form method="get">
+                <input type="text" name="q" placeholder="Qidirish" value="{{ search_query }}">
+                <input type="number" name="min_price" placeholder="Min narx" value="{{ request.GET.min_price }}">
+                <input type="number" name="max_price" placeholder="Max narx" value="{{ request.GET.max_price }}">
+                <select name="sort">
+                    <option value="-created_at" {% if current_sort == '-created_at' %}selected{% endif %}>Yangi</option>
+                    <option value="price" {% if current_sort == 'price' %}selected{% endif %}>Narx o'sish</option>
+                    <option value="-price" {% if current_sort == '-price' %}selected{% endif %}>Narx kamayish</option>
+                    <option value="-views_count" {% if current_sort == '-views_count' %}selected{% endif %}>Ommabop</option>
+                </select>
+                <button class="btn" type="submit">Qo'llash</button>
+            </form>
+        </aside>
+        <div>
+            <div class="product-grid">
+                {% for product in products %}
+                {% include 'frontend/product_card.html' %}
+                {% empty %}
+                <p>Mahsulot topilmadi.</p>
+                {% endfor %}
+            </div>
+            {% include 'partials/pagination.html' with page_obj=products %}
+        </div>
+    </div>
+</section>
+{% endblock %}

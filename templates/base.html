@@ -38,8 +38,26 @@
             <a href="{% url 'seller_list' %}" class="nav-link {% if 'seller' in request.resolver_match.url_name %}active{% endif %}">
                 <i class="fas fa-store"></i><span>{% trans "Sotuvchilar" %}</span>
             </a>
+            <div class="nav-label">Sayt</div>
+            <a href="{% url 'banner_list' %}" class="nav-link {% if 'banner' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-images"></i><span>Bannerlar</span>
+            </a>
+            <a href="{% url 'page_list' %}" class="nav-link {% if 'page' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-file-alt"></i><span>Sahifalar</span>
+            </a>
+            <a href="{% url 'news_admin_list' %}" class="nav-link {% if 'news' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-newspaper"></i><span>Yangiliklar</span>
+            </a>
+            <a href="{% url 'message_list' %}" class="nav-link {% if 'message' in request.resolver_match.url_name %}active{% endif %}">
+                <i class="fas fa-envelope"></i><span>Xabarlar</span>
+            </a>
         </nav>
         <div class="sidebar-footer">
+            {% if request.user.is_superuser %}
+            <a href="/super-admin/" class="nav-link" style="color:#f59e0b;">
+                <i class="fas fa-crown"></i><span>Super Admin</span>
+            </a>
+            {% endif %}
             <a href="{% url 'logout' %}" class="nav-link logout-link">
                 <i class="fas fa-sign-out-alt"></i><span>{% trans "Chiqish" %}</span>
             </a>

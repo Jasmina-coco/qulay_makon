@@ -2,8 +2,25 @@
 {% load i18n %}
 {% block title %}{% trans "Mahsulotlar" %}{% endblock %}
 {% block content %}
-<div class="page-head">
-    <h1>{% trans "Mahsulotlar" %}</h1>
+<div class="content-header">
+    <div>
+        <h2>{% trans "Mahsulotlar" %}</h2>
+        <p class="content-subtitle">Katalogdagi barcha mahsulotlar va holatlari</p>
+    </div>
+    <div class="action-btns">
+        <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
+            <i class="fas fa-file-excel"></i> {% trans "Excel Export" %}
+        </a>
+        <a href="{% url 'product_export' %}?format=csv" class="btn btn-sm btn-outline">
+            <i class="fas fa-file-csv"></i> {% trans "CSV Export" %}
+        </a>
+        <a href="{% url 'product_import' %}" class="btn btn-sm btn-primary">
+            <i class="fas fa-upload"></i> {% trans "Import" %}
+        </a>
+        <a href="{% url 'product_create' %}" class="btn btn-sm btn-primary">
+            <i class="fas fa-plus"></i> {% trans "Qo'shish" %}
+        </a>
+    </div>
 </div>
 <form class="filters" method="get" data-ajax-filter="true" data-target="#productListContainer">
     <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
@@ -24,35 +41,38 @@
 </form>
 <div id="productListContainer">
 <div class="data-table-wrapper">
-    <div class="table-header">
-        <h3>{% trans "Mahsulotlar ro'yxati" %}</h3>
-        <div class="table-actions">
-            <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
-                <i class="fas fa-file-excel"></i> {% trans "Excel Export" %}
-            </a>
-            <a href="{% url 'product_export' %}?format=csv" class="btn btn-sm btn-outline">
-                <i class="fas fa-file-csv"></i> {% trans "CSV Export" %}
-            </a>
-            <a href="{% url 'product_import' %}" class="btn btn-sm btn-primary">
-                <i class="fas fa-upload"></i> {% trans "Import" %}
-            </a>
-            <a href="{% url 'product_create' %}" class="btn btn-sm btn-primary">
-                <i class="fas fa-plus"></i> {% trans "Qo'shish" %}
-            </a>
-        </div>
-    </div>
     <table class="data-table">
-        <thead><tr><th>{% trans "Nomi" %}</th><th>{% trans "Sotuvchilar" %}</th><th>{% trans "Narxi" %}</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Nomi" %}</th><th>{% trans "Sotuvchilar" %}</th><th>{% trans "Narxi" %}</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for product in page_obj %}
             <tr>
-                <td>{{ product.name }}</td>
+                <td>
+                    <strong>{{ product.name }}</strong>
+                    <br><small class="text-muted">{{ product.category.name|default:"-" }}</small>
+                </td>
                 <td>{{ product.seller.username }}</td>
                 <td>{{ product.price }}</td>
                 <td><span class="status-badge status-{{ product.status }}">{{ product.status }}</span></td>
                 <td>
-                    <a class="btn btn-outline btn-sm" href="{% url 'product_detail' product.id %}">{% trans "Ko'rish" %}</a>
-                    <a class="btn btn-primary btn-sm" href="{% url 'product_edit' product.id %}">{% trans "Tahrirlash" %}</a>
+                    <div class="action-btns">
+                        <a class="btn-action btn-action-view" href="{% url 'product_detail' product.id %}" title="Ko'rish">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a class="btn-action btn-action-edit" href="{% url 'product_edit' product.id %}" title="{% trans 'Tahrirlash' %}">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'product_delete' product.id %}', '{{ product.name }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <p>{% trans "Mahsulot topilmadi" %}</p>
+                    <a href="{% url 'product_create' %}" class="btn btn-sm btn-primary">{% trans "Birinchi mahsulotni qo'shing" %}</a>
                 </td>
             </tr>
             {% endfor %}

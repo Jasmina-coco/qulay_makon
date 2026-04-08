@@ -2,7 +2,12 @@
 {% load i18n %}
 {% block title %}{% trans "Buyurtmalar" %}{% endblock %}
 {% block content %}
-<h1>{% trans "Buyurtmalar" %}</h1>
+<div class="content-header">
+    <div>
+        <h2>{% trans "Buyurtmalar" %}</h2>
+        <p class="content-subtitle">Buyurtmalar ro'yxati va status boshqaruvi</p>
+    </div>
+</div>
 <form method="get" class="filters" data-ajax-filter="true" data-target="#orderListContainer">
     <select name="status">
         <option value="">{% trans "Barcha status" %}</option>
@@ -16,16 +21,16 @@
 </form>
 <div id="orderListContainer">
 <div class="data-table-wrapper">
-    <div class="table-header">
-        <h3>{% trans "Buyurtmalar ro'yxati" %}</h3>
-    </div>
     <table class="data-table">
-        <thead><tr><th>ID</th><th>{% trans "Mijoz" %}</th><th>{% trans "Summa" %}</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>ID</th><th>{% trans "Mijoz" %}</th><th>{% trans "Summa" %}</th><th>{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for order in page_obj %}
             <tr>
                 <td>#{{ order.id }}</td>
-                <td>{{ order.user.username }}</td>
+                <td>
+                    <strong>{{ order.user.username }}</strong>
+                    <br><small class="text-muted">{{ order.phone }}</small>
+                </td>
                 <td>{{ order.total_amount }}</td>
                 <td>
                     <select class="form-control status-select" data-order-id="{{ order.id }}">
@@ -34,7 +39,23 @@
                         {% endfor %}
                     </select>
                 </td>
-                <td><a class="btn btn-outline btn-sm" href="{% url 'order_detail' order.id %}">{% trans "Ko'rish" %}</a></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-action btn-action-view" href="{% url 'order_detail' order.id %}" title="Ko'rish">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'order_delete' order.id %}', 'Order #{{ order.id }}')" title="O'chirish">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>{% trans "Buyurtmalar topilmadi" %}</p>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

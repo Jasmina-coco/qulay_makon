@@ -2,7 +2,12 @@
 {% load i18n %}
 {% block title %}{% trans "Foydalanuvchilar" %}{% endblock %}
 {% block content %}
-<div class="page-head"><h1>{% trans "Foydalanuvchilar" %}</h1></div>
+<div class="content-header">
+    <div>
+        <h2>{% trans "Foydalanuvchilar" %}</h2>
+        <p class="content-subtitle">Tizimga kirgan barcha foydalanuvchilar</p>
+    </div>
+</div>
 <form class="filters" method="get" data-ajax-filter="true" data-target="#userListContainer">
     <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
     <select name="role">
@@ -15,21 +20,34 @@
 </form>
 <div id="userListContainer">
 <div class="data-table-wrapper">
-    <div class="table-header">
-        <h3>{% trans "Foydalanuvchilar ro'yxati" %}</h3>
-    </div>
     <table class="data-table">
-        <thead><tr><th>{% trans "Username" %}</th><th>Email</th><th>Role</th><th>{% trans "Holati" %}</th><th>{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Username" %}</th><th>Email</th><th>Role</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for item in page_obj %}
             <tr>
-                <td>{{ item.username }}</td>
+                <td>
+                    <strong>{{ item.username }}</strong>
+                    <br><small class="text-muted">ID: {{ item.id }}</small>
+                </td>
                 <td>{{ item.email }}</td>
-                <td>{{ item.role }}</td>
+                <td><span class="slug-badge">{{ item.role }}</span></td>
                 <td><span class="status-badge {% if item.is_active %}status-active{% else %}status-cancelled{% endif %}">{% if item.is_active %}{% trans "Faol" %}{% else %}{% trans "Blok" %}{% endif %}</span></td>
                 <td>
-                    <a class="btn btn-outline btn-sm" href="{% url 'user_detail' item.id %}">{% trans "Ko'rish" %}</a>
-                    <button class="btn btn-warning btn-sm" onclick="toggleUserActive({{ item.id }})">Toggle</button>
+                    <div class="action-btns">
+                        <a class="btn-action btn-action-view" href="{% url 'user_detail' item.id %}" title="Ko'rish">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <button type="button" class="btn-action btn-action-toggle" onclick="toggleUserActive({{ item.id }})" title="{% trans 'Holatini almashtirish' %}">
+                            <i class="fas fa-power-off"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    <i class="fas fa-users"></i>
+                    <p>{% trans "Foydalanuvchilar topilmadi" %}</p>
                 </td>
             </tr>
             {% endfor %}

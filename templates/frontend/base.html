@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site.site_name|default:"Marketplace" }}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> {{ site.contact_phone|default:"+998 90 123 45 67" }}</span>
+                <span><i class="fas fa-envelope"></i> {{ site.contact_email|default:"info@marketplace.uz" }}</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="{% url 'login' %}">Kirish</a>
+                <a href="/admin-panel/">Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo">
+                {% if site.site_logo %}
+                <img src="{{ site.site_logo.url }}" alt="{{ site.site_name }}">
+                {% else %}
+                <h1>{{ site.site_name|default:"Marketplace" }}</h1>
+                {% endif %}
+            </a>
+
+            <form class="header-search" action="{% url 'search_page' %}" method="get">
+                <input type="text" name="q" placeholder="Mahsulot qidirish..." value="{{ search_query|default:'' }}">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+            <div class="header-contacts">
+                <a href="tel:{{ site.contact_phone|default:'+998901234567' }}" class="header-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>{{ site.contact_phone|default:"+998 90 123 45 67" }}</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <button class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')">
+                <i class="fas fa-bars"></i> Katalog
+            </button>
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                <li class="has-dropdown">
+                    <a href="{% url 'catalog' %}">Katalog <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        {% for cat in categories %}
+                        <li><a href="{% url 'category_page' cat.slug %}">{{ cat.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{% url 'news_list_page' %}">Yangiliklar</a></li>
+                <li><a href="{% url 'page_detail' slug='about' %}">Biz haqimizda</a></li>
+                <li><a href="{% url 'contact_page' %}">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>{{ site.site_name|default:"Marketplace" }}</h4>
+                    <p>{{ site.site_description|default:"Marketplace — sizning ishonchli hamkoringiz" }}</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kategoriyalar</h4>
+                    <ul>
+                        {% for cat in categories %}
+                        <li><a href="{% url 'category_page' cat.slug %}">{{ cat.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ma'lumot</h4>
+                    <ul>
+                        <li><a href="{% url 'page_detail' slug='about' %}">Biz haqimizda</a></li>
+                        <li><a href="{% url 'page_detail' slug='delivery' %}">Yetkazib berish</a></li>
+                        <li><a href="{% url 'page_detail' slug='payment' %}">To'lov</a></li>
+                        <li><a href="{% url 'contact_page' %}">Kontaktlar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontaktlar</h4>
+                    <p><i class="fas fa-phone"></i> {{ site.contact_phone|default:"+998 90 123 45 67" }}</p>
+                    <p><i class="fas fa-envelope"></i> {{ site.contact_email|default:"info@marketplace.uz" }}</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 {{ site.site_name|default:"Marketplace" }}. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/frontend.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

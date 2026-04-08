@@ -1,0 +1,35 @@
+{% extends 'frontend/base.html' %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container product-detail">
+        <div class="gallery">
+            {% if images %}
+            <img id="mainProductImage" src="{{ images.0.image.url }}" alt="{{ product.name }}" class="main-image">
+            <div class="thumbs">
+                {% for img in images %}
+                <img src="{{ img.image.url }}" alt="" onclick="switchProductImage('{{ img.image.url }}')">
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="meta">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p class="price">{{ product.price|floatformat:0 }} UZS</p>
+            <p>Stock: {{ product.stock }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3>O'xshash mahsulotlar</h3>
+        <div class="product-grid">
+            {% for product in related_products %}
+            {% include 'frontend/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

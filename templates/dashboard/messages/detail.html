@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Xabar{% endblock %}
+{% block content %}
+<div class="form-card">
+    <h3>{{ message_obj.subject|default:"Xabar" }}</h3>
+    <p><strong>Ism:</strong> {{ message_obj.name }}</p>
+    <p><strong>Email:</strong> {{ message_obj.email }}</p>
+    <p><strong>Telefon:</strong> {{ message_obj.phone|default:"-" }}</p>
+    <p><strong>Sana:</strong> {{ message_obj.created_at|date:"Y-m-d H:i" }}</p>
+    <hr>
+    <p>{{ message_obj.message|linebreaks }}</p>
+    <a class="btn btn-secondary" href="{% url 'message_list' %}">Ortga</a>
+    {% if not message_obj.is_read %}
+    <a class="btn btn-primary" href="{% url 'message_mark_read' message_obj.id %}">O'qilgan belgilash</a>
+    {% endif %}
+</div>
+{% endblock %}
