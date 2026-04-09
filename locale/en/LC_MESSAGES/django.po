@@ -158,3 +158,627 @@ msgstr "The category column must contain the category NAME."
 
 msgid "Avval namuna faylni eksport qilib ko'ring:"
 msgstr "First, export and review a sample file:"
+
+msgid "Marketplace Admin"
+msgstr "Marketplace admin"
+
+msgid "Qulay Makon"
+msgstr "Qulay Makon"
+
+msgid "Boshqaruv paneli"
+msgstr "Control panel"
+
+msgid "Boshqaruv"
+msgstr "Management"
+
+msgid "Sayt"
+msgstr "Site"
+
+msgid "Bannerlar"
+msgstr "Banners"
+
+msgid "Sahifalar"
+msgstr "Pages"
+
+msgid "Yangiliklar"
+msgstr "News"
+
+msgid "Xabarlar"
+msgstr "Messages"
+
+msgid "Super Admin"
+msgstr "Super admin"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Xaridor"
+msgstr "Customer"
+
+msgid "Natijalar topilmadi"
+msgstr "No results found"
+
+msgid "Ma'lumot yuklashda xato"
+msgstr "Error loading data"
+
+msgid "Xatolik yuz berdi"
+msgstr "Something went wrong"
+
+msgid "O'zbek"
+msgstr "Uzbek"
+
+msgid "Русский"
+msgstr "Russian"
+
+msgid "English"
+msgstr "English"
+
+msgid "O'chirishni tasdiqlaysizmi?"
+msgstr "Confirm deletion?"
+
+msgid "o'chiriladi"
+msgstr "will be deleted"
+
+msgid "Tashrifchilar"
+msgstr "Visitors"
+
+msgid "Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. \"Unikal\" — har bir IP faqat 1 marta hisoblanadi."
+msgstr "Shows how many people visit per day/month. \"Unique\" counts each IP only once."
+
+msgid "Kunlik"
+msgstr "Daily"
+
+msgid "Oylik"
+msgstr "Monthly"
+
+msgid "Bugun"
+msgstr "Today"
+
+msgid "Bu hafta"
+msgstr "This week"
+
+msgid "Bu oy"
+msgstr "This month"
+
+msgid "Unikal (oy)"
+msgstr "Unique (month)"
+
+msgid "Ko'p qidirilganlar"
+msgstr "Top searches"
+
+msgid "Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi."
+msgstr "Shows what users search for most—helps you decide which products to add."
+
+msgid "Konversiya"
+msgstr "Conversion"
+
+msgid "Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%."
+msgstr "Share of visitors who placed an order. Example: 100 visits, 3 orders = 3%."
+
+msgid "Ko'rish → Buyurtma"
+msgstr "Views → orders"
+
+msgid "Ombor"
+msgstr "Inventory"
+
+msgid "Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti."
+msgstr "Products with fewer than 10 in stock. Red = out of stock, yellow = running low."
+
+msgid "Oxirgi harakatlar"
+msgstr "Recent activity"
+
+msgid "So'nggi Buyurtmalar"
+msgstr "Recent orders"
+
+msgid "Mijoz"
+msgstr "Customer"
+
+msgid "Summa"
+msgstr "Amount"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "So'nggi buyurtmalar topilmadi."
+msgstr "No recent orders."
+
+msgid "bu yerda saytingiz haqida umumiy statistika ko'rasiz."
+msgstr "Here you see overall statistics for your site."
+
+msgid "Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin."
+msgstr "Charts refresh every 30 seconds. Click cards for more detail."
+
+msgid "Server xatosi"
+msgstr "Server error"
+
+msgid "Jami tashriflar"
+msgstr "Total visits"
+
+msgid "Unikal tashrifchilar"
+msgstr "Unique visitors"
+
+msgid "Konversiya %"
+msgstr "Conversion %"
+
+msgid "Hali qidiruv bo'lmagan"
+msgstr "No searches yet"
+
+msgid "Saytda qidiruv qilinganda bu yerda ko'rinadi"
+msgstr "Will appear when users search on the site"
+
+msgid "natija"
+msgstr "result"
+
+msgid "Hamma narsa yetarli"
+msgstr "All good"
+
+msgid "Omborda tugayotgan mahsulot yo'q"
+msgstr "No low-stock products"
+
+msgid "Hali harakatlar yo'q"
+msgstr "No activity yet"
+
+msgid "Tizimda faoliyat bo'lganda bu yerda ko'rinadi"
+msgstr "Will show when there is activity in the system"
+
+msgid "Hozir"
+msgstr "Just now"
+
+msgid "daq oldin"
+msgstr "min ago"
+
+msgid "soat oldin"
+msgstr "h ago"
+
+msgid "kun oldin"
+msgstr "d ago"
+
+msgid "Barcha status"
+msgstr "All statuses"
+
+msgid "Kutilmoqda"
+msgstr "Pending"
+
+msgid "Jarayonda"
+msgstr "Processing"
+
+msgid "Yetkazilmoqda"
+msgstr "Shipping"
+
+msgid "Yetkazildi"
+msgstr "Delivered"
+
+msgid "Bekor qilindi"
+msgstr "Cancelled"
+
+msgid "Telefon"
+msgstr "Phone"
+
+msgid "Buyurtmalar topilmadi"
+msgstr "No orders found"
+
+msgid "Telegram orqali"
+msgstr "Via Telegram"
+
+msgid "Ko'rish"
+msgstr "View"
+
+msgid "Holatini almashtirish"
+msgstr "Change status"
+
+msgid "Tasdiqlangan"
+msgstr "Verified"
+
+msgid "Blok"
+msgstr "Block"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Foydalanuvchilar topilmadi"
+msgstr "No users found"
+
+msgid "Do'kon"
+msgstr "Store"
+
+msgid "User"
+msgstr "User"
+
+msgid "Rating"
+msgstr "Rating"
+
+msgid "Tasdiqlash"
+msgstr "Verification"
+
+msgid "Sotuvchilar topilmadi"
+msgstr "No sellers found"
+
+msgid "Oldingi"
+msgstr "Previous"
+
+msgid "Keyingi"
+msgstr "Next"
+
+msgid "Parent"
+msgstr "Parent"
+
+msgid "Kategoriyalar topilmadi"
+msgstr "No categories found"
+
+msgid "Birinchi kategoriyani qo'shing"
+msgstr "Add your first category"
+
+msgid "Mahsulot topilmadi"
+msgstr "No products found"
+
+msgid "Birinchi mahsulotni qo'shing"
+msgstr "Add your first product"
+
+msgid "Statuslar"
+msgstr "Statuses"
+
+msgid "Katalogdagi barcha mahsulotlar va holatlari"
+msgstr "All catalog products and their statuses"
+
+msgid "Barcha role"
+msgstr "All roles"
+
+msgid "Tizimga kirgan barcha foydalanuvchilar"
+msgstr "All users who have signed in"
+
+msgid "Sotuvchi profillari va tasdiqlash holati"
+msgstr "Seller profiles and verification status"
+
+msgid "Mahsulot kategoriyalarini boshqarish"
+msgstr "Manage product categories"
+
+msgid "Buyurtmalar ro'yxati va status boshqaruvi"
+msgstr "Order list and status management"
+
+msgid "Holat"
+msgstr "Status"
+
+msgid "bu yerda barcha mahsulotlarni boshqarasiz."
+msgstr "this is where you manage all products."
+
+msgid "Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin."
+msgstr "You can add and edit products, upload images, and import/export via Excel."
+
+msgid "Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi."
+msgstr "Active = visible on site, Pending = awaiting approval, Draft = hidden on site."
+
+msgid "Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash."
+msgstr "Excel Export — download all products to Excel. Import — upload products from Excel."
+
+msgid "mijozlar bergan buyurtmalar."
+msgstr "orders placed by customers."
+
+msgid "Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi."
+msgstr "Change statuses: Pending → Processing → Shipped → Delivered."
+
+msgid "To'lov Telegram bot orqali amalga oshiriladi."
+msgstr "Payment is handled via the Telegram bot."
+
+msgid "UZS"
+msgstr "UZS"
+
+msgid "saytdagi barcha foydalanuvchilar. Rollar: Admin (panelni boshqaradi), Sotuvchi (mahsulot sotadi), Xaridor (mahsulot sotib oladi). Bloklash tugmasi orqali vaqtincha to'xtatish mumkin."
+msgstr "All site users. Roles: Admin (manages panel), Seller (sells products), Customer (buys). Use block to suspend temporarily."
+
+msgid "marketplace da mahsulot sotuvchilar."
+msgstr "sellers on the marketplace."
+
+msgid "Tasdiqlash tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi."
+msgstr "Approve grants access. Unapproved sellers cannot add products."
+
+msgid "mahsulotlar guruhlari."
+msgstr "product groups."
+
+msgid "Har bir mahsulot bitta kategoriyaga tegishli. Ota kategoriya tanlasangiz — ichki kategoriya yaratiladi."
+msgstr "Each product belongs to one category. Choosing a parent creates a subcategory."
+
+msgid "Masalan: Elektronika → Telefonlar."
+msgstr "Example: Electronics → Phones."
+
+msgid "Buyurtma"
+msgstr "Order"
+
+msgid "Manzil"
+msgstr "Address"
+
+msgid "Mahsulot"
+msgstr "Product"
+
+msgid "Soni"
+msgstr "Qty"
+
+msgid "To'lov"
+msgstr "Payment"
+
+msgid "Telegram bot orqali amalga oshiriladi"
+msgstr "Handled via Telegram bot"
+
+msgid "Buyurtma #%(id)s"
+msgstr "Order #%(id)s"
+
+msgid "saytning bosh sahifasidagi katta slider rasmlar."
+msgstr "large slider images on the site home page."
+
+msgid "Rasm yuklang, sarlavha yozing va link qo'shing. Tartib raqami kichik bo'lgan banner birinchi ko'rinadi."
+msgstr "Upload an image, title and link. Lower order number shows first."
+
+msgid "Faol bo'lmagan bannerlar saytda ko'rinmaydi."
+msgstr "Inactive banners are hidden on the site."
+
+msgid "Bosh sahifadagi slider rasmlari"
+msgstr "Home page slider images"
+
+msgid "Yangi banner"
+msgstr "New banner"
+
+msgid "Rasm"
+msgstr "Image"
+
+msgid "Sarlavha"
+msgstr "Title"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Tartib"
+msgstr "Order"
+
+msgid "Sarlavhasiz"
+msgstr "Untitled"
+
+msgid "Nofaol"
+msgstr "Inactive"
+
+msgid "Hali banner qo'shilmagan"
+msgstr "No banners yet"
+
+msgid "Birinchi bannerni qo'shing"
+msgstr "Add your first banner"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Banner formasi"
+msgstr "Banner form"
+
+msgid "bosh sahifadagi slider bannerni sozlash uchun ishlatiladi."
+msgstr "used to configure the home page slider banner."
+
+msgid "Tartib kichik bo'lsa birinchi chiqadi."
+msgstr "Lower order appears first."
+
+msgid "Bannerning asosiy sarlavhasi. Qisqa va aniq yozing."
+msgstr "Main banner title. Keep it short and clear."
+
+msgid "Banner ostida chiqadigan qo'shimcha matn."
+msgstr "Extra text shown under the banner."
+
+msgid "Keng formatdagi banner rasmi yuklang."
+msgstr "Upload a wide banner image."
+
+msgid "Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi."
+msgstr "Target page when clicking the banner. Empty = no navigation."
+
+msgid "Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi."
+msgstr "Lower number shows first. E.g. 1 first, 2 second."
+
+msgid "Faol holat"
+msgstr "Active state"
+
+msgid "Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi."
+msgstr "If active, banner is visible; otherwise hidden."
+
+msgid "Banner qo'shish"
+msgstr "Add banner"
+
+msgid "Banner tahrirlash"
+msgstr "Edit banner"
+
+msgid "Sahifa formasi"
+msgstr "Page form"
+
+msgid "statik sahifalar uchun matn kiriting."
+msgstr "enter text for static pages."
+
+msgid "Slug URL manzil sifatida ishlatiladi."
+msgstr "The slug is used in the URL."
+
+msgid "Sahifa nomi menyu va sahifada ko'rinadi."
+msgstr "Page name appears in the menu and on the page."
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Sahifaning URL manzili. Masalan slug biz-haqimizda bo'lsa, sahifa /page/biz-haqimizda/ manzilida ochiladi."
+msgstr "URL segment; e.g. slug biz-haqimizda opens /page/biz-haqimizda/."
+
+msgid "Matn"
+msgstr "Body"
+
+msgid "Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi."
+msgstr "Main page content; shown in full on the site."
+
+msgid "Meta tavsif"
+msgstr "Meta description"
+
+msgid "Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali."
+msgstr "Short description for search engines; good for SEO."
+
+msgid "Faol bo'lsa sahifa frontendda ko'rinadi."
+msgstr "If active, page is visible on the site."
+
+msgid "Sahifa qo'shish"
+msgstr "Add page"
+
+msgid "Sahifa tahrirlash"
+msgstr "Edit page"
+
+msgid "saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar)."
+msgstr "static site pages (About, Delivery, Payment terms, etc.)."
+
+msgid "Slug — sahifaning URL manzili. Masalan: slug about bo'lsa, sahifa /page/about/ da ochiladi."
+msgstr "Slug is the URL part; e.g. about opens /page/about/."
+
+msgid "Matnni yozib Saqlash bosing — saytda darhol ko'rinadi."
+msgstr "Save text — it appears on the site immediately."
+
+msgid "Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)"
+msgstr "Static pages (About, Delivery...)"
+
+msgid "Yangi sahifa"
+msgstr "New page"
+
+msgid "URL manzili"
+msgstr "URL"
+
+msgid "Yangilangan"
+msgstr "Updated"
+
+msgid "Saytda ko'rish"
+msgstr "View on site"
+
+msgid "Hali sahifa yaratilmagan"
+msgstr "No pages yet"
+
+msgid "Birinchi sahifani yarating"
+msgstr "Create the first page"
+
+msgid "Yangilik formasi"
+msgstr "News form"
+
+msgid "maqola matni, rasm va kategoriyani kiriting."
+msgstr "enter article text, image and category."
+
+msgid "Faol holatdagi yangiliklar frontendda ko'rinadi."
+msgstr "Active news items appear on the site."
+
+msgid "saytda chiqadigan maqolalar va yangiliklar."
+msgstr "articles and news on the site."
+
+msgid "Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi."
+msgstr "Add image, title and text. Latest 3 news items show on the home page."
+
+msgid "Faol bo'lmagan yangiliklar saytda ko'rinmaydi."
+msgstr "Inactive news is hidden on the site."
+
+msgid "Saytda ko'rinadigan yangilik va maqolalar"
+msgstr "News and articles on the site"
+
+msgid "Yangi yangilik"
+msgstr "New article"
+
+msgid "Kategoriya"
+msgstr "Category"
+
+msgid "Kategoriyasiz"
+msgstr "Uncategorized"
+
+msgid "Hali yangilik qo'shilmagan"
+msgstr "No news yet"
+
+msgid "Birinchi yangilikni qo'shing"
+msgstr "Add your first article"
+
+msgid "saytdagi kontakt formasidan kelgan xabarlar."
+msgstr "messages from the site contact form."
+
+msgid "Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va O'qilgan deb belgilang."
+msgstr "Blue line = unread. Open the message and mark as read."
+
+msgid "Ism"
+msgstr "Name"
+
+msgid "Mavzu"
+msgstr "Subject"
+
+msgid "Mavzusiz"
+msgstr "No subject"
+
+msgid "O'qilgan"
+msgstr "Read"
+
+msgid "Yangi"
+msgstr "New"
+
+msgid "O'qilgan belgilash"
+msgstr "Mark as read"
+
+msgid "Hali xabarlar yo'q"
+msgstr "No messages yet"
+
+msgid "Kontakt formasi orqali kelgan xabarlar"
+msgstr "Messages from contact form"
+
+msgid "Mahsulot formasi"
+msgstr "Product form"
+
+msgid "mahsulot ma'lumotlarini to'ldiring va saqlang."
+msgstr "fill in product details and save."
+
+msgid "Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing."
+msgstr "Product name is visible to customers. Be clear."
+
+msgid "Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar."
+msgstr "Detailed description: features, size, material, etc."
+
+msgid "Mahsulotning asosiy narxi. So'mda kiriting."
+msgstr "Base price in UZS."
+
+msgid "Mahsulot qaysi bo'limda ko'rinishini belgilaydi."
+msgstr "Sets which catalog section it appears in."
+
+msgid "Mahsulot egasi bo'lgan sotuvchini tanlang."
+msgstr "Choose the seller who owns the product."
+
+msgid "Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi."
+msgstr "When checked, highlighted on the home page."
+
+msgid "Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi."
+msgstr "You can upload several images. Quality photos help conversion."
+
+msgid "Qisqa matn"
+msgstr "Subtitle"
+
+msgid "Qisqa tavsif"
+msgstr "Short description"
+
+msgid "Yangilik qo'shish"
+msgstr "Add news"
+
+msgid "Yangilik tahrirlash"
+msgstr "Edit news"
+
+msgid "Kategoriya formasi"
+msgstr "Category form"
+
+msgid "mahsulotlarni guruhlash uchun kategoriya yarating yoki tahrirlang."
+msgstr "create or edit a category to group products."
+
+msgid "Ota kategoriyani tanlab ichki bo'limlar ochishingiz mumkin."
+msgstr "Selecting a parent category lets you open nested sections."
+
+msgid "Kategoriya qo'shish"
+msgstr "Add category"
+
+msgid "Kategoriya tahrirlash"
+msgstr "Edit category"
+
+msgid "Xabar"
+msgstr "Message"
+
+msgid "CSV yoki XLSX"
+msgstr "CSV or XLSX"
+
+msgid "Asosiy qilish"
+msgstr "Set as main"

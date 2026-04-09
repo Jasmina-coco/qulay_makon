@@ -5,10 +5,10 @@
 <div class="page-tip" id="dashboardTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Dashboard</strong> — bu yerda saytingiz haqida umumiy statistika ko'rasiz.
-        Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin.
+        <strong>{% trans "Dashboard" %}</strong> — {% trans "bu yerda saytingiz haqida umumiy statistika ko'rasiz." %}
+        {% trans "Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin." %}
     </div>
-    <button class="tip-dismiss" onclick="dismissTip('dashboardTip')"><i class="fas fa-times"></i></button>
+    <button type="button" class="tip-dismiss" onclick="dismissTip('dashboardTip')"><i class="fas fa-times"></i></button>
 </div>
 
 <div class="overview-grid">
@@ -44,32 +44,32 @@
 
 <div class="dashboard-card full-width">
     <div class="card-header">
-        <h4><i class="fas fa-chart-area"></i> Tashrifchilar
-            <span class="tip-icon">i
-                <span class="tip-text">Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. "Unikal" — har bir IP faqat 1 marta hisoblanadi.</span>
+        <h4><i class="fas fa-chart-area"></i> {% trans "Tashrifchilar" %}
+            <span class="tip-icon" role="button" tabindex="0">i
+                <span class="tip-text">{% blocktrans trimmed %}Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. "Unikal" — har bir IP faqat 1 marta hisoblanadi.{% endblocktrans %}</span>
             </span>
         </h4>
         <div class="card-header-actions">
-            <button class="btn btn-sm btn-outline active" onclick="loadVisitors('daily')" id="btnDaily">Kunlik</button>
-            <button class="btn btn-sm btn-outline" onclick="loadVisitors('monthly')" id="btnMonthly">Oylik</button>
+            <button type="button" class="btn btn-sm btn-outline active" onclick="loadVisitors('daily')" id="btnDaily">{% trans "Kunlik" %}</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="loadVisitors('monthly')" id="btnMonthly">{% trans "Oylik" %}</button>
         </div>
     </div>
     <div class="mini-stats">
         <div class="mini-stat">
             <span class="mini-stat-value" id="visitorsToday">0</span>
-            <span class="mini-stat-label">Bugun</span>
+            <span class="mini-stat-label">{% trans "Bugun" %}</span>
         </div>
         <div class="mini-stat">
             <span class="mini-stat-value" id="visitorsWeek">0</span>
-            <span class="mini-stat-label">Bu hafta</span>
+            <span class="mini-stat-label">{% trans "Bu hafta" %}</span>
         </div>
         <div class="mini-stat">
             <span class="mini-stat-value" id="visitorsMonth">0</span>
-            <span class="mini-stat-label">Bu oy</span>
+            <span class="mini-stat-label">{% trans "Bu oy" %}</span>
         </div>
         <div class="mini-stat">
             <span class="mini-stat-value" id="visitorsUnique">0</span>
-            <span class="mini-stat-label">Unikal (oy)</span>
+            <span class="mini-stat-label">{% trans "Unikal (oy)" %}</span>
         </div>
     </div>
     <div class="chart-container" style="position:relative;height:260px;">
@@ -79,23 +79,23 @@
 
 <div class="middle-grid">
     <div class="dashboard-card">
-        <div class="card-header"><h4><i class="fas fa-search"></i> Ko'p qidirilganlar
-            <span class="tip-icon">i
-                <span class="tip-text">Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi.</span>
+        <div class="card-header"><h4><i class="fas fa-search"></i> {% trans "Ko'p qidirilganlar" %}
+            <span class="tip-icon" role="button" tabindex="0">i
+                <span class="tip-text">{% blocktrans trimmed %}Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi.{% endblocktrans %}</span>
             </span>
         </h4></div>
         <div id="searchStatsList" class="stat-list"></div>
     </div>
 
     <div class="dashboard-card">
-        <div class="card-header"><h4><i class="fas fa-funnel-dollar"></i> Konversiya
-            <span class="tip-icon">i
-                <span class="tip-text">Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%.</span>
+        <div class="card-header"><h4><i class="fas fa-funnel-dollar"></i> {% trans "Konversiya" %}
+            <span class="tip-icon" role="button" tabindex="0">i
+                <span class="tip-text">{% blocktrans trimmed %}Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%.{% endblocktrans %}</span>
             </span>
         </h4></div>
         <div class="conversion-big" id="conversionRate">
             <span class="conversion-number">0%</span>
-            <span class="conversion-label">Ko'rish → Buyurtma</span>
+            <span class="conversion-label">{% trans "Ko'rish → Buyurtma" %}</span>
         </div>
         <div class="chart-container" style="position:relative;height:160px;">
             <canvas id="conversionChart"></canvas>
@@ -104,9 +104,9 @@
 
     <div class="dashboard-card">
         <div class="card-header">
-            <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning);"></i> Ombor
-                <span class="tip-icon">i
-                    <span class="tip-text">Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti.</span>
+            <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning);"></i> {% trans "Ombor" %}
+                <span class="tip-icon" role="button" tabindex="0">i
+                    <span class="tip-text">{% blocktrans trimmed %}Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti.{% endblocktrans %}</span>
                 </span>
             </h4>
         </div>
@@ -117,7 +117,7 @@
 <div class="bottom-section">
     <div class="dashboard-card full-width">
         <div class="card-header">
-            <h4><i class="fas fa-bolt" style="color:var(--primary);"></i> Oxirgi harakatlar</h4>
+            <h4><i class="fas fa-bolt" style="color:var(--primary);"></i> {% trans "Oxirgi harakatlar" %}</h4>
             <span class="live-dot"></span>
         </div>
         <div id="activityFeed" class="activity-feed"></div>
@@ -142,7 +142,7 @@
                 <td>#{{ order.id }}</td>
                 <td>{{ order.user.username }}</td>
                 <td>{{ order.total_amount|floatformat:0 }} UZS</td>
-                <td><span class="status-badge status-{{ order.status }}">{{ order.status }}</span></td>
+                <td><span class="status-badge status-{{ order.status }}">{{ order.get_status_display }}</span></td>
                 <td><span class="text-muted">{{ order.created_at|date:"d.m.Y H:i" }}</span></td>
             </tr>
             {% empty %}
@@ -160,13 +160,30 @@
 
 {% block extra_js %}
 <script>
+const DASH_I18N = {
+    serverError: "{% filter escapejs %}{% trans 'Server xatosi' %}{% endfilter %}",
+    chartTotalVisits: "{% filter escapejs %}{% trans 'Jami tashriflar' %}{% endfilter %}",
+    chartUniqueVisits: "{% filter escapejs %}{% trans 'Unikal tashrifchilar' %}{% endfilter %}",
+    chartConversion: "{% filter escapejs %}{% trans 'Konversiya %' %}{% endfilter %}",
+    searchEmptyTitle: "{% filter escapejs %}{% trans "Hali qidiruv bo'lmagan" %}{% endfilter %}",
+    searchEmptyHint: "{% filter escapejs %}{% trans "Saytda qidiruv qilinganda bu yerda ko'rinadi" %}{% endfilter %}",
+    resultsWord: "{% filter escapejs %}{% trans 'natija' %}{% endfilter %}",
+    lowStockOkTitle: "{% filter escapejs %}{% trans 'Hamma narsa yetarli' %}{% endfilter %}",
+    lowStockOkHint: "{% filter escapejs %}{% trans "Omborda tugayotgan mahsulot yo'q" %}{% endfilter %}",
+    activityEmptyTitle: "{% filter escapejs %}{% trans "Hali harakatlar yo'q" %}{% endfilter %}",
+    activityEmptyHint: "{% filter escapejs %}{% trans "Tizimda faoliyat bo'lganda bu yerda ko'rinadi" %}{% endfilter %}",
+    timeNow: "{% filter escapejs %}{% trans 'Hozir' %}{% endfilter %}",
+    timeMinAgo: "{% filter escapejs %}{% trans 'daq oldin' %}{% endfilter %}",
+    timeHourAgo: "{% filter escapejs %}{% trans 'soat oldin' %}{% endfilter %}",
+    timeDayAgo: "{% filter escapejs %}{% trans 'kun oldin' %}{% endfilter %}",
+};
 let visitorsChart = null;
 let conversionChart = null;
 
 async function fetchJson(url, options = {}) {
     const response = await fetch(url, options);
     if (!response.ok) {
-        throw new Error('Server xatosi: ' + response.status);
+        throw new Error(DASH_I18N.serverError + ": " + response.status);
     }
     return response.json();
 }
@@ -192,7 +209,7 @@ function loadVisitors(period) {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Jami tashriflar',
+                        label: DASH_I18N.chartTotalVisits,
                         data: totals,
                         borderColor: '#2a6f6f',
                         backgroundColor: 'rgba(42,111,111,0.06)',
@@ -200,7 +217,7 @@ function loadVisitors(period) {
                         pointRadius: 3, pointBackgroundColor: '#2a6f6f'
                     },
                     {
-                        label: 'Unikal tashrifchilar',
+                        label: DASH_I18N.chartUniqueVisits,
                         data: uniques,
                         borderColor: '#3b82f6',
                         backgroundColor: 'rgba(59,130,246,0.06)',
@@ -237,8 +254,8 @@ function loadSearchStats() {
             el.innerHTML = `
                 <div class="empty-card-state">
                     <i class="fas fa-search"></i>
-                    <p>Hali qidiruv bo'lmagan</p>
-                    <small>Saytda qidiruv qilinganda bu yerda ko'rinadi</small>
+                    <p>${DASH_I18N.searchEmptyTitle}</p>
+                    <small>${DASH_I18N.searchEmptyHint}</small>
                 </div>`;
             return;
         }
@@ -247,7 +264,7 @@ function loadSearchStats() {
                 <span class="stat-rank">${i + 1}</span>
                 <div class="stat-info">
                     <span class="stat-name">"${d.query}"</span>
-                    <span class="stat-detail">${Math.round(d.avg_results)} natija</span>
+                    <span class="stat-detail">${Math.round(d.avg_results)} ${DASH_I18N.resultsWord}</span>
                 </div>
                 <span class="stat-value">${d.count}x</span>
             </div>
@@ -263,8 +280,8 @@ function loadLowStock() {
             el.innerHTML = `
                 <div class="empty-card-state">
                     <i class="fas fa-check-circle" style="color:var(--success);"></i>
-                    <p>Hamma narsa yetarli</p>
-                    <small>Omborda tugayotgan mahsulot yo'q</small>
+                    <p>${DASH_I18N.lowStockOkTitle}</p>
+                    <small>${DASH_I18N.lowStockOkHint}</small>
                 </div>`;
             return;
         }
@@ -296,7 +313,7 @@ function loadConversion() {
                 data: {
                     labels: data.daily.map(d => d.day),
                     datasets: [{
-                        label: 'Konversiya %',
+                        label: DASH_I18N.chartConversion,
                         data: data.daily.map(d => d.rate),
                         backgroundColor: '#2a6f6f',
                         borderRadius: 4, barThickness: 8
@@ -323,8 +340,8 @@ function loadActivity() {
             el.innerHTML = `
                 <div class="empty-card-state">
                     <i class="fas fa-clock"></i>
-                    <p>Hali harakatlar yo'q</p>
-                    <small>Tizimda faoliyat bo'lganda bu yerda ko'rinadi</small>
+                    <p>${DASH_I18N.activityEmptyTitle}</p>
+                    <small>${DASH_I18N.activityEmptyHint}</small>
                 </div>`;
             return;
         }
@@ -350,10 +367,10 @@ function loadActivity() {
 
 function getTimeAgo(date) {
     const seconds = Math.floor((new Date() - date) / 1000);
-    if (seconds < 60) return 'Hozir';
-    if (seconds < 3600) return Math.floor(seconds / 60) + ' daq oldin';
-    if (seconds < 86400) return Math.floor(seconds / 3600) + ' soat oldin';
-    return Math.floor(seconds / 86400) + ' kun oldin';
+    if (seconds < 60) return DASH_I18N.timeNow;
+    if (seconds < 3600) return Math.floor(seconds / 60) + ' ' + DASH_I18N.timeMinAgo;
+    if (seconds < 86400) return Math.floor(seconds / 3600) + ' ' + DASH_I18N.timeHourAgo;
+    return Math.floor(seconds / 86400) + ' ' + DASH_I18N.timeDayAgo;
 }
 
 document.addEventListener('DOMContentLoaded', function() {

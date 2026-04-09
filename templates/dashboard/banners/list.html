@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Bannerlar{% endblock %}
+{% block title %}{% trans "Bannerlar" %}{% endblock %}
 
 {% block content %}
+{% trans "O'chirish" as tip_delete %}
+{% trans "Banner" as label_banner %}
 <div class="page-tip" id="bannerTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Bannerlar</strong> — saytning bosh sahifasidagi katta slider rasmlar.
-        Rasm yuklang, sarlavha yozing va link qo'shing. "Tartib" raqami kichik bo'lgan banner birinchi ko'rinadi.
-        "Faol" bo'lmagan bannerlar saytda ko'rinmaydi.
+        <strong>{% trans "Bannerlar" %}</strong> — {% trans "saytning bosh sahifasidagi katta slider rasmlar." %}
+        {% trans "Rasm yuklang, sarlavha yozing va link qo'shing. Tartib raqami kichik bo'lgan banner birinchi ko'rinadi." %}
+        {% trans "Faol bo'lmagan bannerlar saytda ko'rinmaydi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('bannerTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -16,10 +18,10 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Bannerlar" %}</h2>
-        <p class="content-subtitle">Bosh sahifadagi slider rasmlari</p>
+        <p class="content-subtitle">{% trans "Bosh sahifadagi slider rasmlari" %}</p>
     </div>
     <a href="{% url 'banner_create' %}" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Yangi banner
+        <i class="fas fa-plus"></i> {% trans "Yangi banner" %}
     </a>
 </div>
 
@@ -27,12 +29,12 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th class="th-xs">Rasm</th>
-                <th>Sarlavha</th>
-                <th>Link</th>
-                <th class="th-xs">Tartib</th>
-                <th class="th-xs">Holat</th>
-                <th class="th-actions">Amallar</th>
+                <th class="th-xs">{% trans "Rasm" %}</th>
+                <th>{% trans "Sarlavha" %}</th>
+                <th>{% trans "Link" %}</th>
+                <th class="th-xs">{% trans "Tartib" %}</th>
+                <th class="th-xs">{% trans "Holat" %}</th>
+                <th class="th-actions">{% trans "Amallar" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +48,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <strong>{{ banner.title|default:"(Sarlavhasiz)" }}</strong>
+                    <strong>{% if banner.title %}{{ banner.title }}{% else %}({% trans "Sarlavhasiz" %}){% endif %}</strong>
                     {% if banner.subtitle %}
                     <br><small class="text-muted">{{ banner.subtitle|truncatewords:8 }}</small>
                     {% endif %}
@@ -63,17 +65,17 @@
                 <td><span class="order-badge">{{ banner.order }}</span></td>
                 <td>
                     {% if banner.is_active %}
-                    <span class="status-dot status-dot-green"></span> Faol
+                    <span class="status-dot status-dot-green"></span> {% trans "Faol" %}
                     {% else %}
-                    <span class="status-dot status-dot-red"></span> Nofaol
+                    <span class="status-dot status-dot-red"></span> {% trans "Nofaol" %}
                     {% endif %}
                 </td>
                 <td>
                     <div class="action-btns">
-                        <a href="{% url 'banner_edit' banner.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                        <a href="{% url 'banner_edit' banner.id %}" class="btn-action btn-action-edit" title="{% trans 'Tahrirlash' %}">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'banner_delete' banner.id %}', '{{ banner.title|default:"Banner" }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'banner_delete' banner.id %}', '{{ banner.title|default:label_banner|escapejs }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -83,8 +85,8 @@
             <tr>
                 <td colspan="6" class="empty-state">
                     <i class="fas fa-images"></i>
-                    <p>Hali banner qo'shilmagan</p>
-                    <a href="{% url 'banner_create' %}" class="btn btn-sm btn-primary">Birinchi bannerni qo'shing</a>
+                    <p>{% trans "Hali banner qo'shilmagan" %}</p>
+                    <a href="{% url 'banner_create' %}" class="btn btn-sm btn-primary">{% trans "Birinchi bannerni qo'shing" %}</a>
                 </td>
             </tr>
             {% endfor %}

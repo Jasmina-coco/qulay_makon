@@ -158,3 +158,627 @@ msgstr "category ustunida kategoriya NOMI yozilishi kerak."
 
 msgid "Avval namuna faylni eksport qilib ko'ring:"
 msgstr "Avval namuna faylni eksport qilib ko'ring:"
+
+msgid "Marketplace Admin"
+msgstr "Marketplace Admin"
+
+msgid "Qulay Makon"
+msgstr "Qulay Makon"
+
+msgid "Boshqaruv paneli"
+msgstr "Boshqaruv paneli"
+
+msgid "Boshqaruv"
+msgstr "Boshqaruv"
+
+msgid "Sayt"
+msgstr "Sayt"
+
+msgid "Bannerlar"
+msgstr "Bannerlar"
+
+msgid "Sahifalar"
+msgstr "Sahifalar"
+
+msgid "Yangiliklar"
+msgstr "Yangiliklar"
+
+msgid "Xabarlar"
+msgstr "Xabarlar"
+
+msgid "Super Admin"
+msgstr "Super Admin"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Xaridor"
+msgstr "Xaridor"
+
+msgid "Natijalar topilmadi"
+msgstr "Natijalar topilmadi"
+
+msgid "Ma'lumot yuklashda xato"
+msgstr "Ma'lumot yuklashda xato"
+
+msgid "Xatolik yuz berdi"
+msgstr "Xatolik yuz berdi"
+
+msgid "O'zbek"
+msgstr "O'zbek"
+
+msgid "Русский"
+msgstr "Русский"
+
+msgid "English"
+msgstr "English"
+
+msgid "O'chirishni tasdiqlaysizmi?"
+msgstr "O'chirishni tasdiqlaysizmi?"
+
+msgid "o'chiriladi"
+msgstr "o'chiriladi"
+
+msgid "Tashrifchilar"
+msgstr "Tashrifchilar"
+
+msgid "Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. \"Unikal\" — har bir IP faqat 1 marta hisoblanadi."
+msgstr "Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. \"Unikal\" — har bir IP faqat 1 marta hisoblanadi."
+
+msgid "Kunlik"
+msgstr "Kunlik"
+
+msgid "Oylik"
+msgstr "Oylik"
+
+msgid "Bugun"
+msgstr "Bugun"
+
+msgid "Bu hafta"
+msgstr "Bu hafta"
+
+msgid "Bu oy"
+msgstr "Bu oy"
+
+msgid "Unikal (oy)"
+msgstr "Unikal (oy)"
+
+msgid "Ko'p qidirilganlar"
+msgstr "Ko'p qidirilganlar"
+
+msgid "Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi."
+msgstr "Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi."
+
+msgid "Konversiya"
+msgstr "Konversiya"
+
+msgid "Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%."
+msgstr "Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%."
+
+msgid "Ko'rish → Buyurtma"
+msgstr "Ko'rish → Buyurtma"
+
+msgid "Ombor"
+msgstr "Ombor"
+
+msgid "Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti."
+msgstr "Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti."
+
+msgid "Oxirgi harakatlar"
+msgstr "Oxirgi harakatlar"
+
+msgid "So'nggi Buyurtmalar"
+msgstr "So'nggi Buyurtmalar"
+
+msgid "Mijoz"
+msgstr "Mijoz"
+
+msgid "Summa"
+msgstr "Summa"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "So'nggi buyurtmalar topilmadi."
+msgstr "So'nggi buyurtmalar topilmadi."
+
+msgid "bu yerda saytingiz haqida umumiy statistika ko'rasiz."
+msgstr "bu yerda saytingiz haqida umumiy statistika ko'rasiz."
+
+msgid "Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin."
+msgstr "Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin."
+
+msgid "Server xatosi"
+msgstr "Server xatosi"
+
+msgid "Jami tashriflar"
+msgstr "Jami tashriflar"
+
+msgid "Unikal tashrifchilar"
+msgstr "Unikal tashrifchilar"
+
+msgid "Konversiya %"
+msgstr "Konversiya %"
+
+msgid "Hali qidiruv bo'lmagan"
+msgstr "Hali qidiruv bo'lmagan"
+
+msgid "Saytda qidiruv qilinganda bu yerda ko'rinadi"
+msgstr "Saytda qidiruv qilinganda bu yerda ko'rinadi"
+
+msgid "natija"
+msgstr "natija"
+
+msgid "Hamma narsa yetarli"
+msgstr "Hamma narsa yetarli"
+
+msgid "Omborda tugayotgan mahsulot yo'q"
+msgstr "Omborda tugayotgan mahsulot yo'q"
+
+msgid "Hali harakatlar yo'q"
+msgstr "Hali harakatlar yo'q"
+
+msgid "Tizimda faoliyat bo'lganda bu yerda ko'rinadi"
+msgstr "Tizimda faoliyat bo'lganda bu yerda ko'rinadi"
+
+msgid "Hozir"
+msgstr "Hozir"
+
+msgid "daq oldin"
+msgstr "daq oldin"
+
+msgid "soat oldin"
+msgstr "soat oldin"
+
+msgid "kun oldin"
+msgstr "kun oldin"
+
+msgid "Barcha status"
+msgstr "Barcha status"
+
+msgid "Kutilmoqda"
+msgstr "Kutilmoqda"
+
+msgid "Jarayonda"
+msgstr "Jarayonda"
+
+msgid "Yetkazilmoqda"
+msgstr "Yetkazilmoqda"
+
+msgid "Yetkazildi"
+msgstr "Yetkazildi"
+
+msgid "Bekor qilindi"
+msgstr "Bekor qilindi"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Buyurtmalar topilmadi"
+msgstr "Buyurtmalar topilmadi"
+
+msgid "Telegram orqali"
+msgstr "Telegram orqali"
+
+msgid "Ko'rish"
+msgstr "Ko'rish"
+
+msgid "Holatini almashtirish"
+msgstr "Holatini almashtirish"
+
+msgid "Tasdiqlangan"
+msgstr "Tasdiqlangan"
+
+msgid "Blok"
+msgstr "Blok"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Foydalanuvchilar topilmadi"
+msgstr "Foydalanuvchilar topilmadi"
+
+msgid "Do'kon"
+msgstr "Do'kon"
+
+msgid "User"
+msgstr "User"
+
+msgid "Rating"
+msgstr "Rating"
+
+msgid "Tasdiqlash"
+msgstr "Tasdiqlash"
+
+msgid "Sotuvchilar topilmadi"
+msgstr "Sotuvchilar topilmadi"
+
+msgid "Oldingi"
+msgstr "Oldingi"
+
+msgid "Keyingi"
+msgstr "Keyingi"
+
+msgid "Parent"
+msgstr "Parent"
+
+msgid "Kategoriyalar topilmadi"
+msgstr "Kategoriyalar topilmadi"
+
+msgid "Birinchi kategoriyani qo'shing"
+msgstr "Birinchi kategoriyani qo'shing"
+
+msgid "Mahsulot topilmadi"
+msgstr "Mahsulot topilmadi"
+
+msgid "Birinchi mahsulotni qo'shing"
+msgstr "Birinchi mahsulotni qo'shing"
+
+msgid "Statuslar"
+msgstr "Statuslar"
+
+msgid "Katalogdagi barcha mahsulotlar va holatlari"
+msgstr "Katalogdagi barcha mahsulotlar va holatlari"
+
+msgid "Barcha role"
+msgstr "Barcha role"
+
+msgid "Tizimga kirgan barcha foydalanuvchilar"
+msgstr "Tizimga kirgan barcha foydalanuvchilar"
+
+msgid "Sotuvchi profillari va tasdiqlash holati"
+msgstr "Sotuvchi profillari va tasdiqlash holati"
+
+msgid "Mahsulot kategoriyalarini boshqarish"
+msgstr "Mahsulot kategoriyalarini boshqarish"
+
+msgid "Buyurtmalar ro'yxati va status boshqaruvi"
+msgstr "Buyurtmalar ro'yxati va status boshqaruvi"
+
+msgid "Holat"
+msgstr "Holat"
+
+msgid "bu yerda barcha mahsulotlarni boshqarasiz."
+msgstr "bu yerda barcha mahsulotlarni boshqarasiz."
+
+msgid "Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin."
+msgstr "Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin."
+
+msgid "Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi."
+msgstr "Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi."
+
+msgid "Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash."
+msgstr "Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash."
+
+msgid "mijozlar bergan buyurtmalar."
+msgstr "mijozlar bergan buyurtmalar."
+
+msgid "Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi."
+msgstr "Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi."
+
+msgid "To'lov Telegram bot orqali amalga oshiriladi."
+msgstr "To'lov Telegram bot orqali amalga oshiriladi."
+
+msgid "UZS"
+msgstr "UZS"
+
+msgid "saytdagi barcha foydalanuvchilar. Rollar: Admin (panelni boshqaradi), Sotuvchi (mahsulot sotadi), Xaridor (mahsulot sotib oladi). Bloklash tugmasi orqali vaqtincha to'xtatish mumkin."
+msgstr "saytdagi barcha foydalanuvchilar. Rollar: Admin (panelni boshqaradi), Sotuvchi (mahsulot sotadi), Xaridor (mahsulot sotib oladi). Bloklash tugmasi orqali vaqtincha to'xtatish mumkin."
+
+msgid "marketplace da mahsulot sotuvchilar."
+msgstr "marketplace da mahsulot sotuvchilar."
+
+msgid "Tasdiqlash tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi."
+msgstr "Tasdiqlash tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi."
+
+msgid "mahsulotlar guruhlari."
+msgstr "mahsulotlar guruhlari."
+
+msgid "Har bir mahsulot bitta kategoriyaga tegishli. Ota kategoriya tanlasangiz — ichki kategoriya yaratiladi."
+msgstr "Har bir mahsulot bitta kategoriyaga tegishli. Ota kategoriya tanlasangiz — ichki kategoriya yaratiladi."
+
+msgid "Masalan: Elektronika → Telefonlar."
+msgstr "Masalan: Elektronika → Telefonlar."
+
+msgid "Buyurtma"
+msgstr "Buyurtma"
+
+msgid "Manzil"
+msgstr "Manzil"
+
+msgid "Mahsulot"
+msgstr "Mahsulot"
+
+msgid "Soni"
+msgstr "Soni"
+
+msgid "To'lov"
+msgstr "To'lov"
+
+msgid "Telegram bot orqali amalga oshiriladi"
+msgstr "Telegram bot orqali amalga oshiriladi"
+
+msgid "Buyurtma #%(id)s"
+msgstr "Buyurtma #%(id)s"
+
+msgid "saytning bosh sahifasidagi katta slider rasmlar."
+msgstr "saytning bosh sahifasidagi katta slider rasmlar."
+
+msgid "Rasm yuklang, sarlavha yozing va link qo'shing. Tartib raqami kichik bo'lgan banner birinchi ko'rinadi."
+msgstr "Rasm yuklang, sarlavha yozing va link qo'shing. Tartib raqami kichik bo'lgan banner birinchi ko'rinadi."
+
+msgid "Faol bo'lmagan bannerlar saytda ko'rinmaydi."
+msgstr "Faol bo'lmagan bannerlar saytda ko'rinmaydi."
+
+msgid "Bosh sahifadagi slider rasmlari"
+msgstr "Bosh sahifadagi slider rasmlari"
+
+msgid "Yangi banner"
+msgstr "Yangi banner"
+
+msgid "Rasm"
+msgstr "Rasm"
+
+msgid "Sarlavha"
+msgstr "Sarlavha"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Tartib"
+msgstr "Tartib"
+
+msgid "Sarlavhasiz"
+msgstr "Sarlavhasiz"
+
+msgid "Nofaol"
+msgstr "Nofaol"
+
+msgid "Hali banner qo'shilmagan"
+msgstr "Hali banner qo'shilmagan"
+
+msgid "Birinchi bannerni qo'shing"
+msgstr "Birinchi bannerni qo'shing"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Banner formasi"
+msgstr "Banner formasi"
+
+msgid "bosh sahifadagi slider bannerni sozlash uchun ishlatiladi."
+msgstr "bosh sahifadagi slider bannerni sozlash uchun ishlatiladi."
+
+msgid "Tartib kichik bo'lsa birinchi chiqadi."
+msgstr "Tartib kichik bo'lsa birinchi chiqadi."
+
+msgid "Bannerning asosiy sarlavhasi. Qisqa va aniq yozing."
+msgstr "Bannerning asosiy sarlavhasi. Qisqa va aniq yozing."
+
+msgid "Banner ostida chiqadigan qo'shimcha matn."
+msgstr "Banner ostida chiqadigan qo'shimcha matn."
+
+msgid "Keng formatdagi banner rasmi yuklang."
+msgstr "Keng formatdagi banner rasmi yuklang."
+
+msgid "Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi."
+msgstr "Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi."
+
+msgid "Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi."
+msgstr "Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi."
+
+msgid "Faol holat"
+msgstr "Faol holat"
+
+msgid "Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi."
+msgstr "Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi."
+
+msgid "Banner qo'shish"
+msgstr "Banner qo'shish"
+
+msgid "Banner tahrirlash"
+msgstr "Banner tahrirlash"
+
+msgid "Sahifa formasi"
+msgstr "Sahifa formasi"
+
+msgid "statik sahifalar uchun matn kiriting."
+msgstr "statik sahifalar uchun matn kiriting."
+
+msgid "Slug URL manzil sifatida ishlatiladi."
+msgstr "Slug URL manzil sifatida ishlatiladi."
+
+msgid "Sahifa nomi menyu va sahifada ko'rinadi."
+msgstr "Sahifa nomi menyu va sahifada ko'rinadi."
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Sahifaning URL manzili. Masalan slug biz-haqimizda bo'lsa, sahifa /page/biz-haqimizda/ manzilida ochiladi."
+msgstr "Sahifaning URL manzili. Masalan slug biz-haqimizda bo'lsa, sahifa /page/biz-haqimizda/ manzilida ochiladi."
+
+msgid "Matn"
+msgstr "Matn"
+
+msgid "Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi."
+msgstr "Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi."
+
+msgid "Meta tavsif"
+msgstr "Meta tavsif"
+
+msgid "Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali."
+msgstr "Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali."
+
+msgid "Faol bo'lsa sahifa frontendda ko'rinadi."
+msgstr "Faol bo'lsa sahifa frontendda ko'rinadi."
+
+msgid "Sahifa qo'shish"
+msgstr "Sahifa qo'shish"
+
+msgid "Sahifa tahrirlash"
+msgstr "Sahifa tahrirlash"
+
+msgid "saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar)."
+msgstr "saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar)."
+
+msgid "Slug — sahifaning URL manzili. Masalan: slug about bo'lsa, sahifa /page/about/ da ochiladi."
+msgstr "Slug — sahifaning URL manzili. Masalan: slug about bo'lsa, sahifa /page/about/ da ochiladi."
+
+msgid "Matnni yozib Saqlash bosing — saytda darhol ko'rinadi."
+msgstr "Matnni yozib Saqlash bosing — saytda darhol ko'rinadi."
+
+msgid "Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)"
+msgstr "Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)"
+
+msgid "Yangi sahifa"
+msgstr "Yangi sahifa"
+
+msgid "URL manzili"
+msgstr "URL manzili"
+
+msgid "Yangilangan"
+msgstr "Yangilangan"
+
+msgid "Saytda ko'rish"
+msgstr "Saytda ko'rish"
+
+msgid "Hali sahifa yaratilmagan"
+msgstr "Hali sahifa yaratilmagan"
+
+msgid "Birinchi sahifani yarating"
+msgstr "Birinchi sahifani yarating"
+
+msgid "Yangilik formasi"
+msgstr "Yangilik formasi"
+
+msgid "maqola matni, rasm va kategoriyani kiriting."
+msgstr "maqola matni, rasm va kategoriyani kiriting."
+
+msgid "Faol holatdagi yangiliklar frontendda ko'rinadi."
+msgstr "Faol holatdagi yangiliklar frontendda ko'rinadi."
+
+msgid "saytda chiqadigan maqolalar va yangiliklar."
+msgstr "saytda chiqadigan maqolalar va yangiliklar."
+
+msgid "Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi."
+msgstr "Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi."
+
+msgid "Faol bo'lmagan yangiliklar saytda ko'rinmaydi."
+msgstr "Faol bo'lmagan yangiliklar saytda ko'rinmaydi."
+
+msgid "Saytda ko'rinadigan yangilik va maqolalar"
+msgstr "Saytda ko'rinadigan yangilik va maqolalar"
+
+msgid "Yangi yangilik"
+msgstr "Yangi yangilik"
+
+msgid "Kategoriya"
+msgstr "Kategoriya"
+
+msgid "Kategoriyasiz"
+msgstr "Kategoriyasiz"
+
+msgid "Hali yangilik qo'shilmagan"
+msgstr "Hali yangilik qo'shilmagan"
+
+msgid "Birinchi yangilikni qo'shing"
+msgstr "Birinchi yangilikni qo'shing"
+
+msgid "saytdagi kontakt formasidan kelgan xabarlar."
+msgstr "saytdagi kontakt formasidan kelgan xabarlar."
+
+msgid "Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va O'qilgan deb belgilang."
+msgstr "Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va O'qilgan deb belgilang."
+
+msgid "Ism"
+msgstr "Ism"
+
+msgid "Mavzu"
+msgstr "Mavzu"
+
+msgid "Mavzusiz"
+msgstr "Mavzusiz"
+
+msgid "O'qilgan"
+msgstr "O'qilgan"
+
+msgid "Yangi"
+msgstr "Yangi"
+
+msgid "O'qilgan belgilash"
+msgstr "O'qilgan belgilash"
+
+msgid "Hali xabarlar yo'q"
+msgstr "Hali xabarlar yo'q"
+
+msgid "Kontakt formasi orqali kelgan xabarlar"
+msgstr "Kontakt formasi orqali kelgan xabarlar"
+
+msgid "Mahsulot formasi"
+msgstr "Mahsulot formasi"
+
+msgid "mahsulot ma'lumotlarini to'ldiring va saqlang."
+msgstr "mahsulot ma'lumotlarini to'ldiring va saqlang."
+
+msgid "Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing."
+msgstr "Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing."
+
+msgid "Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar."
+msgstr "Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar."
+
+msgid "Mahsulotning asosiy narxi. So'mda kiriting."
+msgstr "Mahsulotning asosiy narxi. So'mda kiriting."
+
+msgid "Mahsulot qaysi bo'limda ko'rinishini belgilaydi."
+msgstr "Mahsulot qaysi bo'limda ko'rinishini belgilaydi."
+
+msgid "Mahsulot egasi bo'lgan sotuvchini tanlang."
+msgstr "Mahsulot egasi bo'lgan sotuvchini tanlang."
+
+msgid "Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi."
+msgstr "Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi."
+
+msgid "Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi."
+msgstr "Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi."
+
+msgid "Qisqa matn"
+msgstr "Qisqa matn"
+
+msgid "Qisqa tavsif"
+msgstr "Qisqa tavsif"
+
+msgid "Yangilik qo'shish"
+msgstr "Yangilik qo'shish"
+
+msgid "Yangilik tahrirlash"
+msgstr "Yangilik tahrirlash"
+
+msgid "Kategoriya formasi"
+msgstr "Kategoriya formasi"
+
+msgid "mahsulotlarni guruhlash uchun kategoriya yarating yoki tahrirlang."
+msgstr "mahsulotlarni guruhlash uchun kategoriya yarating yoki tahrirlang."
+
+msgid "Ota kategoriyani tanlab ichki bo'limlar ochishingiz mumkin."
+msgstr "Ota kategoriyani tanlab ichki bo'limlar ochishingiz mumkin."
+
+msgid "Kategoriya qo'shish"
+msgstr "Kategoriya qo'shish"
+
+msgid "Kategoriya tahrirlash"
+msgstr "Kategoriya tahrirlash"
+
+msgid "Xabar"
+msgstr "Xabar"
+
+msgid "CSV yoki XLSX"
+msgstr "CSV yoki XLSX"
+
+msgid "Asosiy qilish"
+msgstr "Asosiy qilish"

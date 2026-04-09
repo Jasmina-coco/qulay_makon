@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Xabarlar{% endblock %}
+{% block title %}{% trans "Xabarlar" %}{% endblock %}
 {% block content %}
+{% trans "Ko'rish" as tip_view %}
+{% trans "O'chirish" as tip_delete %}
+{% trans "O'qilgan belgilash" as tip_mark_read %}
 <div class="page-tip" id="msgTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Xabarlar</strong> — saytdagi kontakt formasidan kelgan xabarlar.
-        Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va "O'qilgan" deb belgilang.
+        <strong>{% trans "Xabarlar" %}</strong> — {% trans "saytdagi kontakt formasidan kelgan xabarlar." %}
+        {% trans "Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va O'qilgan deb belgilang." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('msgTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -14,19 +17,19 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Xabarlar" %}</h2>
-        <p class="content-subtitle">Kontakt formasi orqali kelgan xabarlar</p>
+        <p class="content-subtitle">{% trans "Kontakt formasi orqali kelgan xabarlar" %}</p>
     </div>
 </div>
 <div class="data-table-wrapper">
     <table class="data-table">
         <thead>
             <tr>
-                <th>Ism</th>
-                <th>Email</th>
-                <th>Mavzu</th>
-                <th class="th-md">Sana</th>
-                <th class="th-sm">Holat</th>
-                <th class="th-actions">Amallar</th>
+                <th>{% trans "Ism" %}</th>
+                <th>{% trans "Email" %}</th>
+                <th>{% trans "Mavzu" %}</th>
+                <th class="th-md">{% trans "Sana" %}</th>
+                <th class="th-sm">{% trans "Holat" %}</th>
+                <th class="th-actions">{% trans "Amallar" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -37,26 +40,26 @@
                     {{ item.name }}
                 </td>
                 <td>{{ item.email }}</td>
-                <td class="{% if not item.is_read %}text-bold{% endif %}">{{ item.subject|default:"(Mavzusiz)" }}</td>
+                <td class="{% if not item.is_read %}text-bold{% endif %}">{% if item.subject %}{{ item.subject }}{% else %}({% trans "Mavzusiz" %}){% endif %}</td>
                 <td><span class="text-muted">{{ item.created_at|date:"d.m.Y H:i" }}</span></td>
                 <td>
                     {% if item.is_read %}
-                    <span class="status-badge status-draft">O'qilgan</span>
+                    <span class="status-badge status-draft">{% trans "O'qilgan" %}</span>
                     {% else %}
-                    <span class="status-badge status-active">Yangi</span>
+                    <span class="status-badge status-active">{% trans "Yangi" %}</span>
                     {% endif %}
                 </td>
                 <td>
                     <div class="action-btns">
-                        <a href="{% url 'message_detail' item.id %}" class="btn-action btn-action-view" title="Ko'rish">
+                        <a href="{% url 'message_detail' item.id %}" class="btn-action btn-action-view" title="{{ tip_view }}">
                             <i class="fas fa-eye"></i>
                         </a>
                         {% if not item.is_read %}
-                        <a href="{% url 'message_mark_read' item.id %}" class="btn-action btn-action-edit" title="O'qilgan belgilash">
+                        <a href="{% url 'message_mark_read' item.id %}" class="btn-action btn-action-edit" title="{{ tip_mark_read }}">
                             <i class="fas fa-check"></i>
                         </a>
                         {% endif %}
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'message_delete' item.id %}', '{{ item.subject|default:item.name }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'message_delete' item.id %}', '{{ item.subject|default:item.name|escapejs }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -66,7 +69,7 @@
             <tr>
                 <td colspan="6" class="empty-state">
                     <i class="fas fa-envelope-open-text"></i>
-                    <p>Hali xabarlar yo'q</p>
+                    <p>{% trans "Hali xabarlar yo'q" %}</p>
                 </td>
             </tr>
             {% endfor %}

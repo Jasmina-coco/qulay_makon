@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div class="page-tip" id="bannerFormTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Banner formasi</strong> — bosh sahifadagi slider bannerni sozlash uchun ishlatiladi.
-        Tartib kichik bo'lsa birinchi chiqadi.
+        <strong>{% trans "Banner formasi" %}</strong> — {% trans "bosh sahifadagi slider bannerni sozlash uchun ishlatiladi." %}
+        {% trans "Tartib kichik bo'lsa birinchi chiqadi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('bannerFormTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,41 +16,41 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-            <label>Sarlavha
+            <label>{% trans "Sarlavha" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Bannerning asosiy sarlavhasi. Qisqa va aniq yozing.</span>
+                    <span class="tip-text">{% trans "Bannerning asosiy sarlavhasi. Qisqa va aniq yozing." %}</span>
                 </span>
             </label>
             {{ form.title }}
         </div>
         <div class="form-group">
-            <label>Qisqa matn
+            <label>{% trans "Qisqa matn" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Banner ostida chiqadigan qo'shimcha matn.</span>
+                    <span class="tip-text">{% trans "Banner ostida chiqadigan qo'shimcha matn." %}</span>
                 </span>
             </label>
             {{ form.subtitle }}
         </div>
         <div class="form-group">
-            <label>Rasm
+            <label>{% trans "Rasm" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Keng formatdagi banner rasmi yuklang.</span>
+                    <span class="tip-text">{% trans "Keng formatdagi banner rasmi yuklang." %}</span>
                 </span>
             </label>
             {{ form.image }}
         </div>
         <div class="form-group">
-            <label>Link
+            <label>{% trans "Link" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi.</span>
+                    <span class="tip-text">{% trans "Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi." %}</span>
                 </span>
             </label>
             {{ form.link }}
         </div>
         <div class="form-group">
-            <label>Tartib
+            <label>{% trans "Tartib" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi.</span>
+                    <span class="tip-text">{% trans "Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi." %}</span>
                 </span>
             </label>
             {{ form.order }}
@@ -57,15 +58,15 @@
         <div class="form-group">
             <label class="checkbox-label">
                 {{ form.is_active }}
-                <span>Faol holat
+                <span>{% trans "Faol holat" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi.</span>
+                        <span class="tip-text">{% trans "Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi." %}</span>
                     </span>
                 </span>
             </label>
         </div>
-        <button class="btn btn-primary" type="submit">Saqlash</button>
-        <a class="btn btn-secondary" href="{% url 'banner_list' %}">Ortga</a>
+        <button class="btn btn-primary" type="submit">{% trans "Saqlash" %}</button>
+        <a class="btn btn-secondary" href="{% url 'banner_list' %}">{% trans "Orqaga" %}</a>
     </form>
 </div>
 {% endblock %}

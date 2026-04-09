@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Yangiliklar{% endblock %}
+{% block title %}{% trans "Yangiliklar" %}{% endblock %}
 {% block content %}
+{% trans "O'chirish" as tip_delete %}
 <div class="page-tip" id="newsTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Yangiliklar</strong> — saytda chiqadigan maqolalar va yangiliklar.
-        Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi.
-        "Faol" bo'lmagan yangiliklar saytda ko'rinmaydi.
+        <strong>{% trans "Yangiliklar" %}</strong> — {% trans "saytda chiqadigan maqolalar va yangiliklar." %}
+        {% trans "Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi." %}
+        {% trans "Faol bo'lmagan yangiliklar saytda ko'rinmaydi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('newsTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,22 +16,22 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Yangiliklar" %}</h2>
-        <p class="content-subtitle">Saytda ko'rinadigan yangilik va maqolalar</p>
+        <p class="content-subtitle">{% trans "Saytda ko'rinadigan yangilik va maqolalar" %}</p>
     </div>
     <a href="{% url 'news_create' %}" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Yangi yangilik
+        <i class="fas fa-plus"></i> {% trans "Yangi yangilik" %}
     </a>
 </div>
 <div class="data-table-wrapper">
     <table class="data-table">
         <thead>
             <tr>
-                <th class="th-xs">Rasm</th>
-                <th>Sarlavha</th>
-                <th class="th-sm">Kategoriya</th>
-                <th class="th-md">Sana</th>
-                <th class="th-sm">Holat</th>
-                <th class="th-actions">Amallar</th>
+                <th class="th-xs">{% trans "Rasm" %}</th>
+                <th>{% trans "Sarlavha" %}</th>
+                <th class="th-sm">{% trans "Kategoriya" %}</th>
+                <th class="th-md">{% trans "Sana" %}</th>
+                <th class="th-sm">{% trans "Holat" %}</th>
+                <th class="th-actions">{% trans "Amallar" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,21 +48,21 @@
                     <strong>{{ item.title }}</strong>
                     <br><small class="text-muted">{{ item.short_description|default:item.content|striptags|truncatewords:8 }}</small>
                 </td>
-                <td><span class="slug-badge">{{ item.category|default:"Kategoriyasiz" }}</span></td>
+                <td><span class="slug-badge">{% if item.category %}{{ item.category }}{% else %}{% trans "Kategoriyasiz" %}{% endif %}</span></td>
                 <td><span class="text-muted">{{ item.created_at|date:"d.m.Y H:i" }}</span></td>
                 <td>
                     {% if item.is_active %}
-                    <span class="status-badge status-active">Faol</span>
+                    <span class="status-badge status-active">{% trans "Faol" %}</span>
                     {% else %}
-                    <span class="status-badge status-draft">Nofaol</span>
+                    <span class="status-badge status-draft">{% trans "Nofaol" %}</span>
                     {% endif %}
                 </td>
                 <td>
                     <div class="action-btns">
-                        <a href="{% url 'news_edit' item.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                        <a href="{% url 'news_edit' item.id %}" class="btn-action btn-action-edit" title="{% trans 'Tahrirlash' %}">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'news_delete' item.id %}', '{{ item.title }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'news_delete' item.id %}', '{{ item.title|escapejs }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -71,8 +72,8 @@
             <tr>
                 <td colspan="6" class="empty-state">
                     <i class="fas fa-newspaper"></i>
-                    <p>Hali yangilik qo'shilmagan</p>
-                    <a href="{% url 'news_create' %}" class="btn btn-sm btn-primary">Birinchi yangilikni qo'shing</a>
+                    <p>{% trans "Hali yangilik qo'shilmagan" %}</p>
+                    <a href="{% url 'news_create' %}" class="btn btn-sm btn-primary">{% trans "Birinchi yangilikni qo'shing" %}</a>
                 </td>
             </tr>
             {% endfor %}

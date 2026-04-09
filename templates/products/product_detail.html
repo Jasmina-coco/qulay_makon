@@ -2,6 +2,8 @@
 {% load i18n %}
 {% block title %}{% trans "Mahsulot" %}{% endblock %}
 {% block content %}
+{% trans "Asosiy qilish" as tip_set_main %}
+{% trans "O'chirish" as tip_delete %}
 <div class="card">
     <h1>{{ product.name }}</h1>
     <p>{{ product.description }}</p>
@@ -26,13 +28,13 @@
             <img src="{{ img.image.url }}" alt="{{ product.name }}">
             <div class="image-overlay">
                 {% if not img.is_main %}
-                <button class="btn-icon btn-sm" onclick="setMainImage({{ product.id }}, {{ img.id }})" title="Asosiy qilish">
+                <button class="btn-icon btn-sm" onclick="setMainImage({{ product.id }}, {{ img.id }})" title="{{ tip_set_main }}">
                     <i class="fas fa-star"></i>
                 </button>
                 {% else %}
                 <span class="main-badge"><i class="fas fa-star"></i> {% trans "Asosiy" %}</span>
                 {% endif %}
-                <button class="btn-icon btn-sm btn-danger" onclick="deleteImage({{ product.id }}, {{ img.id }})" title="O'chirish">
+                <button class="btn-icon btn-sm btn-danger" onclick="deleteImage({{ product.id }}, {{ img.id }})" title="{{ tip_delete }}">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>

@@ -2,12 +2,13 @@
 {% load i18n %}
 {% block title %}{% trans "Kategoriyalar" %}{% endblock %}
 {% block content %}
+{% trans "O'chirish" as tip_delete %}
 <div class="page-tip" id="catTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Kategoriyalar</strong> — mahsulotlar guruhlari.
-        Har bir mahsulot bitta kategoriyaga tegishli. "Ota kategoriya" tanlasangiz — ichki kategoriya yaratiladi.
-        Masalan: Elektronika → Telefonlar.
+        <strong>{% trans "Kategoriyalar" %}</strong> — {% trans "mahsulotlar guruhlari." %}
+        {% trans "Har bir mahsulot bitta kategoriyaga tegishli. Ota kategoriya tanlasangiz — ichki kategoriya yaratiladi." %}
+        {% trans "Masalan: Elektronika → Telefonlar." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('catTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,7 +16,7 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Kategoriyalar" %}</h2>
-        <p class="content-subtitle">Mahsulot kategoriyalarini boshqarish</p>
+        <p class="content-subtitle">{% trans "Mahsulot kategoriyalarini boshqarish" %}</p>
     </div>
     <a class="btn btn-primary" href="{% url 'category_create' %}">
         <i class="fas fa-plus"></i> {% trans "Qo'shish" %}
@@ -23,7 +24,7 @@
 </div>
 <div class="data-table-wrapper">
     <table class="data-table">
-        <thead><tr><th>{% trans "Nomi" %}</th><th>Slug</th><th>Parent</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Nomi" %}</th><th>{% trans "Slug" %}</th><th>{% trans "Parent" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for category in page_obj %}
             <tr>
@@ -34,13 +35,13 @@
                     </div>
                 </td>
                 <td><code class="slug-badge">{{ category.slug }}</code></td>
-                <td>{{ category.parent|default:"Asosiy" }}</td>
+                <td>{% if category.parent %}{{ category.parent }}{% else %}{% trans "Asosiy" %}{% endif %}</td>
                 <td>
                     <div class="action-btns">
                         <a class="btn-action btn-action-edit" href="{% url 'category_edit' category.id %}" title="{% trans 'Tahrirlash' %}">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'category_delete' category.id %}', '{{ category.name }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'category_delete' category.id %}', '{{ category.name }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>

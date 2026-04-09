@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Sahifalar{% endblock %}
+{% block title %}{% trans "Sahifalar" %}{% endblock %}
 {% block content %}
+{% trans "O'chirish" as tip_delete %}
+{% trans "Saytda ko'rish" as tip_site_view %}
 <div class="page-tip" id="pageTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Sahifalar</strong> — saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar).
-        <strong>Slug</strong> — sahifaning URL manzili. Masalan: slug "about" bo'lsa, sahifa /page/about/ da ochiladi.
-        Matnni yozib "Saqlash" bosing — saytda darhol ko'rinadi.
+        <strong>{% trans "Sahifalar" %}</strong> — {% trans "saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar)." %}
+        {% trans "Slug — sahifaning URL manzili. Masalan: slug about bo'lsa, sahifa /page/about/ da ochiladi." %}
+        {% trans "Matnni yozib Saqlash bosing — saytda darhol ko'rinadi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('pageTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,10 +17,10 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Sahifalar" %}</h2>
-        <p class="content-subtitle">Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)</p>
+        <p class="content-subtitle">{% trans "Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)" %}</p>
     </div>
     <a href="{% url 'page_create' %}" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Yangi sahifa
+        <i class="fas fa-plus"></i> {% trans "Yangi sahifa" %}
     </a>
 </div>
 
@@ -26,11 +28,11 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th>Sarlavha</th>
-                <th>URL manzili</th>
-                <th class="th-sm">Holat</th>
-                <th class="th-md">Yangilangan</th>
-                <th class="th-actions">Amallar</th>
+                <th>{% trans "Sarlavha" %}</th>
+                <th>{% trans "URL manzili" %}</th>
+                <th class="th-sm">{% trans "Holat" %}</th>
+                <th class="th-md">{% trans "Yangilangan" %}</th>
+                <th class="th-actions">{% trans "Amallar" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,24 +49,24 @@
                 </td>
                 <td>
                     <code class="slug-badge">/page/{{ page.slug }}/</code>
-                    <a href="/page/{{ page.slug }}/" target="_blank" class="btn-action-mini" title="Saytda ko'rish">
+                    <a href="/page/{{ page.slug }}/" target="_blank" class="btn-action-mini" title="{{ tip_site_view }}">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                 </td>
                 <td>
                     {% if page.is_active %}
-                    <span class="status-badge status-active">Faol</span>
+                    <span class="status-badge status-active">{% trans "Faol" %}</span>
                     {% else %}
-                    <span class="status-badge status-draft">Nofaol</span>
+                    <span class="status-badge status-draft">{% trans "Nofaol" %}</span>
                     {% endif %}
                 </td>
                 <td><span class="text-muted">{{ page.updated_at|date:"d.m.Y H:i" }}</span></td>
                 <td>
                     <div class="action-btns">
-                        <a href="{% url 'page_edit' page.id %}" class="btn-action btn-action-edit" title="Tahrirlash">
+                        <a href="{% url 'page_edit' page.id %}" class="btn-action btn-action-edit" title="{% trans 'Tahrirlash' %}">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'page_delete' page.id %}', '{{ page.title }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'page_delete' page.id %}', '{{ page.title|escapejs }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -74,8 +76,8 @@
             <tr>
                 <td colspan="5" class="empty-state">
                     <i class="fas fa-file-alt"></i>
-                    <p>Hali sahifa yaratilmagan</p>
-                    <a href="{% url 'page_create' %}" class="btn btn-sm btn-primary">Birinchi sahifani yarating</a>
+                    <p>{% trans "Hali sahifa yaratilmagan" %}</p>
+                    <a href="{% url 'page_create' %}" class="btn btn-sm btn-primary">{% trans "Birinchi sahifani yarating" %}</a>
                 </td>
             </tr>
             {% endfor %}

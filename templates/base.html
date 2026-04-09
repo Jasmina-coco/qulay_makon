@@ -16,8 +16,8 @@
                     <i class="fas fa-home"></i>
                 </div>
                 <div class="brand-text">
-                    <h2>Qulay Makon</h2>
-                    <span>Boshqaruv paneli</span>
+                    <h2>{% trans "Qulay Makon" %}</h2>
+                    <span>{% trans "Boshqaruv paneli" %}</span>
                 </div>
             </div>
         </div>
@@ -25,9 +25,9 @@
             <a href="{% url 'dashboard' %}" class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
                 <i class="fas fa-tachometer-alt"></i><span>{% trans "Dashboard" %}</span>
             </a>
-            <div class="nav-section">
+            <div class="nav-section" data-sidebar-section="management">
                 <button class="nav-section-toggle" type="button" onclick="toggleSection(this)">
-                    <span class="nav-label">Boshqaruv</span>
+                    <span class="nav-label">{% trans "Boshqaruv" %}</span>
                     <i class="fas fa-chevron-down nav-section-arrow"></i>
                 </button>
                 <div class="nav-section-items">
@@ -49,23 +49,23 @@
                 </div>
             </div>
 
-            <div class="nav-section">
+            <div class="nav-section" data-sidebar-section="site">
                 <button class="nav-section-toggle" type="button" onclick="toggleSection(this)">
-                    <span class="nav-label">Sayt</span>
+                    <span class="nav-label">{% trans "Sayt" %}</span>
                     <i class="fas fa-chevron-down nav-section-arrow"></i>
                 </button>
                 <div class="nav-section-items">
                     <a href="{% url 'banner_list' %}" class="nav-link {% if 'banner' in request.resolver_match.url_name %}active{% endif %}">
-                        <i class="fas fa-images"></i><span>Bannerlar</span>
+                        <i class="fas fa-images"></i><span>{% trans "Bannerlar" %}</span>
                     </a>
                     <a href="{% url 'page_list' %}" class="nav-link {% if 'page' in request.resolver_match.url_name %}active{% endif %}">
-                        <i class="fas fa-file-alt"></i><span>Sahifalar</span>
+                        <i class="fas fa-file-alt"></i><span>{% trans "Sahifalar" %}</span>
                     </a>
                     <a href="{% url 'news_admin_list' %}" class="nav-link {% if 'news' in request.resolver_match.url_name %}active{% endif %}">
-                        <i class="fas fa-newspaper"></i><span>Yangiliklar</span>
+                        <i class="fas fa-newspaper"></i><span>{% trans "Yangiliklar" %}</span>
                     </a>
                     <a href="{% url 'message_list' %}" class="nav-link {% if 'message' in request.resolver_match.url_name %}active{% endif %}">
-                        <i class="fas fa-envelope"></i><span>Xabarlar</span>
+                        <i class="fas fa-envelope"></i><span>{% trans "Xabarlar" %}</span>
                     </a>
                 </div>
             </div>
@@ -74,7 +74,7 @@
             <div class="nav-section">
                 <a href="/super-admin/" class="nav-link" style="border:1px solid rgba(245,158,11,0.2);margin:8px 10px;border-radius:8px;">
                     <i class="fas fa-crown" style="color:#f59e0b;"></i>
-                    <span style="color:#f59e0b;">Super Admin</span>
+                    <span style="color:#f59e0b;">{% trans "Super Admin" %}</span>
                 </a>
             </div>
             {% endif %}
@@ -84,7 +84,12 @@
                 <span class="user-avatar-mini">{{ request.user.username|first|upper }}</span>
                 <div class="user-info-mini">
                     <span>{{ request.user.username }}</span>
-                    <small>{{ request.user.role }}</small>
+                    <small>
+                        {% if request.user.role == 'admin' %}{% trans "Admin" %}
+                        {% elif request.user.role == 'seller' %}{% trans "Sotuvchi" %}
+                        {% else %}{% trans "Xaridor" %}
+                        {% endif %}
+                    </small>
                 </div>
             </div>
             <a href="{% url 'logout' %}" class="nav-link logout-link">
@@ -92,6 +97,7 @@
             </a>
         </div>
     </aside>
+    <div id="admin-i18n" hidden data-no-search-results="{% filter escapejs %}{% trans "Natijalar topilmadi" %}{% endfilter %}" data-load-error="{% filter escapejs %}{% trans "Ma'lumot yuklashda xato" %}{% endfilter %}" data-search-error="{% filter escapejs %}{% trans "Xatolik yuz berdi" %}{% endfilter %}"></div>
 
     <main class="main-content" id="mainContent">
         <header class="topbar">

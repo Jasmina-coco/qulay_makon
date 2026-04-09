@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div class="page-tip" id="pageFormTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Sahifa formasi</strong> — statik sahifalar uchun matn kiriting.
-        Slug URL manzil sifatida ishlatiladi.
+        <strong>{% trans "Sahifa formasi" %}</strong> — {% trans "statik sahifalar uchun matn kiriting." %}
+        {% trans "Slug URL manzil sifatida ishlatiladi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('pageFormTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,33 +16,33 @@
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label>Sarlavha
+            <label>{% trans "Sarlavha" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Sahifa nomi menyu va sahifada ko'rinadi.</span>
+                    <span class="tip-text">{% trans "Sahifa nomi menyu va sahifada ko'rinadi." %}</span>
                 </span>
             </label>
             {{ form.title }}
         </div>
         <div class="form-group">
-            <label>Slug
+            <label>{% trans "Slug" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Sahifaning URL manzili. Masalan: "biz-haqimizda" → /page/biz-haqimizda/</span>
+                    <span class="tip-text">{% trans "Sahifaning URL manzili. Masalan slug biz-haqimizda bo'lsa, sahifa /page/biz-haqimizda/ manzilida ochiladi." %}</span>
                 </span>
             </label>
             {{ form.slug }}
         </div>
         <div class="form-group">
-            <label>Matn
+            <label>{% trans "Matn" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi.</span>
+                    <span class="tip-text">{% trans "Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi." %}</span>
                 </span>
             </label>
             {{ form.content }}
         </div>
         <div class="form-group">
-            <label>Meta tavsif
+            <label>{% trans "Meta tavsif" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali.</span>
+                    <span class="tip-text">{% trans "Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali." %}</span>
                 </span>
             </label>
             {{ form.meta_description }}
@@ -49,15 +50,15 @@
         <div class="form-group">
             <label class="checkbox-label">
                 {{ form.is_active }}
-                <span>Faol holat
+                <span>{% trans "Faol holat" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Faol bo'lsa sahifa frontendda ko'rinadi.</span>
+                        <span class="tip-text">{% trans "Faol bo'lsa sahifa frontendda ko'rinadi." %}</span>
                     </span>
                 </span>
             </label>
         </div>
-        <button class="btn btn-primary" type="submit">Saqlash</button>
-        <a class="btn btn-secondary" href="{% url 'page_list' %}">Ortga</a>
+        <button class="btn btn-primary" type="submit">{% trans "Saqlash" %}</button>
+        <a class="btn btn-secondary" href="{% url 'page_list' %}">{% trans "Orqaga" %}</a>
     </form>
 </div>
 {% endblock %}

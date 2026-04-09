@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import CustomUser
 from products.models import Product
@@ -6,11 +7,11 @@ from products.models import Product
 
 class Order(models.Model):
     STATUS_CHOICES = (
-        ("pending", "Kutilmoqda"),
-        ("processing", "Jarayonda"),
-        ("shipped", "Yetkazilmoqda"),
-        ("delivered", "Yetkazildi"),
-        ("cancelled", "Bekor qilindi"),
+        ("pending", _("Kutilmoqda")),
+        ("processing", _("Jarayonda")),
+        ("shipped", _("Yetkazilmoqda")),
+        ("delivered", _("Yetkazildi")),
+        ("cancelled", _("Bekor qilindi")),
     )
 
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="orders")

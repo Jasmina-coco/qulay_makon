@@ -20,12 +20,11 @@ function toggleSection(btn) {
     if (!section) return;
     section.classList.toggle("collapsed");
 
-    const label = btn.querySelector(".nav-label")?.textContent.trim();
+    const key = section.dataset.sidebarSection;
+    if (!key) return;
     const collapsed = JSON.parse(localStorage.getItem("sidebarSections") || "{}");
-    if (label) {
-        collapsed[label] = section.classList.contains("collapsed");
-        localStorage.setItem("sidebarSections", JSON.stringify(collapsed));
-    }
+    collapsed[key] = section.classList.contains("collapsed");
+    localStorage.setItem("sidebarSections", JSON.stringify(collapsed));
 }
 
 async function fetchJson(url, options = {}) {
@@ -255,7 +254,8 @@ async function fetchAndReplace(url, targetSelector, pushState = true) {
         }
     } catch (err) {
         console.warn("Xato:", err);
-        showToast("Ma'lumot yuklashda xato", "error");
+        const i18n = document.getElementById("admin-i18n");
+        showToast(i18n?.dataset?.loadError || "", "error");
     }
 }
 
@@ -300,8 +300,10 @@ function bindAjaxFilters() {
 function renderGlobalSearchResults(items) {
     const resultsEl = document.getElementById("globalSearchResults");
     if (!resultsEl) return;
+    const i18n = document.getElementById("admin-i18n");
+    const emptyText = i18n?.dataset?.noSearchResults || "";
     if (!items.length) {
-        resultsEl.innerHTML = '<div class="search-empty">No results</div>';
+        resultsEl.innerHTML = `<div class="search-empty">${emptyText}</div>`;
         resultsEl.classList.add("show");
         return;
     }
@@ -326,14 +328,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const collapsed = JSON.parse(localStorage.getItem("sidebarSections") || "{}");
-    document.querySelectorAll(".nav-section").forEach((section) => {
-        const label = section.querySelector(".nav-label")?.textContent.trim();
+    document.querySelectorAll(".nav-section[data-sidebar-section]").forEach((section) => {
+        const key = section.dataset.sidebarSection;
         const hasActive = section.querySelector(".nav-link.active");
-
         if (hasActive) {
             section.classList.remove("collapsed");
-        } else if (label && collapsed[label]) {
+        } else if (collapsed[key] === true) {
             section.classList.add("collapsed");
+        } else {
+            section.classList.remove("collapsed");
         }
     });
 
@@ -355,7 +358,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 renderGlobalSearchResults(payload.results || []);
             } catch (err) {
                 console.warn("Xato:", err);
-                globalSearchResults.innerHTML = '<div class="search-empty">Xatolik yuz berdi</div>';
+                const i18n = document.getElementById("admin-i18n");
+                const errText = i18n?.dataset?.searchError || "";
+                globalSearchResults.innerHTML = `<div class="search-empty">${errText}</div>`;
                 globalSearchResults.classList.add("show");
             }
         }, 250);

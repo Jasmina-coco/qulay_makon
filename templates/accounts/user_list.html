@@ -2,12 +2,12 @@
 {% load i18n %}
 {% block title %}{% trans "Foydalanuvchilar" %}{% endblock %}
 {% block content %}
+{% trans "Ko'rish" as tip_view %}
 <div class="page-tip" id="userTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Foydalanuvchilar</strong> — saytdagi barcha foydalanuvchilar.
-        Rollar: <strong>Admin</strong> = panelni boshqaradi, <strong>Sotuvchi</strong> = mahsulot sotadi, <strong>Xaridor</strong> = mahsulot sotib oladi.
-        Foydalanuvchini "Bloklash" tugmasini bosib vaqtincha to'xtatish mumkin.
+        <strong>{% trans "Foydalanuvchilar" %}</strong> —
+        {% trans "saytdagi barcha foydalanuvchilar. Rollar: Admin (panelni boshqaradi), Sotuvchi (mahsulot sotadi), Xaridor (mahsulot sotib oladi). Bloklash tugmasi orqali vaqtincha to'xtatish mumkin." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('userTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,14 +15,14 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Foydalanuvchilar" %}</h2>
-        <p class="content-subtitle">Tizimga kirgan barcha foydalanuvchilar</p>
+        <p class="content-subtitle">{% trans "Tizimga kirgan barcha foydalanuvchilar" %}</p>
     </div>
 </div>
 <form class="filters" method="get" data-ajax-filter="true" data-target="#userListContainer">
     <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
     <select name="role">
         <option value="">{% trans "Barcha role" %}</option>
-        <option value="admin" {% if role == 'admin' %}selected{% endif %}>Admin</option>
+        <option value="admin" {% if role == 'admin' %}selected{% endif %}>{% trans "Admin" %}</option>
         <option value="seller" {% if role == 'seller' %}selected{% endif %}>{% trans "Sotuvchi" %}</option>
         <option value="buyer" {% if role == 'buyer' %}selected{% endif %}>{% trans "Xaridor" %}</option>
     </select>
@@ -31,7 +31,7 @@
 <div id="userListContainer">
 <div class="data-table-wrapper">
     <table class="data-table">
-        <thead><tr><th>{% trans "Username" %}</th><th>Email</th><th>Role</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Username" %}</th><th>{% trans "Email" %}</th><th>{% trans "Role" %}</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for item in page_obj %}
             <tr>
@@ -44,7 +44,7 @@
                 <td><span class="status-badge {% if item.is_active %}status-active{% else %}status-cancelled{% endif %}">{% if item.is_active %}{% trans "Faol" %}{% else %}{% trans "Blok" %}{% endif %}</span></td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-action btn-action-view" href="{% url 'user_detail' item.id %}" title="Ko'rish">
+                        <a class="btn-action btn-action-view" href="{% url 'user_detail' item.id %}" title="{{ tip_view }}">
                             <i class="fas fa-eye"></i>
                         </a>
                         <button type="button" class="btn-action btn-action-toggle" onclick="toggleUserActive({{ item.id }})" title="{% trans 'Holatini almashtirish' %}">

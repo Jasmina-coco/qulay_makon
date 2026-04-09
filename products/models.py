@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import CustomUser
 
@@ -22,10 +23,10 @@ class Category(models.Model):
 
 class Product(models.Model):
     STATUS_CHOICES = (
-        ("active", "Faol"),
-        ("pending", "Kutilmoqda"),
-        ("rejected", "Rad etilgan"),
-        ("draft", "Qoralama"),
+        ("active", _("Faol")),
+        ("pending", _("Kutilmoqda")),
+        ("rejected", _("Rad etilgan")),
+        ("draft", _("Qoralama")),
     )
 
     name = models.CharField(max_length=300)

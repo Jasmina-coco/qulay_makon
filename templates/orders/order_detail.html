@@ -7,13 +7,13 @@
     <p>{% trans "Mijoz" %}: {{ order.user.username }}</p>
     <p>{% trans "Telefon" %}: {{ order.phone }}</p>
     <p>{% trans "Manzil" %}: {{ order.address }}</p>
-    <p>{% trans "Holati" %}: <span class="status-badge status-{{ order.status }}">{{ order.status }}</span></p>
+    <p>{% trans "Holati" %}: <span class="status-badge status-{{ order.status }}">{{ order.get_status_display }}</span></p>
 </div>
 <div class="info-box-telegram">
     <i class="fab fa-telegram"></i>
     <div>
-        <strong>To'lov</strong>
-        <p>Telegram bot orqali amalga oshiriladi</p>
+        <strong>{% trans "To'lov" %}</strong>
+        <p>{% trans "Telegram bot orqali amalga oshiriladi" %}</p>
     </div>
 </div>
 <div class="data-table-wrapper">
@@ -26,6 +26,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'order_delete' order.id %}', '{% trans "Buyurtma" %} #{{ order.id }}')">{% trans "O'chirish" %}</button>
+    <button class="btn btn-danger btn-sm" onclick="confirmDelete('{% url 'order_delete' order.id %}', '{% filter escapejs %}{% blocktrans with id=order.id %}Buyurtma #{{ id }}{% endblocktrans %}{% endfilter %}')">{% trans "O'chirish" %}</button>
 </div>
 {% endblock %}

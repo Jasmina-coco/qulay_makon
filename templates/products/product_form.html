@@ -5,8 +5,8 @@
 <div class="page-tip" id="productFormTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Mahsulot formasi</strong> — mahsulot ma'lumotlarini to'ldiring va saqlang.
-        Faol holatdagi mahsulotlar frontend katalogda ko'rinadi.
+        <strong>{% trans "Mahsulot formasi" %}</strong> — {% trans "mahsulot ma'lumotlarini to'ldiring va saqlang." %}
+        {% trans "Faol holatdagi mahsulotlar frontend katalogda ko'rinadi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('productFormTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -28,7 +28,7 @@
             <div class="form-group form-col-8">
                 <label>{% trans "Nomi" %} *
                     <span class="tip-icon">i
-                        <span class="tip-text">Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing.</span>
+                        <span class="tip-text">{% trans "Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing." %}</span>
                     </span>
                 </label>
                 <input type="text" name="name" class="form-control" value="{{ product.name|default:'' }}" required>
@@ -36,7 +36,7 @@
             <div class="form-group form-col-4">
                 <label>{% trans "Holati" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Faol = saytda ko'rinadi. Kutilmoqda = admin tasdiqlashini kutadi. Qoralama = saytda ko'rinmaydi.</span>
+                        <span class="tip-text">{% trans "Faol = saytda ko'rinadi. Kutilmoqda = admin tasdiqlashini kutadi. Qoralama = saytda ko'rinmaydi." %}</span>
                     </span>
                 </label>
                 <select name="status" class="form-control">
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label>{% trans "Tavsif" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar.</span>
+                    <span class="tip-text">{% trans "Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar." %}</span>
                 </span>
             </label>
             <textarea name="description" class="form-control" rows="4">{{ product.description|default:'' }}</textarea>
@@ -61,7 +61,7 @@
             <div class="form-group form-col-4">
                 <label>{% trans "Narxi" %} (UZS) *
                     <span class="tip-icon">i
-                        <span class="tip-text">Mahsulotning asosiy narxi. So'mda kiriting.</span>
+                        <span class="tip-text">{% trans "Mahsulotning asosiy narxi. So'mda kiriting." %}</span>
                     </span>
                 </label>
                 <input type="number" name="price" class="form-control" value="{{ product.price|default:'' }}" required>
@@ -69,7 +69,7 @@
             <div class="form-group form-col-4">
                 <label>{% trans "Chegirma narxi" %} (UZS)
                     <span class="tip-icon">i
-                        <span class="tip-text">Agar chegirma bo'lsa, eski narxni yozing. Bo'sh qoldirsangiz chegirma ko'rsatilmaydi.</span>
+                        <span class="tip-text">{% trans "Agar chegirma bo'lsa, eski narxni yozing. Bo'sh qoldirsangiz chegirma ko'rsatilmaydi." %}</span>
                     </span>
                 </label>
                 <input type="number" name="discount_price" class="form-control" value="{{ product.discount_price|default:'' }}">
@@ -77,7 +77,7 @@
             <div class="form-group form-col-4">
                 <label>{% trans "Ombordagi soni" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Qancha dona mavjudligini kiriting. 0 bo'lsa mahsulot tugagan deb hisoblanadi.</span>
+                        <span class="tip-text">{% trans "Qancha dona mavjudligini kiriting. 0 bo'lsa mahsulot tugagan deb hisoblanadi." %}</span>
                     </span>
                 </label>
                 <input type="number" name="stock" class="form-control" value="{{ product.stock|default:0 }}">
@@ -88,7 +88,7 @@
             <div class="form-group form-col-6">
                 <label>{% trans "Kategoriya" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Mahsulot qaysi bo'limda ko'rinishini belgilaydi.</span>
+                        <span class="tip-text">{% trans "Mahsulot qaysi bo'limda ko'rinishini belgilaydi." %}</span>
                     </span>
                 </label>
                 <select name="category" class="form-control">
@@ -101,7 +101,7 @@
             <div class="form-group form-col-6">
                 <label>{% trans "Sotuvchi" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Mahsulot egasi bo'lgan sotuvchini tanlang.</span>
+                        <span class="tip-text">{% trans "Mahsulot egasi bo'lgan sotuvchini tanlang." %}</span>
                     </span>
                 </label>
                 <select name="seller" class="form-control">
@@ -117,7 +117,7 @@
                 <input type="checkbox" name="is_featured" {% if product.is_featured %}checked{% endif %}>
                 <span>{% trans "Tavsiya etilgan mahsulot" %}
                     <span class="tip-icon">i
-                        <span class="tip-text">Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi.</span>
+                        <span class="tip-text">{% trans "Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi." %}</span>
                     </span>
                 </span>
             </label>
@@ -127,7 +127,7 @@
         <div class="form-group">
             <label>{% trans "Rasmlar" %}
                 <span class="tip-icon">i
-                    <span class="tip-text">Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi.</span>
+                    <span class="tip-text">{% trans "Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi." %}</span>
                 </span>
             </label>
             <div class="upload-area">

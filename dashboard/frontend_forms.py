@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from frontend.models import Banner, News, Page
 
@@ -27,3 +28,12 @@ class NewsForm(forms.ModelForm):
             "image",
             "is_active",
         ]
+        labels = {
+            "title": _("Sarlavha"),
+            "slug": _("Slug"),
+            "category": _("Kategoriya"),
+            "short_description": _("Qisqa tavsif"),
+            "content": _("Matn"),
+            "image": _("Rasm"),
+            "is_active": _("Faol holat"),
+        }

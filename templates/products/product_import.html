@@ -28,7 +28,7 @@
     <form method="post" enctype="multipart/form-data" class="import-form">
         {% csrf_token %}
         <div class="form-group">
-            <label>{% trans "Fayl tanlang" %} (CSV yoki XLSX)</label>
+            <label>{% trans "Fayl tanlang" %} ({% trans "CSV yoki XLSX" %})</label>
             <input type="file" name="file" accept=".csv,.xlsx,.xls" class="form-control" required>
         </div>
         <div class="form-actions">

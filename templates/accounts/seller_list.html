@@ -5,8 +5,8 @@
 <div class="page-tip" id="sellerTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Sotuvchilar</strong> — marketplace da mahsulot sotuvchilar.
-        "Tasdiqlash" tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi.
+        <strong>{% trans "Sotuvchilar" %}</strong> — {% trans "marketplace da mahsulot sotuvchilar." %}
+        {% trans "Tasdiqlash tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('sellerTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -14,12 +14,12 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Sotuvchilar" %}</h2>
-        <p class="content-subtitle">Sotuvchi profillari va tasdiqlash holati</p>
+        <p class="content-subtitle">{% trans "Sotuvchi profillari va tasdiqlash holati" %}</p>
     </div>
 </div>
 <div class="data-table-wrapper">
     <table class="data-table">
-        <thead><tr><th>{% trans "Do'kon" %}</th><th>{% trans "User" %}</th><th>Rating</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>{% trans "Do'kon" %}</th><th>{% trans "User" %}</th><th>{% trans "Rating" %}</th><th class="th-sm">{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
         {% for seller in page_obj %}
             <tr>
@@ -34,7 +34,7 @@
                 <td><span class="status-badge {% if seller.is_approved %}status-active{% else %}status-pending{% endif %}">{% if seller.is_approved %}{% trans "Tasdiqlangan" %}{% else %}{% trans "Kutilmoqda" %}{% endif %}</span></td>
                 <td>
                     <div class="action-btns">
-                        <button type="button" class="btn-action btn-action-toggle" onclick="approveSeller({{ seller.id }})" title="{% if seller.is_approved %}Bekor qilish{% else %}{% trans 'Tasdiqlash' %}{% endif %}">
+                        <button type="button" class="btn-action btn-action-toggle" onclick="approveSeller({{ seller.id }})" title="{% if seller.is_approved %}{% trans 'Bekor qilish' %}{% else %}{% trans 'Tasdiqlash' %}{% endif %}">
                             <i class="fas {% if seller.is_approved %}fa-undo{% else %}fa-check{% endif %}"></i>
                         </button>
                     </div>

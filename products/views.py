@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 from import_export.formats.base_formats import CSV, XLSX
 
@@ -132,7 +133,7 @@ def category_create(request):
         form.save()
         messages.success(request, "Kategoriya yaratildi.")
         return redirect("category_list")
-    return render(request, "products/category_form.html", {"form": form, "title": "Kategoriya qo'shish"})
+    return render(request, "products/category_form.html", {"form": form, "title": _("Kategoriya qo'shish")})
 
 
 @admin_required
@@ -143,7 +144,7 @@ def category_edit(request, category_id):
         form.save()
         messages.success(request, "Kategoriya yangilandi.")
         return redirect("category_list")
-    return render(request, "products/category_form.html", {"form": form, "title": "Kategoriya tahrirlash"})
+    return render(request, "products/category_form.html", {"form": form, "title": _("Kategoriya tahrirlash")})
 
 
 @admin_required

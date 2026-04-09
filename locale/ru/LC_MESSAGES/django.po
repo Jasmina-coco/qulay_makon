@@ -158,3 +158,627 @@ msgstr "В поле category должно быть указано НАЗВАНИ
 
 msgid "Avval namuna faylni eksport qilib ko'ring:"
 msgstr "Сначала экспортируйте пример файла:"
+
+msgid "Marketplace Admin"
+msgstr "Админ маркетплейса"
+
+msgid "Qulay Makon"
+msgstr "Qulay Makon"
+
+msgid "Boshqaruv paneli"
+msgstr "Панель управления"
+
+msgid "Boshqaruv"
+msgstr "Управление"
+
+msgid "Sayt"
+msgstr "Сайт"
+
+msgid "Bannerlar"
+msgstr "Баннеры"
+
+msgid "Sahifalar"
+msgstr "Страницы"
+
+msgid "Yangiliklar"
+msgstr "Новости"
+
+msgid "Xabarlar"
+msgstr "Сообщения"
+
+msgid "Super Admin"
+msgstr "Суперадмин"
+
+msgid "Admin"
+msgstr "Админ"
+
+msgid "Xaridor"
+msgstr "Покупатель"
+
+msgid "Natijalar topilmadi"
+msgstr "Ничего не найдено"
+
+msgid "Ma'lumot yuklashda xato"
+msgstr "Ошибка загрузки данных"
+
+msgid "Xatolik yuz berdi"
+msgstr "Произошла ошибка"
+
+msgid "O'zbek"
+msgstr "Узбекский"
+
+msgid "Русский"
+msgstr "Русский"
+
+msgid "English"
+msgstr "English"
+
+msgid "O'chirishni tasdiqlaysizmi?"
+msgstr "Подтвердить удаление?"
+
+msgid "o'chiriladi"
+msgstr "будет удалён"
+
+msgid "Tashrifchilar"
+msgstr "Посетители"
+
+msgid "Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. \"Unikal\" — har bir IP faqat 1 marta hisoblanadi."
+msgstr "Показывает, сколько людей заходит на сайт в день/месяц. «Уникальные» — каждый IP считается один раз."
+
+msgid "Kunlik"
+msgstr "По дням"
+
+msgid "Oylik"
+msgstr "По месяцам"
+
+msgid "Bugun"
+msgstr "Сегодня"
+
+msgid "Bu hafta"
+msgstr "На этой неделе"
+
+msgid "Bu oy"
+msgstr "В этом месяце"
+
+msgid "Unikal (oy)"
+msgstr "Уникальные (мес.)"
+
+msgid "Ko'p qidirilganlar"
+msgstr "Популярные запросы"
+
+msgid "Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi."
+msgstr "Показывает, что чаще всего ищут на сайте. Подскажет, какие товары стоит добавить."
+
+msgid "Konversiya"
+msgstr "Конверсия"
+
+msgid "Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%."
+msgstr "Доля посетителей, оформивших заказ. Например: 100 вошли, 3 заказали = 3%."
+
+msgid "Ko'rish → Buyurtma"
+msgstr "Просмотры → заказы"
+
+msgid "Ombor"
+msgstr "Склад"
+
+msgid "Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti."
+msgstr "Здесь товары, остаток которых меньше 10. Красный — нет в наличии, жёлтый — заканчивается."
+
+msgid "Oxirgi harakatlar"
+msgstr "Последние действия"
+
+msgid "So'nggi Buyurtmalar"
+msgstr "Последние заказы"
+
+msgid "Mijoz"
+msgstr "Клиент"
+
+msgid "Summa"
+msgstr "Сумма"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "So'nggi buyurtmalar topilmadi."
+msgstr "Недавних заказов нет."
+
+msgid "bu yerda saytingiz haqida umumiy statistika ko'rasiz."
+msgstr "Здесь отображается общая статистика по сайту."
+
+msgid "Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin."
+msgstr "Графики обновляются каждые 30 секунд. Нажмите на карточки для подробностей."
+
+msgid "Server xatosi"
+msgstr "Ошибка сервера"
+
+msgid "Jami tashriflar"
+msgstr "Всего визитов"
+
+msgid "Unikal tashrifchilar"
+msgstr "Уникальные посетители"
+
+msgid "Konversiya %"
+msgstr "Конверсия %"
+
+msgid "Hali qidiruv bo'lmagan"
+msgstr "Пока нет поисковых запросов"
+
+msgid "Saytda qidiruv qilinganda bu yerda ko'rinadi"
+msgstr "Появится после поиска на сайте"
+
+msgid "natija"
+msgstr "результат"
+
+msgid "Hamma narsa yetarli"
+msgstr "Всё в порядке"
+
+msgid "Omborda tugayotgan mahsulot yo'q"
+msgstr "Нет заканчивающихся товаров на складе"
+
+msgid "Hali harakatlar yo'q"
+msgstr "Пока нет действий"
+
+msgid "Tizimda faoliyat bo'lganda bu yerda ko'rinadi"
+msgstr "Появится при активности в системе"
+
+msgid "Hozir"
+msgstr "Сейчас"
+
+msgid "daq oldin"
+msgstr "мин назад"
+
+msgid "soat oldin"
+msgstr "ч назад"
+
+msgid "kun oldin"
+msgstr "дн назад"
+
+msgid "Barcha status"
+msgstr "Все статусы"
+
+msgid "Kutilmoqda"
+msgstr "Ожидает"
+
+msgid "Jarayonda"
+msgstr "В работе"
+
+msgid "Yetkazilmoqda"
+msgstr "Доставляется"
+
+msgid "Yetkazildi"
+msgstr "Доставлено"
+
+msgid "Bekor qilindi"
+msgstr "Отменено"
+
+msgid "Telefon"
+msgstr "Телефон"
+
+msgid "Buyurtmalar topilmadi"
+msgstr "Заказы не найдены"
+
+msgid "Telegram orqali"
+msgstr "Через Telegram"
+
+msgid "Ko'rish"
+msgstr "Просмотр"
+
+msgid "Holatini almashtirish"
+msgstr "Сменить статус"
+
+msgid "Tasdiqlangan"
+msgstr "Подтверждён"
+
+msgid "Blok"
+msgstr "Блок"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Foydalanuvchilar topilmadi"
+msgstr "Пользователи не найдены"
+
+msgid "Do'kon"
+msgstr "Магазин"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "Tasdiqlash"
+msgstr "Подтверждение"
+
+msgid "Sotuvchilar topilmadi"
+msgstr "Продавцы не найдены"
+
+msgid "Oldingi"
+msgstr "Назад"
+
+msgid "Keyingi"
+msgstr "Далее"
+
+msgid "Parent"
+msgstr "Родитель"
+
+msgid "Kategoriyalar topilmadi"
+msgstr "Категории не найдены"
+
+msgid "Birinchi kategoriyani qo'shing"
+msgstr "Добавьте первую категорию"
+
+msgid "Mahsulot topilmadi"
+msgstr "Товары не найдены"
+
+msgid "Birinchi mahsulotni qo'shing"
+msgstr "Добавьте первый товар"
+
+msgid "Statuslar"
+msgstr "Статусы"
+
+msgid "Katalogdagi barcha mahsulotlar va holatlari"
+msgstr "Все товары каталога и их статусы"
+
+msgid "Barcha role"
+msgstr "Все роли"
+
+msgid "Tizimga kirgan barcha foydalanuvchilar"
+msgstr "Все пользователи, вошедшие в систему"
+
+msgid "Sotuvchi profillari va tasdiqlash holati"
+msgstr "Профили продавцов и статус подтверждения"
+
+msgid "Mahsulot kategoriyalarini boshqarish"
+msgstr "Управление категориями товаров"
+
+msgid "Buyurtmalar ro'yxati va status boshqaruvi"
+msgstr "Список заказов и управление статусами"
+
+msgid "Holat"
+msgstr "Статус"
+
+msgid "bu yerda barcha mahsulotlarni boshqarasiz."
+msgstr "здесь вы управляете всеми товарами."
+
+msgid "Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin."
+msgstr "можно добавлять и редактировать товары, загружать изображения, импортировать и экспортировать через Excel."
+
+msgid "Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi."
+msgstr "Активный — виден на сайте, Ожидает — ждёт подтверждения, Черновик — не виден на сайте."
+
+msgid "Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash."
+msgstr "Excel Export — скачать все товары в Excel. Import — загрузить товары из Excel."
+
+msgid "mijozlar bergan buyurtmalar."
+msgstr "заказы, оформленные клиентами."
+
+msgid "Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi."
+msgstr "Меняйте статусы: Ожидает → В работе → Доставляется → Доставлено."
+
+msgid "To'lov Telegram bot orqali amalga oshiriladi."
+msgstr "Оплата проходит через Telegram-бота."
+
+msgid "UZS"
+msgstr "UZS"
+
+msgid "saytdagi barcha foydalanuvchilar. Rollar: Admin (panelni boshqaradi), Sotuvchi (mahsulot sotadi), Xaridor (mahsulot sotib oladi). Bloklash tugmasi orqali vaqtincha to'xtatish mumkin."
+msgstr "все пользователи сайта. Роли: Админ (управляет панелью), Продавец (продаёт товары), Покупатель (покупает). Кнопкой блокировки можно временно отключить."
+
+msgid "marketplace da mahsulot sotuvchilar."
+msgstr "продавцы товаров на маркетплейсе."
+
+msgid "Tasdiqlash tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi."
+msgstr "Кнопкой «Подтвердить» вы даёте доступ продавцу. Неподтверждённый продавец не может добавлять товары."
+
+msgid "mahsulotlar guruhlari."
+msgstr "группы товаров."
+
+msgid "Har bir mahsulot bitta kategoriyaga tegishli. Ota kategoriya tanlasangiz — ichki kategoriya yaratiladi."
+msgstr "Каждый товар принадлежит одной категории. При выборе родительской создаётся вложенная категория."
+
+msgid "Masalan: Elektronika → Telefonlar."
+msgstr "Например: Электроника → Телефоны."
+
+msgid "Buyurtma"
+msgstr "Заказ"
+
+msgid "Manzil"
+msgstr "Адрес"
+
+msgid "Mahsulot"
+msgstr "Товар"
+
+msgid "Soni"
+msgstr "Кол-во"
+
+msgid "To'lov"
+msgstr "Оплата"
+
+msgid "Telegram bot orqali amalga oshiriladi"
+msgstr "Выполняется через Telegram-бота"
+
+msgid "Buyurtma #%(id)s"
+msgstr "Заказ #%(id)s"
+
+msgid "saytning bosh sahifasidagi katta slider rasmlar."
+msgstr "большие слайдер-изображения на главной странице сайта."
+
+msgid "Rasm yuklang, sarlavha yozing va link qo'shing. Tartib raqami kichik bo'lgan banner birinchi ko'rinadi."
+msgstr "Загрузите изображение, введите заголовок и ссылку. Баннер с меньшим порядковым номером показывается первым."
+
+msgid "Faol bo'lmagan bannerlar saytda ko'rinmaydi."
+msgstr "Неактивные баннеры на сайте не отображаются."
+
+msgid "Bosh sahifadagi slider rasmlari"
+msgstr "Изображения слайдера на главной"
+
+msgid "Yangi banner"
+msgstr "Новый баннер"
+
+msgid "Rasm"
+msgstr "Изображение"
+
+msgid "Sarlavha"
+msgstr "Заголовок"
+
+msgid "Link"
+msgstr "Ссылка"
+
+msgid "Tartib"
+msgstr "Порядок"
+
+msgid "Sarlavhasiz"
+msgstr "Без заголовка"
+
+msgid "Nofaol"
+msgstr "Неактивен"
+
+msgid "Hali banner qo'shilmagan"
+msgstr "Баннеры ещё не добавлены"
+
+msgid "Birinchi bannerni qo'shing"
+msgstr "Добавьте первый баннер"
+
+msgid "Banner"
+msgstr "Баннер"
+
+msgid "Banner formasi"
+msgstr "Форма баннера"
+
+msgid "bosh sahifadagi slider bannerni sozlash uchun ishlatiladi."
+msgstr "используется для настройки слайдер-баннера на главной."
+
+msgid "Tartib kichik bo'lsa birinchi chiqadi."
+msgstr "С меньшим номером порядка показывается первым."
+
+msgid "Bannerning asosiy sarlavhasi. Qisqa va aniq yozing."
+msgstr "Основной заголовок баннера. Кратко и ясно."
+
+msgid "Banner ostida chiqadigan qo'shimcha matn."
+msgstr "Дополнительный текст под баннером."
+
+msgid "Keng formatdagi banner rasmi yuklang."
+msgstr "Загрузите широкоформатное изображение баннера."
+
+msgid "Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi."
+msgstr "Укажите страницу перехода по клику. Если пусто — перехода нет."
+
+msgid "Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi."
+msgstr "Баннер с меньшим номером виден первым. Например: 1 — первый, 2 — второй."
+
+msgid "Faol holat"
+msgstr "Активное состояние"
+
+msgid "Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi."
+msgstr "Если активен — баннер виден на сайте, иначе скрыт."
+
+msgid "Banner qo'shish"
+msgstr "Добавить баннер"
+
+msgid "Banner tahrirlash"
+msgstr "Редактировать баннер"
+
+msgid "Sahifa formasi"
+msgstr "Форма страницы"
+
+msgid "statik sahifalar uchun matn kiriting."
+msgstr "введите текст для статических страниц."
+
+msgid "Slug URL manzil sifatida ishlatiladi."
+msgstr "Slug используется как часть URL."
+
+msgid "Sahifa nomi menyu va sahifada ko'rinadi."
+msgstr "Название страницы видно в меню и на странице."
+
+msgid "Slug"
+msgstr "Слаг"
+
+msgid "Sahifaning URL manzili. Masalan slug biz-haqimizda bo'lsa, sahifa /page/biz-haqimizda/ manzilida ochiladi."
+msgstr "URL-адрес страницы. Например, slug biz-haqimizda откроет /page/biz-haqimizda/."
+
+msgid "Matn"
+msgstr "Текст"
+
+msgid "Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi."
+msgstr "Основной текст страницы; полностью выводится на сайте."
+
+msgid "Meta tavsif"
+msgstr "Мета-описание"
+
+msgid "Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali."
+msgstr "Краткое описание для поисковых систем, полезно для SEO."
+
+msgid "Faol bo'lsa sahifa frontendda ko'rinadi."
+msgstr "Если активна — страница видна на сайте."
+
+msgid "Sahifa qo'shish"
+msgstr "Добавить страницу"
+
+msgid "Sahifa tahrirlash"
+msgstr "Редактировать страницу"
+
+msgid "saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar)."
+msgstr "статические страницы сайта (О нас, Доставка, Условия оплаты и т.д.)."
+
+msgid "Slug — sahifaning URL manzili. Masalan: slug about bo'lsa, sahifa /page/about/ da ochiladi."
+msgstr "Slug — часть URL. Например, about откроет /page/about/."
+
+msgid "Matnni yozib Saqlash bosing — saytda darhol ko'rinadi."
+msgstr "Сохраните текст — он сразу появится на сайте."
+
+msgid "Saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish...)"
+msgstr "Статические страницы (О нас, Доставка...)"
+
+msgid "Yangi sahifa"
+msgstr "Новая страница"
+
+msgid "URL manzili"
+msgstr "URL-адрес"
+
+msgid "Yangilangan"
+msgstr "Обновлено"
+
+msgid "Saytda ko'rish"
+msgstr "Открыть на сайте"
+
+msgid "Hali sahifa yaratilmagan"
+msgstr "Страницы ещё не созданы"
+
+msgid "Birinchi sahifani yarating"
+msgstr "Создайте первую страницу"
+
+msgid "Yangilik formasi"
+msgstr "Форма новости"
+
+msgid "maqola matni, rasm va kategoriyani kiriting."
+msgstr "введите текст статьи, изображение и категорию."
+
+msgid "Faol holatdagi yangiliklar frontendda ko'rinadi."
+msgstr "Активные новости видны на сайте."
+
+msgid "saytda chiqadigan maqolalar va yangiliklar."
+msgstr "статьи и новости на сайте."
+
+msgid "Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi."
+msgstr "Добавьте изображение, заголовок и текст. На главной показываются последние 3 новости."
+
+msgid "Faol bo'lmagan yangiliklar saytda ko'rinmaydi."
+msgstr "Неактивные новости на сайте не отображаются."
+
+msgid "Saytda ko'rinadigan yangilik va maqolalar"
+msgstr "Новости и статьи на сайте"
+
+msgid "Yangi yangilik"
+msgstr "Новая новость"
+
+msgid "Kategoriya"
+msgstr "Категория"
+
+msgid "Kategoriyasiz"
+msgstr "Без категории"
+
+msgid "Hali yangilik qo'shilmagan"
+msgstr "Новости ещё не добавлены"
+
+msgid "Birinchi yangilikni qo'shing"
+msgstr "Добавьте первую новость"
+
+msgid "saytdagi kontakt formasidan kelgan xabarlar."
+msgstr "сообщения из контактной формы сайта."
+
+msgid "Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va O'qilgan deb belgilang."
+msgstr "Синяя полоса — не прочитано. Откройте сообщение и отметьте как прочитанное."
+
+msgid "Ism"
+msgstr "Имя"
+
+msgid "Mavzu"
+msgstr "Тема"
+
+msgid "Mavzusiz"
+msgstr "Без темы"
+
+msgid "O'qilgan"
+msgstr "Прочитано"
+
+msgid "Yangi"
+msgstr "Новое"
+
+msgid "O'qilgan belgilash"
+msgstr "Отметить прочитанным"
+
+msgid "Hali xabarlar yo'q"
+msgstr "Сообщений пока нет"
+
+msgid "Kontakt formasi orqali kelgan xabarlar"
+msgstr "Сообщения из контактной формы"
+
+msgid "Mahsulot formasi"
+msgstr "Форма товара"
+
+msgid "mahsulot ma'lumotlarini to'ldiring va saqlang."
+msgstr "заполните данные товара и сохраните."
+
+msgid "Mahsulot nomi xaridorlarga ko'rinadi. Tushunarli va aniq yozing."
+msgstr "Название видно покупателям. Пишите понятно и чётко."
+
+msgid "Mahsulot haqida batafsil ma'lumot kiriting: xususiyatlari, o'lchami, materiali va boshqalar."
+msgstr "Подробное описание: характеристики, размер, материал и т.д."
+
+msgid "Mahsulotning asosiy narxi. So'mda kiriting."
+msgstr "Основная цена в сумах."
+
+msgid "Mahsulot qaysi bo'limda ko'rinishini belgilaydi."
+msgstr "Определяет раздел каталога."
+
+msgid "Mahsulot egasi bo'lgan sotuvchini tanlang."
+msgstr "Выберите продавца-владельца товара."
+
+msgid "Belgilanganda bu mahsulot bosh sahifada alohida ko'rsatiladi."
+msgstr "Если отмечено — товар выделяется на главной."
+
+msgid "Bir nechta rasm yuklashingiz mumkin. Sifatli rasmlar konversiyani oshiradi."
+msgstr "Можно загрузить несколько изображений. Качественные фото повышают конверсию."
+
+msgid "Qisqa matn"
+msgstr "Краткий текст"
+
+msgid "Qisqa tavsif"
+msgstr "Краткое описание"
+
+msgid "Yangilik qo'shish"
+msgstr "Добавить новость"
+
+msgid "Yangilik tahrirlash"
+msgstr "Редактировать новость"
+
+msgid "Kategoriya formasi"
+msgstr "Форма категории"
+
+msgid "mahsulotlarni guruhlash uchun kategoriya yarating yoki tahrirlang."
+msgstr "создайте или отредактируйте категорию для группировки товаров."
+
+msgid "Ota kategoriyani tanlab ichki bo'limlar ochishingiz mumkin."
+msgstr "Выбрав родительскую категорию, можно открыть вложенные разделы."
+
+msgid "Kategoriya qo'shish"
+msgstr "Добавить категорию"
+
+msgid "Kategoriya tahrirlash"
+msgstr "Редактировать категорию"
+
+msgid "Xabar"
+msgstr "Сообщение"
+
+msgid "CSV yoki XLSX"
+msgstr "CSV или XLSX"
+
+msgid "Asosiy qilish"
+msgstr "Сделать основным"

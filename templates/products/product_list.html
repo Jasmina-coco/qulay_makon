@@ -2,12 +2,14 @@
 {% load i18n %}
 {% block title %}{% trans "Mahsulotlar" %}{% endblock %}
 {% block content %}
+{% trans "Ko'rish" as tip_view %}
+{% trans "O'chirish" as tip_delete %}
 <div class="page-tip" id="productTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Mahsulotlar</strong> — bu yerda barcha mahsulotlarni boshqarasiz.
-        Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin.
-        <strong>"Holat"</strong>: Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi.
+        <strong>{% trans "Mahsulotlar" %}</strong> — {% trans "bu yerda barcha mahsulotlarni boshqarasiz." %}
+        {% trans "Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin." %}
+        <strong>{% trans "Holat" %}</strong>: {% trans "Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('productTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,14 +17,14 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Mahsulotlar" %}</h2>
-        <p class="content-subtitle">Katalogdagi barcha mahsulotlar va holatlari</p>
+        <p class="content-subtitle">{% trans "Katalogdagi barcha mahsulotlar va holatlari" %}</p>
     </div>
     <div class="action-btns">
         <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
             <i class="fas fa-file-excel"></i> {% trans "Excel Export" %}
         </a>
         <span class="tip-icon">i
-            <span class="tip-text">Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash.</span>
+            <span class="tip-text">{% trans "Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash." %}</span>
         </span>
         <a href="{% url 'product_export' %}?format=csv" class="btn btn-sm btn-outline">
             <i class="fas fa-file-csv"></i> {% trans "CSV Export" %}
@@ -39,10 +41,10 @@
     <input type="text" name="q" value="{{ query }}" placeholder="{% trans 'Qidirish' %}...">
     <select name="status">
         <option value="">{% trans "Statuslar" %}</option>
-        <option value="active">active</option>
-        <option value="pending">pending</option>
-        <option value="rejected">rejected</option>
-        <option value="draft">draft</option>
+        <option value="active">{% trans "Faol" %}</option>
+        <option value="pending">{% trans "Kutilmoqda" %}</option>
+        <option value="rejected">{% trans "Rad etilgan" %}</option>
+        <option value="draft">{% trans "Qoralama" %}</option>
     </select>
     <select name="category">
         <option value="">{% trans "Kategoriyalar" %}</option>
@@ -65,16 +67,16 @@
                 </td>
                 <td>{{ product.seller.username }}</td>
                 <td>{{ product.price }}</td>
-                <td><span class="status-badge status-{{ product.status }}">{{ product.status }}</span></td>
+                <td><span class="status-badge status-{{ product.status }}">{{ product.get_status_display }}</span></td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-action btn-action-view" href="{% url 'product_detail' product.id %}" title="Ko'rish">
+                        <a class="btn-action btn-action-view" href="{% url 'product_detail' product.id %}" title="{{ tip_view }}">
                             <i class="fas fa-eye"></i>
                         </a>
                         <a class="btn-action btn-action-edit" href="{% url 'product_edit' product.id %}" title="{% trans 'Tahrirlash' %}">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'product_delete' product.id %}', '{{ product.name }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'product_delete' product.id %}', '{{ product.name }}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>

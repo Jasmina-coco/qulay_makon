@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext as _
 
 from accounts.models import CustomUser, SellerProfile
 from .frontend_forms import BannerForm, NewsForm, PageForm
@@ -174,7 +175,7 @@ def banner_create(request):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("banner_list")
-    return render(request, "dashboard/banners/form.html", {"form": form, "title": "Banner qo'shish"})
+    return render(request, "dashboard/banners/form.html", {"form": form, "title": _("Banner qo'shish")})
 
 
 @admin_required
@@ -184,7 +185,7 @@ def banner_edit(request, pk):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("banner_list")
-    return render(request, "dashboard/banners/form.html", {"form": form, "title": "Banner tahrirlash"})
+    return render(request, "dashboard/banners/form.html", {"form": form, "title": _("Banner tahrirlash")})
 
 
 @admin_required
@@ -208,7 +209,7 @@ def page_create(request):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("page_list")
-    return render(request, "dashboard/pages/form.html", {"form": form, "title": "Sahifa qo'shish"})
+    return render(request, "dashboard/pages/form.html", {"form": form, "title": _("Sahifa qo'shish")})
 
 
 @admin_required
@@ -218,7 +219,7 @@ def page_edit(request, pk):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("page_list")
-    return render(request, "dashboard/pages/form.html", {"form": form, "title": "Sahifa tahrirlash"})
+    return render(request, "dashboard/pages/form.html", {"form": form, "title": _("Sahifa tahrirlash")})
 
 
 @admin_required
@@ -242,7 +243,7 @@ def news_create(request):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("news_admin_list")
-    return render(request, "dashboard/news/form.html", {"form": form, "title": "Yangilik qo'shish"})
+    return render(request, "dashboard/news/form.html", {"form": form, "title": _("Yangilik qo'shish")})
 
 
 @admin_required
@@ -252,7 +253,7 @@ def news_edit(request, pk):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("news_admin_list")
-    return render(request, "dashboard/news/form.html", {"form": form, "title": "Yangilik tahrirlash"})
+    return render(request, "dashboard/news/form.html", {"form": form, "title": _("Yangilik tahrirlash")})
 
 
 @admin_required

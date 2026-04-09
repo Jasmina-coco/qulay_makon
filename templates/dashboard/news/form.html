@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div class="page-tip" id="newsFormTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Yangilik formasi</strong> — maqola matni, rasm va kategoriyani kiriting.
-        Faol holatdagi yangiliklar frontendda ko'rinadi.
+        <strong>{% trans "Yangilik formasi" %}</strong> — {% trans "maqola matni, rasm va kategoriyani kiriting." %}
+        {% trans "Faol holatdagi yangiliklar frontendda ko'rinadi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('newsFormTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,8 +16,8 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">Saqlash</button>
-        <a class="btn btn-secondary" href="{% url 'news_admin_list' %}">Ortga</a>
+        <button class="btn btn-primary" type="submit">{% trans "Saqlash" %}</button>
+        <a class="btn btn-secondary" href="{% url 'news_admin_list' %}">{% trans "Orqaga" %}</a>
     </form>
 </div>
 {% endblock %}

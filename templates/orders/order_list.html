@@ -2,12 +2,14 @@
 {% load i18n %}
 {% block title %}{% trans "Buyurtmalar" %}{% endblock %}
 {% block content %}
+{% trans "Ko'rish" as tip_view %}
+{% trans "O'chirish" as tip_delete %}
 <div class="page-tip" id="orderTip">
     <i class="fas fa-lightbulb"></i>
     <div>
-        <strong>Buyurtmalar</strong> — mijozlar bergan buyurtmalar.
-        Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi.
-        To'lov Telegram bot orqali amalga oshiriladi.
+        <strong>{% trans "Buyurtmalar" %}</strong> — {% trans "mijozlar bergan buyurtmalar." %}
+        {% trans "Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi." %}
+        {% trans "To'lov Telegram bot orqali amalga oshiriladi." %}
     </div>
     <button class="tip-dismiss" onclick="dismissTip('orderTip')"><i class="fas fa-times"></i></button>
 </div>
@@ -15,17 +17,17 @@
 <div class="content-header">
     <div>
         <h2>{% trans "Buyurtmalar" %}</h2>
-        <p class="content-subtitle">Buyurtmalar ro'yxati va status boshqaruvi</p>
+        <p class="content-subtitle">{% trans "Buyurtmalar ro'yxati va status boshqaruvi" %}</p>
     </div>
 </div>
 <form method="get" class="filters" data-ajax-filter="true" data-target="#orderListContainer">
     <select name="status">
         <option value="">{% trans "Barcha status" %}</option>
-        <option value="pending">pending</option>
-        <option value="processing">processing</option>
-        <option value="shipped">shipped</option>
-        <option value="delivered">delivered</option>
-        <option value="cancelled">cancelled</option>
+        <option value="pending">{% trans "Kutilmoqda" %}</option>
+        <option value="processing">{% trans "Jarayonda" %}</option>
+        <option value="shipped">{% trans "Yetkazilmoqda" %}</option>
+        <option value="delivered">{% trans "Yetkazildi" %}</option>
+        <option value="cancelled">{% trans "Bekor qilindi" %}</option>
     </select>
     <button class="btn btn-primary">{% trans "Qidirish" %}</button>
 </form>
@@ -39,7 +41,7 @@
                 <td>#{{ order.id }}</td>
                 <td><strong>{{ order.user.username }}</strong></td>
                 <td>{{ order.phone }}</td>
-                <td>{{ order.total_amount }} UZS (Telegram orqali)</td>
+                <td>{{ order.total_amount }} {% trans "UZS" %} ({% trans "Telegram orqali" %})</td>
                 <td>
                     <select class="form-control status-select" data-order-id="{{ order.id }}">
                         {% for val,label in order.STATUS_CHOICES %}
@@ -50,10 +52,10 @@
                 <td><span class="text-muted">{{ order.created_at|date:"d.m.Y H:i" }}</span></td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-action btn-action-view" href="{% url 'order_detail' order.id %}" title="Ko'rish">
+                        <a class="btn-action btn-action-view" href="{% url 'order_detail' order.id %}" title="{{ tip_view }}">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'order_delete' order.id %}', 'Order #{{ order.id }}')" title="O'chirish">
+                        <button type="button" class="btn-action btn-action-delete" onclick="confirmDelete('{% url 'order_delete' order.id %}', '{% filter escapejs %}{% blocktrans with id=order.id %}Buyurtma #{{ id }}{% endblocktrans %}{% endfilter %}')" title="{{ tip_delete }}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
