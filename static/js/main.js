@@ -204,39 +204,73 @@ function debounce(func, wait = 300) {
     };
 }
 
-// ====== TOOLTIP — BOSGANDA OCHILADI ======
+// ====== TOOLTIP — CLICK + POSITION FIXED ======
 document.addEventListener("click", function (e) {
-    const clickedTip = e.target.closest(".tip-icon");
+    var clickedTip = e.target.closest(".tip-icon");
 
-    document.querySelectorAll(".tip-icon.active").forEach((tip) => {
+    // Barcha ochiq tooltiplarni yopish
+    document.querySelectorAll(".tip-icon.active").forEach(function (tip) {
         if (tip !== clickedTip) {
-            tip.classList.remove("active", "tip-left");
+            tip.classList.remove("active");
         }
     });
 
     if (clickedTip) {
         e.preventDefault();
         e.stopPropagation();
-
-        clickedTip.classList.remove("tip-left");
-
-        const rect = clickedTip.getBoundingClientRect();
-        const spaceRight = window.innerWidth - rect.right;
-        if (spaceRight < 300) {
-            clickedTip.classList.add("tip-left");
-        }
-
         clickedTip.classList.toggle("active");
+
+        if (clickedTip.classList.contains("active")) {
+            var tipText = clickedTip.querySelector(".tip-text");
+            if (tipText) {
+                var rect = clickedTip.getBoundingClientRect();
+
+                // Doim O'NG tomonda ko'rsat
+                var left = rect.right + 10;
+                var top = rect.top - 10;
+
+                // Agar o'ngda joy bo'lmasa — pastda ko'rsat
+                if (left + 280 > window.innerWidth) {
+                    left = rect.left;
+                    top = rect.bottom + 10;
+                }
+
+                // Agar pastda joy bo'lmasa — yuqoriga
+                if (top + 150 > window.innerHeight) {
+                    top = rect.top - 150;
+                }
+
+                // Agar chapda toshsa
+                if (left < 10) {
+                    left = 10;
+                }
+
+                tipText.style.left = left + "px";
+                tipText.style.top = top + "px";
+            }
+        }
     }
 });
 
+// ESC bosganda yopilsin
 document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-        document.querySelectorAll(".tip-icon.active").forEach((tip) => {
-            tip.classList.remove("active", "tip-left");
+        document.querySelectorAll(".tip-icon.active").forEach(function (tip) {
+            tip.classList.remove("active");
         });
     }
 });
+
+// Scroll qilganda yopilsin
+document.addEventListener(
+    "scroll",
+    function () {
+        document.querySelectorAll(".tip-icon.active").forEach(function (tip) {
+            tip.classList.remove("active");
+        });
+    },
+    true
+);
 
 async function fetchAndReplace(url, targetSelector, pushState = true) {
     try {

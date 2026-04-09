@@ -381,6 +381,9 @@ msgstr "Email"
 msgid "Role"
 msgstr "Роль"
 
+msgid "Rol"
+msgstr "Роль"
+
 msgid "Foydalanuvchilar topilmadi"
 msgstr "Пользователи не найдены"
 

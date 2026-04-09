@@ -1608,73 +1608,36 @@ a.stat-name:hover { color: var(--primary); }
     font-style: normal;
     font-weight: 700;
     vertical-align: middle;
-    transition: all 0.2s ease;
     user-select: none;
+    z-index: 1;
 }
 
 .tip-icon:hover {
-    background: rgba(42, 111, 111, 0.18);
-}
-
-.tip-icon.active {
     background: var(--primary, #2a6f6f);
     color: #fff;
 }
 
-/* Tooltip — O'NG TOMONDA chiqadi */
 .tip-icon .tip-text {
     display: none;
-    position: absolute;
-    left: calc(100% + 10px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--sidebar-bg, #1a3a3a);
+    position: fixed;
+    background: #1a3a3a;
     color: #e0f0f0;
     padding: 12px 16px;
     border-radius: 10px;
     font-size: 12px;
     font-weight: 400;
     line-height: 1.6;
-    white-space: normal;
     width: 280px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    z-index: 9999;
+    max-width: calc(100vw - 40px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
     text-align: left;
+    white-space: normal;
+    pointer-events: none;
 }
 
-/* O'q — chap tomonda */
-.tip-icon .tip-text::after {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-right-color: var(--sidebar-bg, #1a3a3a);
-}
-
-/* Active holatda ko'rinadi */
 .tip-icon.active .tip-text {
     display: block;
-    animation: tipSlideIn 0.2s ease;
-}
-
-@keyframes tipSlideIn {
-    from { opacity: 0; transform: translateY(-50%) translateX(-6px); }
-    to { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
-
-/* Agar o'ngda joy bo'lmasa — CHAPDA chiqadi */
-.tip-icon.tip-left .tip-text {
-    left: auto;
-    right: calc(100% + 10px);
-}
-
-.tip-icon.tip-left .tip-text::after {
-    right: auto;
-    left: 100%;
-    border-right-color: transparent;
-    border-left-color: var(--sidebar-bg, #1a3a3a);
 }
 
 .page-tip {
@@ -1725,22 +1688,3 @@ a.stat-name:hover { color: var(--primary); }
     to { opacity: 0; transform: translateY(-10px); height: 0; padding: 0; margin: 0; overflow: hidden; }
 }
 
-/* Mobilda — pastda chiqadi */
-@media (max-width: 768px) {
-    .tip-icon .tip-text {
-        position: fixed;
-        left: 16px;
-        right: 16px;
-        top: auto;
-        bottom: 20px;
-        width: auto;
-        transform: none;
-        border-radius: 12px;
-        padding: 14px 18px;
-        font-size: 13px;
-    }
-
-    .tip-icon .tip-text::after {
-        display: none;
-    }
-}
