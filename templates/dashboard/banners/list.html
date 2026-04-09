@@ -3,6 +3,16 @@
 {% block title %}Bannerlar{% endblock %}
 
 {% block content %}
+<div class="page-tip" id="bannerTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Bannerlar</strong> — saytning bosh sahifasidagi katta slider rasmlar.
+        Rasm yuklang, sarlavha yozing va link qo'shing. "Tartib" raqami kichik bo'lgan banner birinchi ko'rinadi.
+        "Faol" bo'lmagan bannerlar saytda ko'rinmaydi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('bannerTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Bannerlar" %}</h2>

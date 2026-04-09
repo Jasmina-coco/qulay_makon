@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}Yangiliklar{% endblock %}
 {% block content %}
+<div class="page-tip" id="newsTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Yangiliklar</strong> — saytda chiqadigan maqolalar va yangiliklar.
+        Rasm, sarlavha va matn yozing. Saytning bosh sahifasida oxirgi 3 ta yangilik ko'rinadi.
+        "Faol" bo'lmagan yangiliklar saytda ko'rinmaydi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('newsTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Yangiliklar" %}</h2>

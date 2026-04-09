@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}{% trans "Buyurtmalar" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="orderTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Buyurtmalar</strong> — mijozlar bergan buyurtmalar.
+        Statuslarni o'zgartiring: Kutilmoqda → Jarayonda → Yetkazilmoqda → Yetkazildi.
+        To'lov Telegram bot orqali amalga oshiriladi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('orderTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Buyurtmalar" %}</h2>
@@ -22,16 +32,14 @@
 <div id="orderListContainer">
 <div class="data-table-wrapper">
     <table class="data-table">
-        <thead><tr><th>ID</th><th>{% trans "Mijoz" %}</th><th>{% trans "Summa" %}</th><th>{% trans "Holati" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
+        <thead><tr><th>#</th><th>{% trans "Mijoz" %}</th><th>{% trans "Telefon" %}</th><th>{% trans "Summa" %}</th><th>{% trans "Status" %}</th><th>{% trans "Sana" %}</th><th class="th-actions">{% trans "Amallar" %}</th></tr></thead>
         <tbody>
             {% for order in page_obj %}
             <tr>
                 <td>#{{ order.id }}</td>
-                <td>
-                    <strong>{{ order.user.username }}</strong>
-                    <br><small class="text-muted">{{ order.phone }}</small>
-                </td>
-                <td>{{ order.total_amount }}</td>
+                <td><strong>{{ order.user.username }}</strong></td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.total_amount }} UZS (Telegram orqali)</td>
                 <td>
                     <select class="form-control status-select" data-order-id="{{ order.id }}">
                         {% for val,label in order.STATUS_CHOICES %}
@@ -39,6 +47,7 @@
                         {% endfor %}
                     </select>
                 </td>
+                <td><span class="text-muted">{{ order.created_at|date:"d.m.Y H:i" }}</span></td>
                 <td>
                     <div class="action-btns">
                         <a class="btn-action btn-action-view" href="{% url 'order_detail' order.id %}" title="Ko'rish">
@@ -52,7 +61,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5" class="empty-state">
+                <td colspan="7" class="empty-state">
                     <i class="fas fa-shopping-bag"></i>
                     <p>{% trans "Buyurtmalar topilmadi" %}</p>
                 </td>

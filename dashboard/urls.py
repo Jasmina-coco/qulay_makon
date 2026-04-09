@@ -30,7 +30,6 @@ urlpatterns = [
     path("api/visitors/summary/", views.api_visitors_summary, name="api_visitors_summary"),
     path("api/top-viewed/", views.api_top_viewed_products, name="api_top_viewed"),
     path("api/search-stats/", views.api_search_stats, name="api_search_stats"),
-    path("api/sellers-ranking/", views.api_sellers_ranking, name="api_sellers_ranking"),
     path("api/low-stock/", views.api_low_stock, name="api_low_stock"),
     path("api/conversion/", views.api_conversion_rate, name="api_conversion"),
     path("api/activity/", views.api_recent_activity, name="api_activity"),

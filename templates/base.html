@@ -10,54 +10,83 @@
 </head>
 <body>
     <aside class="sidebar" id="sidebar">
-        <div class="sidebar-profile">
-            {% if request.user.avatar %}
-            <img src="{{ request.user.avatar.url }}" alt="avatar" class="sidebar-avatar">
-            {% else %}
-            <img src="https://ui-avatars.com/api/?name={{ request.user.username|urlencode }}&background=244e4e&color=fff" alt="avatar" class="sidebar-avatar">
-            {% endif %}
-            <h3 class="sidebar-username">{{ request.user.username }}</h3>
-            <p class="sidebar-email">{{ request.user.email|default:"email yo'q" }}</p>
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="brand-text">
+                    <h2>Qulay Makon</h2>
+                    <span>Boshqaruv paneli</span>
+                </div>
+            </div>
         </div>
         <nav class="sidebar-nav">
             <a href="{% url 'dashboard' %}" class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                <i class="fas fa-th-large"></i><span>{% trans "Dashboard" %}</span>
+                <i class="fas fa-tachometer-alt"></i><span>{% trans "Dashboard" %}</span>
             </a>
-            <a href="{% url 'product_list' %}" class="nav-link {% if 'product' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-box"></i><span>{% trans "Mahsulotlar" %}</span>
-            </a>
-            <a href="{% url 'order_list' %}" class="nav-link {% if 'order' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-shopping-bag"></i><span>{% trans "Buyurtmalar" %}</span>
-            </a>
-            <a href="{% url 'category_list' %}" class="nav-link {% if 'category' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-tags"></i><span>{% trans "Kategoriyalar" %}</span>
-            </a>
-            <a href="{% url 'user_list' %}" class="nav-link {% if 'user' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-users"></i><span>{% trans "Foydalanuvchilar" %}</span>
-            </a>
-            <a href="{% url 'seller_list' %}" class="nav-link {% if 'seller' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-store"></i><span>{% trans "Sotuvchilar" %}</span>
-            </a>
-            <div class="nav-label">Sayt</div>
-            <a href="{% url 'banner_list' %}" class="nav-link {% if 'banner' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-images"></i><span>Bannerlar</span>
-            </a>
-            <a href="{% url 'page_list' %}" class="nav-link {% if 'page' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-file-alt"></i><span>Sahifalar</span>
-            </a>
-            <a href="{% url 'news_admin_list' %}" class="nav-link {% if 'news' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-newspaper"></i><span>Yangiliklar</span>
-            </a>
-            <a href="{% url 'message_list' %}" class="nav-link {% if 'message' in request.resolver_match.url_name %}active{% endif %}">
-                <i class="fas fa-envelope"></i><span>Xabarlar</span>
-            </a>
+            <div class="nav-section">
+                <button class="nav-section-toggle" type="button" onclick="toggleSection(this)">
+                    <span class="nav-label">Boshqaruv</span>
+                    <i class="fas fa-chevron-down nav-section-arrow"></i>
+                </button>
+                <div class="nav-section-items">
+                    <a href="{% url 'user_list' %}" class="nav-link {% if 'user' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-users"></i><span>{% trans "Foydalanuvchilar" %}</span>
+                    </a>
+                    <a href="{% url 'seller_list' %}" class="nav-link {% if 'seller' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-store"></i><span>{% trans "Sotuvchilar" %}</span>
+                    </a>
+                    <a href="{% url 'product_list' %}" class="nav-link {% if 'product' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-box"></i><span>{% trans "Mahsulotlar" %}</span>
+                    </a>
+                    <a href="{% url 'category_list' %}" class="nav-link {% if 'category' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-tags"></i><span>{% trans "Kategoriyalar" %}</span>
+                    </a>
+                    <a href="{% url 'order_list' %}" class="nav-link {% if 'order' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-shopping-cart"></i><span>{% trans "Buyurtmalar" %}</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <button class="nav-section-toggle" type="button" onclick="toggleSection(this)">
+                    <span class="nav-label">Sayt</span>
+                    <i class="fas fa-chevron-down nav-section-arrow"></i>
+                </button>
+                <div class="nav-section-items">
+                    <a href="{% url 'banner_list' %}" class="nav-link {% if 'banner' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-images"></i><span>Bannerlar</span>
+                    </a>
+                    <a href="{% url 'page_list' %}" class="nav-link {% if 'page' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-file-alt"></i><span>Sahifalar</span>
+                    </a>
+                    <a href="{% url 'news_admin_list' %}" class="nav-link {% if 'news' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-newspaper"></i><span>Yangiliklar</span>
+                    </a>
+                    <a href="{% url 'message_list' %}" class="nav-link {% if 'message' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-envelope"></i><span>Xabarlar</span>
+                    </a>
+                </div>
+            </div>
+
+            {% if request.user.is_superuser %}
+            <div class="nav-section">
+                <a href="/super-admin/" class="nav-link" style="border:1px solid rgba(245,158,11,0.2);margin:8px 10px;border-radius:8px;">
+                    <i class="fas fa-crown" style="color:#f59e0b;"></i>
+                    <span style="color:#f59e0b;">Super Admin</span>
+                </a>
+            </div>
+            {% endif %}
         </nav>
         <div class="sidebar-footer">
-            {% if request.user.is_superuser %}
-            <a href="/super-admin/" class="nav-link" style="color:#f59e0b;">
-                <i class="fas fa-crown"></i><span>Super Admin</span>
-            </a>
-            {% endif %}
+            <div class="sidebar-user-mini">
+                <span class="user-avatar-mini">{{ request.user.username|first|upper }}</span>
+                <div class="user-info-mini">
+                    <span>{{ request.user.username }}</span>
+                    <small>{{ request.user.role }}</small>
+                </div>
+            </div>
             <a href="{% url 'logout' %}" class="nav-link logout-link">
                 <i class="fas fa-sign-out-alt"></i><span>{% trans "Chiqish" %}</span>
             </a>
@@ -110,9 +139,6 @@
                             </button>
                         </form>
                     </div>
-                </div>
-                <div class="topbar-icon">
-                    <i class="fas fa-cog"></i>
                 </div>
             </div>
         </header>

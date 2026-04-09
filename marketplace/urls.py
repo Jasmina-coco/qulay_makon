@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from accounts import views as account_views
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -16,6 +17,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("super-admin/", include("superadmin.urls")),
+    path("admin-panel/login/", account_views.login_view, name="admin_panel_login"),
     path("admin-panel/", include("dashboard.urls")),
     path("admin-panel/accounts/", include("accounts.urls")),
     path("admin-panel/products/", include("products.urls")),

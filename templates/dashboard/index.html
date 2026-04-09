@@ -2,6 +2,15 @@
 {% load i18n %}
 {% block title %}{% trans "Dashboard" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="dashboardTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Dashboard</strong> — bu yerda saytingiz haqida umumiy statistika ko'rasiz.
+        Grafiklar har 30 sekundda avtomatik yangilanadi. Kartalarni bosib batafsil ma'lumot olishingiz mumkin.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('dashboardTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="overview-grid">
     <div class="overview-card">
         <div class="card-icon"><i class="fas fa-box"></i></div>
@@ -33,63 +42,13 @@
     </div>
 </div>
 
-<div class="middle-grid">
-    <div class="dashboard-card">
-        <div class="card-header"><h4>{% trans "Foydalanuvchilar" %}</h4></div>
-        <div class="users-stat">
-            <div class="user-icon"><i class="fas fa-users"></i></div>
-            <h2>{{ total_users }}</h2>
-            <p>{% trans "Jami Foydalanuvchilar" %}</p>
-        </div>
-    </div>
-    <div class="dashboard-card">
-        <div class="card-header"><h4>{% trans "Buyurtma Holatlari" %}</h4></div>
-        <div class="chart-container" style="position:relative;height:220px;">
-            <canvas id="orderStatusChart"></canvas>
-        </div>
-    </div>
-    <div class="dashboard-card">
-        <div class="card-header"><h4>{% trans "Top 10 Mahsulotlar" %}</h4></div>
-        <div class="chart-container" style="position:relative;height:220px;">
-            <canvas id="topProductsChart"></canvas>
-        </div>
-    </div>
-</div>
-
-<div class="bottom-section">
-    <div class="dashboard-card">
-        <div class="card-header">
-            <h4>{% trans "Daromad va Xarajatlar" %}</h4>
-            <span class="text-muted">{% trans "Oxirgi 6 oy" %}</span>
-        </div>
-        <div class="chart-container" style="position:relative;height:280px;">
-            <canvas id="revenueChart"></canvas>
-        </div>
-    </div>
-    <div class="dashboard-card">
-        <div class="card-header"><h4>{% trans "So'nggi Buyurtmalar" %}</h4></div>
-        <div class="recent-orders-list">
-            {% for order in recent_orders %}
-            <div class="recent-order-item">
-                <div class="order-info">
-                    <span class="order-id">#{{ order.id }}</span>
-                    <span class="order-user">{{ order.user.username }}</span>
-                </div>
-                <div class="order-meta">
-                    <span class="order-amount">{{ order.total_amount|floatformat:0 }} UZS</span>
-                    <span class="status-badge status-{{ order.status }}">{{ order.status }}</span>
-                </div>
-            </div>
-            {% empty %}
-            <p>{% trans "So'nggi buyurtmalar topilmadi." %}</p>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
 <div class="dashboard-card full-width">
     <div class="card-header">
-        <h4><i class="fas fa-chart-area"></i> Tashrifchilar statistikasi</h4>
+        <h4><i class="fas fa-chart-area"></i> Tashrifchilar
+            <span class="tip-icon">i
+                <span class="tip-text">Saytingizga kuniga/oyiga qancha odam kirganini ko'rsatadi. "Unikal" — har bir IP faqat 1 marta hisoblanadi.</span>
+            </span>
+        </h4>
         <div class="card-header-actions">
             <button class="btn btn-sm btn-outline active" onclick="loadVisitors('daily')" id="btnDaily">Kunlik</button>
             <button class="btn btn-sm btn-outline" onclick="loadVisitors('monthly')" id="btnMonthly">Oylik</button>
@@ -120,12 +79,20 @@
 
 <div class="middle-grid">
     <div class="dashboard-card">
-        <div class="card-header"><h4><i class="fas fa-search"></i> Ko'p qidirilganlar</h4></div>
+        <div class="card-header"><h4><i class="fas fa-search"></i> Ko'p qidirilganlar
+            <span class="tip-icon">i
+                <span class="tip-text">Saytda foydalanuvchilar eng ko'p nimani qidirayotganini ko'rsatadi. Bu sizga qaysi mahsulotlarni qo'shish kerakligini bildiradi.</span>
+            </span>
+        </h4></div>
         <div id="searchStatsList" class="stat-list"></div>
     </div>
 
     <div class="dashboard-card">
-        <div class="card-header"><h4><i class="fas fa-funnel-dollar"></i> Konversiya</h4></div>
+        <div class="card-header"><h4><i class="fas fa-funnel-dollar"></i> Konversiya
+            <span class="tip-icon">i
+                <span class="tip-text">Saytga kirgan odamlardan nechtasi buyurtma berganini foizda ko'rsatadi. Masalan: 100 kishi kirdi, 3 tasi buyurtma berdi = 3%.</span>
+            </span>
+        </h4></div>
         <div class="conversion-big" id="conversionRate">
             <span class="conversion-number">0%</span>
             <span class="conversion-label">Ko'rish → Buyurtma</span>
@@ -137,19 +104,18 @@
 
     <div class="dashboard-card">
         <div class="card-header">
-            <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning);"></i> Ombor ogohlantirish</h4>
+            <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning);"></i> Ombor
+                <span class="tip-icon">i
+                    <span class="tip-text">Omborda 10 tadan kam qolgan mahsulotlar shu yerda ko'rinadi. Qizil = tugagan, sariq = tugayapti.</span>
+                </span>
+            </h4>
         </div>
         <div id="lowStockList" class="stat-list"></div>
     </div>
 </div>
 
 <div class="bottom-section">
-    <div class="dashboard-card">
-        <div class="card-header"><h4><i class="fas fa-trophy" style="color:var(--warning);"></i> Sotuvchilar reytingi</h4></div>
-        <div id="sellersRanking" class="stat-list"></div>
-    </div>
-
-    <div class="dashboard-card">
+    <div class="dashboard-card full-width">
         <div class="card-header">
             <h4><i class="fas fa-bolt" style="color:var(--primary);"></i> Oxirgi harakatlar</h4>
             <span class="live-dot"></span>
@@ -157,90 +123,53 @@
         <div id="activityFeed" class="activity-feed"></div>
     </div>
 </div>
+
+<div class="dashboard-card full-width">
+    <div class="card-header"><h4>{% trans "So'nggi Buyurtmalar" %}</h4></div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{% trans "Mijoz" %}</th>
+                <th>{% trans "Summa" %}</th>
+                <th>{% trans "Status" %}</th>
+                <th>{% trans "Sana" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in recent_orders %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.user.username }}</td>
+                <td>{{ order.total_amount|floatformat:0 }} UZS</td>
+                <td><span class="status-badge status-{{ order.status }}">{{ order.status }}</span></td>
+                <td><span class="text-muted">{{ order.created_at|date:"d.m.Y H:i" }}</span></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-card-state">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>{% trans "So'nggi buyurtmalar topilmadi." %}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-const doughnutColors = ['#2a6f6f', '#3d8b8b', '#5aadad', '#8fd4d4', '#c0eaea'];
-
-const lineChartConfig = {
-    borderColor: '#2a6f6f',
-    backgroundColor: 'rgba(42, 111, 111, 0.08)',
-    pointBackgroundColor: '#2a6f6f',
-    pointBorderColor: '#fff',
-    pointBorderWidth: 2,
-    pointRadius: 5,
-    tension: 0.4,
-    fill: true
-};
-
-const barChartConfig = {
-    indexAxis: 'y',
-    backgroundColor: '#2a6f6f',
-    borderRadius: 6,
-    barThickness: 18
-};
-let revenueChart = null;
-let orderStatusChart = null;
-let topProductsChart = null;
 let visitorsChart = null;
 let conversionChart = null;
 
-async function loadDashboardCharts() {
-    const [revenueRes, statusRes, topProductsRes] = await Promise.all([
-        fetch('/admin-panel/api/monthly-revenue/'),
-        fetch('/admin-panel/api/order-status-chart/'),
-        fetch('/admin-panel/api/top-products/'),
-    ]);
-    const revenueData = await revenueRes.json();
-    const statusData = await statusRes.json();
-    const topProductsData = await topProductsRes.json();
-
-    if (revenueChart) revenueChart.destroy();
-    if (orderStatusChart) orderStatusChart.destroy();
-    if (topProductsChart) topProductsChart.destroy();
-
-    revenueChart = new Chart(document.getElementById('revenueChart'), {
-        type: 'line',
-        data: {
-            labels: revenueData.map(d => d.month),
-            datasets: [{
-                label: '{% trans "Daromad" %}',
-                data: revenueData.map(d => d.revenue),
-                ...lineChartConfig
-            }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: 500 } }
-    });
-
-    orderStatusChart = new Chart(document.getElementById('orderStatusChart'), {
-        type: 'doughnut',
-        data: {
-            labels: statusData.map(d => d.status),
-            datasets: [{
-                data: statusData.map(d => d.count),
-                backgroundColor: doughnutColors
-            }]
-        },
-        options: { animation: { duration: 500 } }
-    });
-
-    topProductsChart = new Chart(document.getElementById('topProductsChart'), {
-        type: 'bar',
-        data: {
-            labels: topProductsData.map(d => d.name),
-            datasets: [{
-                label: '{% trans "Ko'rishlar" %}',
-                data: topProductsData.map(d => d.views_count),
-                ...barChartConfig
-            }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: 500 } }
-    });
+async function fetchJson(url, options = {}) {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+        throw new Error('Server xatosi: ' + response.status);
+    }
+    return response.json();
 }
-
-loadDashboardCharts();
-setInterval(loadDashboardCharts, 30000);
 
 function loadVisitors(period) {
     document.getElementById('btnDaily').classList.toggle('active', period === 'daily');
@@ -250,7 +179,7 @@ function loadVisitors(period) {
         ? '/admin-panel/api/visitors/daily/'
         : '/admin-panel/api/visitors/monthly/';
 
-    fetch(url).then(r => r.json()).then(data => {
+    fetchJson(url).then(data => {
         const labels = data.map(d => d.day || d.month);
         const totals = data.map(d => d.total);
         const uniques = data.map(d => d.unique);
@@ -290,76 +219,79 @@ function loadVisitors(period) {
                 }
             }
         });
-    });
+    }).catch(err => console.warn('Xato:', err));
 
-    fetch('/admin-panel/api/visitors/summary/').then(r => r.json()).then(s => {
+    fetchJson('/admin-panel/api/visitors/summary/').then(s => {
         document.getElementById('visitorsToday').textContent = s.today_total.toLocaleString();
         document.getElementById('visitorsWeek').textContent = s.week_total.toLocaleString();
         document.getElementById('visitorsMonth').textContent = s.month_total.toLocaleString();
         document.getElementById('visitorsUnique').textContent = s.month_unique.toLocaleString();
-    });
+    }).catch(err => console.warn('Xato:', err));
 }
 
 function loadSearchStats() {
-    fetch('/admin-panel/api/search-stats/').then(r => r.json()).then(data => {
+    fetchJson('/admin-panel/api/search-stats/').then(data => {
         const el = document.getElementById('searchStatsList');
-        if (!data.length) { el.innerHTML = '<p class="text-muted" style="padding:16px;">Ma\'lumot yo\'q</p>'; return; }
+        if (!el) return;
+        if (!data.length) {
+            el.innerHTML = `
+                <div class="empty-card-state">
+                    <i class="fas fa-search"></i>
+                    <p>Hali qidiruv bo'lmagan</p>
+                    <small>Saytda qidiruv qilinganda bu yerda ko'rinadi</small>
+                </div>`;
+            return;
+        }
         el.innerHTML = data.map((d, i) => `
             <div class="stat-list-item">
                 <span class="stat-rank">${i + 1}</span>
                 <div class="stat-info">
                     <span class="stat-name">"${d.query}"</span>
-                    <span class="stat-detail">${Math.round(d.avg_results)} natija o'rtacha</span>
+                    <span class="stat-detail">${Math.round(d.avg_results)} natija</span>
                 </div>
-                <span class="stat-value">${d.count} marta</span>
+                <span class="stat-value">${d.count}x</span>
             </div>
         `).join('');
-    });
-}
-
-function loadSellersRanking() {
-    fetch('/admin-panel/api/sellers-ranking/').then(r => r.json()).then(data => {
-        const el = document.getElementById('sellersRanking');
-        if (!data.length) { el.innerHTML = '<p class="text-muted" style="padding:16px;">Ma\'lumot yo\'q</p>'; return; }
-        el.innerHTML = data.map((d, i) => `
-            <div class="stat-list-item">
-                <span class="stat-rank ${i < 3 ? 'stat-rank-gold' : ''}">${i + 1}</span>
-                <div class="stat-info">
-                    <span class="stat-name">${d.shop_name}</span>
-                    <span class="stat-detail">${d.orders} buyurtma · ★ ${d.rating.toFixed(1)}</span>
-                </div>
-                <span class="stat-value">${(d.revenue / 1000).toFixed(0)}K</span>
-            </div>
-        `).join('');
-    });
+    }).catch(() => {});
 }
 
 function loadLowStock() {
-    fetch('/admin-panel/api/low-stock/').then(r => r.json()).then(data => {
+    fetchJson('/admin-panel/api/low-stock/').then(data => {
         const el = document.getElementById('lowStockList');
-        if (!data.length) { el.innerHTML = '<p style="padding:16px;color:var(--success);"><i class="fas fa-check-circle"></i> Barcha mahsulotlar yetarli</p>'; return; }
+        if (!el) return;
+        if (!data.length) {
+            el.innerHTML = `
+                <div class="empty-card-state">
+                    <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                    <p>Hamma narsa yetarli</p>
+                    <small>Omborda tugayotgan mahsulot yo'q</small>
+                </div>`;
+            return;
+        }
         el.innerHTML = data.map(d => {
-            const urgency = d.stock === 0 ? 'stock-out' : d.stock < 5 ? 'stock-critical' : 'stock-low';
+            const cls = d.stock === 0 ? 'stock-out' : d.stock < 5 ? 'stock-critical' : 'stock-low';
             return `
             <div class="stat-list-item">
-                <span class="stock-indicator ${urgency}">${d.stock}</span>
+                <span class="stock-indicator ${cls}">${d.stock}</span>
                 <div class="stat-info">
                     <a href="/admin-panel/products/${d.id}/edit/" class="stat-name">${d.name.substring(0, 25)}</a>
-                    <span class="stat-detail">${d.category__name || 'Kategoriyasiz'}</span>
+                    <span class="stat-detail">${d.category__name || ''}</span>
                 </div>
                 <span class="stat-value">${Number(d.price).toLocaleString()}</span>
             </div>`;
         }).join('');
-    });
+    }).catch(() => {});
 }
 
 function loadConversion() {
-    fetch('/admin-panel/api/conversion/').then(r => r.json()).then(data => {
-        document.querySelector('#conversionRate .conversion-number').textContent = data.conversion_rate + '%';
+    fetchJson('/admin-panel/api/conversion/').then(data => {
+        const numEl = document.querySelector('#conversionRate .conversion-number');
+        if (numEl) numEl.textContent = data.conversion_rate + '%';
 
         if (conversionChart) conversionChart.destroy();
-        if (data.daily && data.daily.length) {
-            conversionChart = new Chart(document.getElementById('conversionChart'), {
+        const canvas = document.getElementById('conversionChart');
+        if (canvas && data.daily && data.daily.length > 0) {
+            conversionChart = new Chart(canvas, {
                 type: 'bar',
                 data: {
                     labels: data.daily.map(d => d.day),
@@ -380,12 +312,22 @@ function loadConversion() {
                 }
             });
         }
-    });
+    }).catch(() => {});
 }
 
 function loadActivity() {
-    fetch('/admin-panel/api/activity/').then(r => r.json()).then(data => {
+    fetchJson('/admin-panel/api/activity/').then(data => {
         const el = document.getElementById('activityFeed');
+        if (!el) return;
+        if (!data.length) {
+            el.innerHTML = `
+                <div class="empty-card-state">
+                    <i class="fas fa-clock"></i>
+                    <p>Hali harakatlar yo'q</p>
+                    <small>Tizimda faoliyat bo'lganda bu yerda ko'rinadi</small>
+                </div>`;
+            return;
+        }
         const colors = { blue: 'var(--info)', green: 'var(--success)', orange: 'var(--warning)', gray: 'var(--text-muted)' };
 
         el.innerHTML = data.map(d => {
@@ -403,7 +345,7 @@ function loadActivity() {
                 <span class="activity-time">${ago}</span>
             </div>`;
         }).join('');
-    });
+    }).catch(() => {});
 }
 
 function getTimeAgo(date) {
@@ -417,7 +359,6 @@ function getTimeAgo(date) {
 document.addEventListener('DOMContentLoaded', function() {
     loadVisitors('daily');
     loadSearchStats();
-    loadSellersRanking();
     loadLowStock();
     loadConversion();
     loadActivity();
@@ -429,7 +370,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(() => {
         loadSearchStats();
-        loadSellersRanking();
         loadLowStock();
         loadConversion();
     }, 120000);

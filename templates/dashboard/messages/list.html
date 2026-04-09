@@ -2,6 +2,15 @@
 {% load i18n %}
 {% block title %}Xabarlar{% endblock %}
 {% block content %}
+<div class="page-tip" id="msgTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Xabarlar</strong> — saytdagi kontakt formasidan kelgan xabarlar.
+        Ko'k chiziqli = hali o'qilmagan. Xabarni bosib o'qing va "O'qilgan" deb belgilang.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('msgTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Xabarlar" %}</h2>

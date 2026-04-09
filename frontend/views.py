@@ -142,7 +142,7 @@ def search(request):
     if q:
         products = Product.objects.filter(
             Q(name__icontains=q) | Q(description__icontains=q), status="active"
-        ).prefetch_related("images")
+        ).prefetch_related("images").order_by("-created_at")
         ip = request.META.get("HTTP_X_FORWARDED_FOR", request.META.get("REMOTE_ADDR", "127.0.0.1"))
         if "," in ip:
             ip = ip.split(",")[0].strip()

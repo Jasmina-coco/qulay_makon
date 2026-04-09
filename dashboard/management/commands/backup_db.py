@@ -1,5 +1,6 @@
 import json
 import os
+import platform
 import subprocess
 from datetime import datetime
 
@@ -25,6 +26,19 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        # Windows da PostgreSQL bin papkasini avtomatik topish
+        if platform.system() == "Windows":
+            pg_paths = [
+                r"C:\Program Files\PostgreSQL\16\bin",
+                r"C:\Program Files\PostgreSQL\17\bin",
+                r"C:\Program Files\PostgreSQL\15\bin",
+                r"C:\Program Files (x86)\PostgreSQL\16\bin",
+            ]
+            for pg_path in pg_paths:
+                if os.path.exists(os.path.join(pg_path, "pg_dump.exe")):
+                    os.environ["PATH"] = pg_path + ";" + os.environ.get("PATH", "")
+                    break
+
         backup_dir = os.path.join(settings.BASE_DIR, "backups")
         os.makedirs(backup_dir, exist_ok=True)
 

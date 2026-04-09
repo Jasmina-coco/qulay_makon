@@ -15,33 +15,60 @@ function toggleLangMenu() {
     }
 }
 
+function toggleSection(btn) {
+    const section = btn.closest(".nav-section");
+    if (!section) return;
+    section.classList.toggle("collapsed");
+
+    const label = btn.querySelector(".nav-label")?.textContent.trim();
+    const collapsed = JSON.parse(localStorage.getItem("sidebarSections") || "{}");
+    if (label) {
+        collapsed[label] = section.classList.contains("collapsed");
+        localStorage.setItem("sidebarSections", JSON.stringify(collapsed));
+    }
+}
+
+async function fetchJson(url, options = {}) {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+        throw new Error(`Server xatosi: ${response.status}`);
+    }
+    return response.json();
+}
+
 function setMainImage(productId, imageId) {
-    fetch(`/admin-panel/products/${productId}/images/${imageId}/set-main/`, {
+    fetchJson(`/admin-panel/products/${productId}/images/${imageId}/set-main/`, {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
     })
-        .then((r) => r.json())
         .then((data) => {
             if (data.success) {
                 showToast("Asosiy rasm o'zgartirildi", "success");
                 setTimeout(() => location.reload(), 500);
             }
+        })
+        .catch((err) => {
+            console.warn("Xato:", err);
+            showToast("Xatolik yuz berdi", "error");
         });
 }
 
 function deleteImage(productId, imageId) {
     if (!confirm("Rasmni o'chirishni tasdiqlaysizmi?")) return;
-    fetch(`/admin-panel/products/${productId}/images/${imageId}/delete/`, {
+    fetchJson(`/admin-panel/products/${productId}/images/${imageId}/delete/`, {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
     })
-        .then((r) => r.json())
         .then((data) => {
             if (data.success) {
                 const element = document.getElementById(`image-${imageId}`);
                 if (element) element.remove();
                 showToast("Rasm o'chirildi", "success");
             }
+        })
+        .catch((err) => {
+            console.warn("Xato:", err);
+            showToast("Xatolik yuz berdi", "error");
         });
 }
 
@@ -65,58 +92,70 @@ if (window.Chart) {
 }
 
 function updateOrderStatus(orderId, newStatus) {
-    fetch(`/admin-panel/orders/${orderId}/update-status/`, {
+    fetchJson(`/admin-panel/orders/${orderId}/update-status/`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-CSRFToken": csrftoken },
         body: JSON.stringify({ status: newStatus }),
     })
-        .then((r) => r.json())
         .then((data) => {
             if (data.success) {
                 showToast("Status yangilandi", "success");
                 setTimeout(() => location.reload(), 500);
             }
+        })
+        .catch((err) => {
+            console.warn("Xato:", err);
+            showToast("Xatolik yuz berdi", "error");
         });
 }
 
 function toggleUserActive(userId) {
-    fetch(`/admin-panel/accounts/users/${userId}/toggle/`, {
+    fetchJson(`/admin-panel/accounts/users/${userId}/toggle/`, {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
     })
-        .then((r) => r.json())
         .then((data) => {
             if (data.success) {
                 showToast(data.message, "success");
                 setTimeout(() => location.reload(), 500);
             }
+        })
+        .catch((err) => {
+            console.warn("Xato:", err);
+            showToast("Xatolik yuz berdi", "error");
         });
 }
 
 function approveSeller(sellerId) {
-    fetch(`/admin-panel/accounts/sellers/${sellerId}/approve/`, {
+    fetchJson(`/admin-panel/accounts/sellers/${sellerId}/approve/`, {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
     })
-        .then((r) => r.json())
         .then((data) => {
             if (data.success) {
                 showToast(data.message, "success");
                 setTimeout(() => location.reload(), 500);
             }
+        })
+        .catch((err) => {
+            console.warn("Xato:", err);
+            showToast("Xatolik yuz berdi", "error");
         });
 }
 
 function confirmDelete(url, itemName) {
     document.getElementById("deleteItemName").textContent = itemName;
     document.getElementById("deleteConfirmBtn").onclick = () => {
-        fetch(url, { method: "POST", headers: { "X-CSRFToken": csrftoken } })
-            .then((r) => r.json())
+        fetchJson(url, { method: "POST", headers: { "X-CSRFToken": csrftoken } })
             .then((data) => {
                 if (data.success) {
                     showToast("O'chirildi", "success");
                     location.reload();
                 }
+            })
+            .catch((err) => {
+                console.warn("Xato:", err);
+                showToast("Xatolik yuz berdi", "error");
             });
     };
     document.getElementById("deleteModal").style.display = "flex";
@@ -124,6 +163,19 @@ function confirmDelete(url, itemName) {
 
 function closeModal(id) {
     document.getElementById(id).style.display = "none";
+}
+
+function dismissTip(tipId) {
+    const el = document.getElementById(tipId);
+    if (el) {
+        el.style.animation = "tipFadeOut 0.3s ease forwards";
+        setTimeout(() => el.remove(), 300);
+    }
+    const dismissed = JSON.parse(localStorage.getItem("dismissedTips") || "[]");
+    if (!dismissed.includes(tipId)) {
+        dismissed.push(tipId);
+        localStorage.setItem("dismissedTips", JSON.stringify(dismissed));
+    }
 }
 
 function showToast(msg, type = "info") {
@@ -153,17 +205,57 @@ function debounce(func, wait = 300) {
     };
 }
 
+// ====== TOOLTIP — BOSGANDA OCHILADI ======
+document.addEventListener("click", function (e) {
+    const clickedTip = e.target.closest(".tip-icon");
+
+    document.querySelectorAll(".tip-icon.active").forEach((tip) => {
+        if (tip !== clickedTip) {
+            tip.classList.remove("active", "tip-left");
+        }
+    });
+
+    if (clickedTip) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        clickedTip.classList.remove("tip-left");
+
+        const rect = clickedTip.getBoundingClientRect();
+        const spaceRight = window.innerWidth - rect.right;
+        if (spaceRight < 300) {
+            clickedTip.classList.add("tip-left");
+        }
+
+        clickedTip.classList.toggle("active");
+    }
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        document.querySelectorAll(".tip-icon.active").forEach((tip) => {
+            tip.classList.remove("active", "tip-left");
+        });
+    }
+});
+
 async function fetchAndReplace(url, targetSelector, pushState = true) {
-    const response = await fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } });
-    const html = await response.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const newNode = doc.querySelector(targetSelector);
-    const currentNode = document.querySelector(targetSelector);
-    if (newNode && currentNode) {
-        currentNode.innerHTML = newNode.innerHTML;
-        if (pushState) window.history.pushState({}, "", url);
-        bindAjaxFilters();
+    try {
+        const response = await fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+        if (!response.ok) throw new Error(`Server xatosi: ${response.status}`);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const newNode = doc.querySelector(targetSelector);
+        const currentNode = document.querySelector(targetSelector);
+        if (newNode && currentNode) {
+            currentNode.innerHTML = newNode.innerHTML;
+            if (pushState) window.history.pushState({}, "", url);
+            bindAjaxFilters();
+        }
+    } catch (err) {
+        console.warn("Xato:", err);
+        showToast("Ma'lumot yuklashda xato", "error");
     }
 }
 
@@ -227,6 +319,24 @@ function renderGlobalSearchResults(items) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const dismissed = JSON.parse(localStorage.getItem("dismissedTips") || "[]");
+    dismissed.forEach((tipId) => {
+        const el = document.getElementById(tipId);
+        if (el) el.remove();
+    });
+
+    const collapsed = JSON.parse(localStorage.getItem("sidebarSections") || "{}");
+    document.querySelectorAll(".nav-section").forEach((section) => {
+        const label = section.querySelector(".nav-label")?.textContent.trim();
+        const hasActive = section.querySelector(".nav-link.active");
+
+        if (hasActive) {
+            section.classList.remove("collapsed");
+        } else if (label && collapsed[label]) {
+            section.classList.add("collapsed");
+        }
+    });
+
     bindAjaxFilters();
 
     const globalSearchInput = document.getElementById("globalSearchInput");
@@ -240,9 +350,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 globalSearchResults.innerHTML = "";
                 return;
             }
-            const res = await fetch(`${searchUrl}?q=${encodeURIComponent(q)}`);
-            const payload = await res.json();
-            renderGlobalSearchResults(payload.results || []);
+            try {
+                const payload = await fetchJson(`${searchUrl}?q=${encodeURIComponent(q)}`);
+                renderGlobalSearchResults(payload.results || []);
+            } catch (err) {
+                console.warn("Xato:", err);
+                globalSearchResults.innerHTML = '<div class="search-empty">Xatolik yuz berdi</div>';
+                globalSearchResults.classList.add("show");
+            }
         }, 250);
         globalSearchInput.addEventListener("input", handleSearch);
     }
@@ -257,6 +372,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (searchBox && !searchBox.contains(e.target)) {
             const panel = document.getElementById("globalSearchResults");
             if (panel) panel.classList.remove("show");
+        }
+
+        if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById("sidebar");
+            const toggleBtn = document.querySelector(".sidebar-toggle");
+            const inSidebar = sidebar && sidebar.contains(e.target);
+            const onToggle = toggleBtn && toggleBtn.contains(e.target);
+            if (sidebar && sidebar.classList.contains("open") && !inSidebar && !onToggle) {
+                sidebar.classList.remove("open");
+                const main = document.getElementById("mainContent");
+                if (main) main.classList.remove("expanded");
+            }
         }
     });
 });

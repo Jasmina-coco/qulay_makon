@@ -2,6 +2,15 @@
 {% load i18n %}
 {% block title %}{% trans "Sotuvchilar" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="sellerTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Sotuvchilar</strong> — marketplace da mahsulot sotuvchilar.
+        "Tasdiqlash" tugmasi bilan sotuvchiga ruxsat berasiz. Tasdiqlanmagan sotuvchi mahsulot qo'sha olmaydi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('sellerTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Sotuvchilar" %}</h2>

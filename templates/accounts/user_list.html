@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}{% trans "Foydalanuvchilar" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="userTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Foydalanuvchilar</strong> — saytdagi barcha foydalanuvchilar.
+        Rollar: <strong>Admin</strong> = panelni boshqaradi, <strong>Sotuvchi</strong> = mahsulot sotadi, <strong>Xaridor</strong> = mahsulot sotib oladi.
+        Foydalanuvchini "Bloklash" tugmasini bosib vaqtincha to'xtatish mumkin.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('userTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Foydalanuvchilar" %}</h2>

@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}{% trans "Mahsulotlar" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="productTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Mahsulotlar</strong> — bu yerda barcha mahsulotlarni boshqarasiz.
+        Yangi mahsulot qo'shish, tahrirlash, rasmlar yuklash, Excel dan import/export qilish mumkin.
+        <strong>"Holat"</strong>: Faol = saytda ko'rinadi, Kutilmoqda = tasdiq kutmoqda, Qoralama = saytda ko'rinmaydi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('productTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Mahsulotlar" %}</h2>
@@ -11,6 +21,9 @@
         <a href="{% url 'product_export' %}?format=xlsx" class="btn btn-sm btn-outline">
             <i class="fas fa-file-excel"></i> {% trans "Excel Export" %}
         </a>
+        <span class="tip-icon">i
+            <span class="tip-text">Excel Export — barcha mahsulotlarni Excel faylga yuklab olish. Import — Excel dan mahsulotlarni yuklash.</span>
+        </span>
         <a href="{% url 'product_export' %}?format=csv" class="btn btn-sm btn-outline">
             <i class="fas fa-file-csv"></i> {% trans "CSV Export" %}
         </a>

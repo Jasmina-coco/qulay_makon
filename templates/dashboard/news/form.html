@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+<div class="page-tip" id="newsFormTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Yangilik formasi</strong> — maqola matni, rasm va kategoriyani kiriting.
+        Faol holatdagi yangiliklar frontendda ko'rinadi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('newsFormTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="form-card">
     <h3>{{ title }}</h3>
     <form method="post" enctype="multipart/form-data">

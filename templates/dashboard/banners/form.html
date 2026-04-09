@@ -1,11 +1,69 @@
 {% extends 'base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+<div class="page-tip" id="bannerFormTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Banner formasi</strong> — bosh sahifadagi slider bannerni sozlash uchun ishlatiladi.
+        Tartib kichik bo'lsa birinchi chiqadi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('bannerFormTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="form-card">
     <h3>{{ title }}</h3>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            <label>Sarlavha
+                <span class="tip-icon">i
+                    <span class="tip-text">Bannerning asosiy sarlavhasi. Qisqa va aniq yozing.</span>
+                </span>
+            </label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label>Qisqa matn
+                <span class="tip-icon">i
+                    <span class="tip-text">Banner ostida chiqadigan qo'shimcha matn.</span>
+                </span>
+            </label>
+            {{ form.subtitle }}
+        </div>
+        <div class="form-group">
+            <label>Rasm
+                <span class="tip-icon">i
+                    <span class="tip-text">Keng formatdagi banner rasmi yuklang.</span>
+                </span>
+            </label>
+            {{ form.image }}
+        </div>
+        <div class="form-group">
+            <label>Link
+                <span class="tip-icon">i
+                    <span class="tip-text">Bannerga bosilganda qaysi sahifaga o'tishini yozing. Bo'sh bo'lsa hech qayerga o'tmaydi.</span>
+                </span>
+            </label>
+            {{ form.link }}
+        </div>
+        <div class="form-group">
+            <label>Tartib
+                <span class="tip-icon">i
+                    <span class="tip-text">Raqam kichik bo'lgan banner birinchi ko'rinadi. Masalan: 1 birinchi, 2 ikkinchi.</span>
+                </span>
+            </label>
+            {{ form.order }}
+        </div>
+        <div class="form-group">
+            <label class="checkbox-label">
+                {{ form.is_active }}
+                <span>Faol holat
+                    <span class="tip-icon">i
+                        <span class="tip-text">Faol bo'lsa banner saytda ko'rinadi, aks holda yashirin bo'ladi.</span>
+                    </span>
+                </span>
+            </label>
+        </div>
         <button class="btn btn-primary" type="submit">Saqlash</button>
         <a class="btn btn-secondary" href="{% url 'banner_list' %}">Ortga</a>
     </form>

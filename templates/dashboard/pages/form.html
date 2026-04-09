@@ -1,11 +1,61 @@
 {% extends 'base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+<div class="page-tip" id="pageFormTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Sahifa formasi</strong> — statik sahifalar uchun matn kiriting.
+        Slug URL manzil sifatida ishlatiladi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('pageFormTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="form-card">
     <h3>{{ title }}</h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            <label>Sarlavha
+                <span class="tip-icon">i
+                    <span class="tip-text">Sahifa nomi menyu va sahifada ko'rinadi.</span>
+                </span>
+            </label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label>Slug
+                <span class="tip-icon">i
+                    <span class="tip-text">Sahifaning URL manzili. Masalan: "biz-haqimizda" → /page/biz-haqimizda/</span>
+                </span>
+            </label>
+            {{ form.slug }}
+        </div>
+        <div class="form-group">
+            <label>Matn
+                <span class="tip-icon">i
+                    <span class="tip-text">Sahifaning asosiy matni. Bu kontent frontendda to'liq chiqadi.</span>
+                </span>
+            </label>
+            {{ form.content }}
+        </div>
+        <div class="form-group">
+            <label>Meta tavsif
+                <span class="tip-icon">i
+                    <span class="tip-text">Qidiruv tizimlari uchun qisqa tavsif. SEO uchun foydali.</span>
+                </span>
+            </label>
+            {{ form.meta_description }}
+        </div>
+        <div class="form-group">
+            <label class="checkbox-label">
+                {{ form.is_active }}
+                <span>Faol holat
+                    <span class="tip-icon">i
+                        <span class="tip-text">Faol bo'lsa sahifa frontendda ko'rinadi.</span>
+                    </span>
+                </span>
+            </label>
+        </div>
         <button class="btn btn-primary" type="submit">Saqlash</button>
         <a class="btn btn-secondary" href="{% url 'page_list' %}">Ortga</a>
     </form>

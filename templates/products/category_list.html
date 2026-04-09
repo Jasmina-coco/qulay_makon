@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}{% trans "Kategoriyalar" %}{% endblock %}
 {% block content %}
+<div class="page-tip" id="catTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Kategoriyalar</strong> — mahsulotlar guruhlari.
+        Har bir mahsulot bitta kategoriyaga tegishli. "Ota kategoriya" tanlasangiz — ichki kategoriya yaratiladi.
+        Masalan: Elektronika → Telefonlar.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('catTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Kategoriyalar" %}</h2>

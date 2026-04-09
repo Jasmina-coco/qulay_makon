@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block title %}Sahifalar{% endblock %}
 {% block content %}
+<div class="page-tip" id="pageTip">
+    <i class="fas fa-lightbulb"></i>
+    <div>
+        <strong>Sahifalar</strong> — saytdagi statik sahifalar (Biz haqimizda, Yetkazib berish, To'lov shartlari va boshqalar).
+        <strong>Slug</strong> — sahifaning URL manzili. Masalan: slug "about" bo'lsa, sahifa /page/about/ da ochiladi.
+        Matnni yozib "Saqlash" bosing — saytda darhol ko'rinadi.
+    </div>
+    <button class="tip-dismiss" onclick="dismissTip('pageTip')"><i class="fas fa-times"></i></button>
+</div>
+
 <div class="content-header">
     <div>
         <h2>{% trans "Sahifalar" %}</h2>
